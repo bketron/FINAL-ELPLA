@@ -1,5 +1,5 @@
 import React from 'react'
-import { reduxForm } from 'redux-form'
+// import { reduxForm } from 'redux-form'
 
 // import Menu from 'material-ui/Menu'
 // import MenuItem from 'material-ui/MenuItem'
@@ -25,18 +25,55 @@ import Drawer from 'material-ui/Drawer'
 
 // <Fields names={[ 'firstName', 'lastName' ]} component={renderFields}/>
 
-const placeholder {
-  display: hidden;
+const style = {
+	placeHolder:{
+	  display: 'none'
+	}
 }
-
-
 class FilterPanel extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {open: false}
+    this.state = {
+    	open: false,
+    	partySize: '',
+    	dType: '',
+    	prto:'',
+    	prfrom:'',
+    	location:'',
+    	fType:'',
+    	aType:''
+    }
   }
 
   handleToggle = () => this.setState({open: !this.state.open})
+
+  handleChange = (e) => {
+  	this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {  
+    e.preventDefault()
+    filter({
+      partySize: this.state.partySize,
+      dType: this.state.dType,
+    	prto: this.state.prto,
+    	prfrom:this.state.prfrom,
+    	location:this.state.location,
+    	fType:this.state.fType,
+    	aType:this.state.aType
+    })
+    this.setState({
+    	partySize: '',
+      dType: '',
+    	prto:'',
+    	prfrom:'',
+    	location:'',
+    	fType:'',
+    	aType:''
+    })
+  }
 
   render() {
     return (
@@ -46,20 +83,48 @@ class FilterPanel extends React.Component {
           onTouchTap={this.handleToggle}
         />
  				<Drawer width={200} openSecondary={true} open={this.state.open} >
- 					<form>
+ 					<form onSubmit={this.handleSubmit}>
  						<p>General</p>
- 						<select>
- 							<option style={placeholder}>Select Date Type</option>
- 							<option>Casual</option>
- 							<option>Professional</option>
- 							<option>Romantic</option>
+ 						<select name='dtype' value={this.state.dType}>
+ 							<option style={style.placeHolder}>Select Date Type</option>
+ 							<option value='Casual'>Casual</option>
+ 							<option value='Professional'>Professional</option>
+ 							<option value='Romantic'>Romantic</option>
  						</select>
- 						<input type='text' placeholder='Party Size' value='' name='partysize' />
+ 						<input onChange={this.handleChange} type='number' placeholder='Party Size' value={this.partySize} name='partysize' /><br />
  						<label>Price Range</label>
- 						<input type='text' placeholder='From' value='' name='prfrom' />
+ 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
  						<span>to</span>
- 						<input type='text' placeholder='To' value='' name='prto' />
- 						
+ 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
+ 						<p>Food</p>
+ 						<select value={this.fType} name='fType'>
+ 							<option style={style.placeHolder}>Select Food Type</option>
+ 							<option value='Chinese'>Chinese</option>
+ 							<option value='Korean'>Korean</option>
+ 							<option value='Italian'>Italian</option>
+ 							<option value='Indian'>Indian</option>
+ 							<option value='Mediterranean'>Mediterranean</option>
+ 							<option value='German'>German</option>
+ 						</select><br />
+ 						<label>Price Range</label>
+ 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
+ 						<span>to</span>
+ 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
+ 						<p>Activity</p>
+ 						<select name='aType'>
+ 							<option style={style.placeHolder}>Select Activity Type</option>
+ 							<option value='Outdoor Physical'>Outdoor Physical</option>
+ 							<option value='Indoor Physical'>Indoor Physical</option>
+ 							<option value='Show'>Show</option>
+ 							<option value='Bar'>Bar</option>
+ 						</select><br />
+ 						<label>Price Range</label>
+ 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
+ 						<span>to</span>
+ 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
  					</form>
  				</Drawer>
       </div>
