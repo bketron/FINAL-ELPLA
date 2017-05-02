@@ -1,4 +1,5 @@
 import React from 'react'
+import filter from '../api/filter'
 // import { reduxForm } from 'redux-form'
 
 // import Menu from 'material-ui/Menu'
@@ -36,10 +37,16 @@ class FilterPanel extends React.Component {
     this.state = {
     	open: false,
     	partySize: '',
-    	dType: '',
-    	prto:'',
-    	prfrom:'',
-    	location:'',
+      dType: '',
+    	gprto:'',
+    	gprfrom:'',
+    	gLocation:'',
+    	fprto:'',
+    	fprfrom:'',
+    	fLocation:'',
+    	aprto:'',
+    	aprfrom:'',
+    	aLocation:'',
     	fType:'',
     	aType:''
     }
@@ -55,21 +62,34 @@ class FilterPanel extends React.Component {
 
   handleSubmit = (e) => {  
     e.preventDefault()
+    console.log(this.state)
     filter({
       partySize: this.state.partySize,
       dType: this.state.dType,
-    	prto: this.state.prto,
-    	prfrom:this.state.prfrom,
-    	location:this.state.location,
+    	gprto: this.state.prto,
+    	gprfrom:this.state.prfrom,
+    	gLocation:this.state.location,
+    	fprto: this.state.prto,
+    	fprfrom:this.state.prfrom,
+    	fLocation:this.state.location,
+    	aprto: this.state.prto,
+    	aprfrom:this.state.prfrom,
+    	aLocation:this.state.location,
     	fType:this.state.fType,
     	aType:this.state.aType
     })
     this.setState({
     	partySize: '',
       dType: '',
-    	prto:'',
-    	prfrom:'',
-    	location:'',
+    	gprto:'',
+    	gprfrom:'',
+    	gLocation:'',
+    	fprto:'',
+    	fprfrom:'',
+    	fLocation:'',
+    	aprto:'',
+    	aprfrom:'',
+    	aLocation:'',
     	fType:'',
     	aType:''
     })
@@ -85,20 +105,22 @@ class FilterPanel extends React.Component {
  				<Drawer width={200} openSecondary={true} open={this.state.open} >
  					<form onSubmit={this.handleSubmit}>
  						<p>General</p>
- 						<select name='dtype' value={this.state.dType}>
+ 						<select onChange={this.handleChange}name='dtype' value={this.state.dType}>
  							<option style={style.placeHolder}>Select Date Type</option>
  							<option value='Casual'>Casual</option>
  							<option value='Professional'>Professional</option>
  							<option value='Romantic'>Romantic</option>
  						</select>
  						<input onChange={this.handleChange} type='number' placeholder='Party Size' value={this.partySize} name='partysize' /><br />
+ 						
  						<label>Price Range</label>
- 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
+ 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.gprfrom} name='prfrom' />
  						<span>to</span>
- 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
- 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
+ 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.gprto} name='prto' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.gLocation} name='gLocation' />
+ 						
  						<p>Food</p>
- 						<select value={this.fType} name='fType'>
+ 						<select value={this.state.fType} name='fType'>
  							<option style={style.placeHolder}>Select Food Type</option>
  							<option value='Chinese'>Chinese</option>
  							<option value='Korean'>Korean</option>
@@ -111,9 +133,10 @@ class FilterPanel extends React.Component {
  						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
  						<span>to</span>
  						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
- 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Food Location' value={this.fLocation} name='fLocation' />
+ 						
  						<p>Activity</p>
- 						<select name='aType'>
+ 						<select name='aType' value={this.state.aType}>
  							<option style={style.placeHolder}>Select Activity Type</option>
  							<option value='Outdoor Physical'>Outdoor Physical</option>
  							<option value='Indoor Physical'>Indoor Physical</option>
@@ -121,10 +144,11 @@ class FilterPanel extends React.Component {
  							<option value='Bar'>Bar</option>
  						</select><br />
  						<label>Price Range</label>
- 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.prfrom} name='prfrom' />
+ 						<input onChange={this.handleChange} type='text' placeholder='From' value={this.aprfrom} name='prfrom' />
  						<span>to</span>
- 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.prto} name='prto' />
- 						<input onChange={this.handleChange} type='text' placeholder='Location' value={this.location} name='location' />
+ 						<input onChange={this.handleChange} type='text' placeholder='To' value={this.aprto} name='prto' />
+ 						<input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.aLocation} name='aLocation' />
+ 						<button onSubmit={this.handleSubmit} type='submit'>Filter</button>
  					</form>
  				</Drawer>
       </div>
