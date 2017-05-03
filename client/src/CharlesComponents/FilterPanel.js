@@ -1,30 +1,7 @@
 import React from 'react'
 import {filter} from '../api/filter'
-// import { reduxForm } from 'redux-form'
-
-// import Menu from 'material-ui/Menu'
-// import MenuItem from 'material-ui/MenuItem'
-// import Divider from 'material-ui/Divider'
-// import ArrowDropLeft from 'material-ui/svg-icons/navigation-arrow-drop-right'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
-
-// const renderFields = (fields) => (
-//   <div>
-//     <div className="input-row">
-//       <input {...fields.firstName.input} type="text"/>
-//       {fields.firstName.meta.touched && fields.firstName.meta.error && 
-//        <span className="error">{fields.firstName.meta.error}</span>}
-//     </div>
-//     <div className="input-row">
-//       <input {...fields.lastName.input} type="text"/>
-//       {fields.lastName.meta.touched && fields.lastName.meta.error && 
-//        <span className="error">{fields.lastName.meta.error}</span>}
-//     </div>
-//   </div>
-// )
-
-// <Fields names={[ 'firstName', 'lastName' ]} component={renderFields}/>
 
 const style = {
 	placeHolder:{
@@ -154,36 +131,4 @@ class FilterPanel extends React.Component {
     )
   }
 }
-export default FilterPanel
-
-
-// 				<RaisedButton
-//           label="Toggle Drawer"
-//           onTouchTap={this.handleToggle}
-//         />
-//         <Drawer width={200} openSecondary={true} open={this.state.open} >
-//         	<MenuItem
-// 	          primaryText="Custom: 1.2"
-// 	          checked={true}
-// 	          leftIcon={<ArrowDropLeft />}
-// 	          menuItems={[
-// 	            <MenuItem
-// 	              primaryText="Show"
-// 	              leftIcon={<ArrowDropLeft />}
-// 	              menuItems={[
-// 	                <MenuItem primaryText="Show Level 2" />,
-// 	                <MenuItem primaryText="Grid lines" checked={true} />,
-// 	                <MenuItem primaryText="Page breaks" insetChildren={true} />,
-// 	                <MenuItem primaryText="Rules" checked={true} />,
-// 	              ]}
-// 	            />,
-// 	            <MenuItem primaryText="Grid lines" checked={true} />,
-// 	            <MenuItem primaryText="Page breaks" insetChildren={true} />,
-// 	            <MenuItem primaryText="Rules" checked={true} />,
-// 	          ]}
-//         	/>
-        
-//         </Drawer>  
-
-
-//         
+export default FilterPanel         
