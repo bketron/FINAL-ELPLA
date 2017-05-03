@@ -1,0 +1,49 @@
+{
+	"restaurants": [
+		{
+			"id":1,
+			"name":"Nacho Daddy",
+			"price":"$$ (11-30)", 
+			"food-type":"Mexican",
+			"party-size":"",
+			"eventType":"Casual",
+			"location":""
+		},
+		{
+			"id":2,
+			"name":"Effiel Tower",
+			"price":"$$$$ (60+)",
+			"food-type":"French",
+			"party-size":"",
+			"eventType":"Romantic",
+			"location":""
+		},
+		{
+			"id":3,
+			"name":"Ramen Sora",
+			"price":"$ -10",
+			"food-type":"Japanese",
+			"party-size":"",
+			"eventType":"Casual",
+			"location":""
+		},
+		{
+			"id":4,
+			"name":"Vintner Grill",
+			"price":"$$$ 31-60",
+			"food-type":"American",
+			"party-size":"",
+			"eventType":"Business",
+			"location":""
+		},
+		{
+			"id":5,
+			"name":"Double Barrel Roadhouse",
+			"price":"$ 11-30",
+			"food-type":"BBQ",
+			"party-size":"",
+			"eventType":"Casual",
+			"location":""
+		}
+	]
+}
