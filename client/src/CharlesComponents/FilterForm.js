@@ -1,6 +1,5 @@
 import React from 'react'
 import {filter} from '../api/filter'
-import {connect} from 'react-redux'
 
 const style = {
 	placeHolder:{
@@ -10,25 +9,24 @@ const style = {
 
 const FilterForm = (props) => (
 
-// class FilterForm extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//     	partySize: '',
-//       dType: '',
-//     	gprto:'',
-//     	gprfrom:'',
-//     	gLocation:'',
-//     	fprto:'',
-//     	fprfrom:'',
-//     	fLocation:'',
-//     	aprto:'',
-//     	aprfrom:'',
-//     	aLocation:'',
-//     	fType:'',
-//     	aType:''
-//     }
-//   }
+  constructor(props) {
+    super(props)
+    this.state = {
+      partySize: '',
+      dType: '',
+      gprto:'',
+      gprfrom:'',
+      gLocation:'',
+      fprto:'',
+      fprfrom:'',
+      fLocation:'',
+      aprto:'',
+      aprfrom:'',
+      aLocation:'',
+      fType:'',
+      aType:''
+    }
+  }
 
 
   handleChange = (e) => {
@@ -43,15 +41,15 @@ const FilterForm = (props) => (
     filter({
       partySize: this.state.partySize,
       dType: this.state.dType,
-    	gprto: this.state.prto,
-    	gprfrom:this.state.prfrom,
-    	gLocation:this.state.location,
+    	gprto: this.state.gprto,
+    	gprfrom:this.state.gprfrom,
+    	gLocation:this.state.glocation,
     	fprto: this.state.prto,
     	fprfrom:this.state.prfrom,
-    	fLocation:this.state.location,
-    	aprto: this.state.prto,
-    	aprfrom:this.state.prfrom,
-    	aLocation:this.state.location,
+    	fLocation:this.state.flocation,
+    	aprto: this.state.aprto,
+    	aprfrom:this.state.aprfrom,
+    	aLocation:this.state.alocation,
     	fType:this.state.fType,
     	aType:this.state.aType
     })
@@ -126,21 +124,4 @@ const FilterForm = (props) => (
   }
 )
 
-function mapStateToProps(state) {
-  return {
-      partySize: '',
-      dType: '',
-      gprto:'',
-      gprfrom:'',
-      gLocation:'',
-      fprto:'',
-      fprfrom:'',
-      fLocation:'',
-      aprto:'',
-      aprfrom:'',
-      aLocation:'',
-      fType:'',
-      aType:''
-  }
-}
-export default connect(mapStateToProps)(FilterForm)
+export default FilterForm

@@ -1,9 +1,10 @@
 import store from '../store'
 
 
-export function filter() {
+export function filter(filter) {
 	store.dispatch({
-		type: 'ADD_FILTER',
+		type: 'ADD_FILTERS',
+		filters
 	})
 }
 
