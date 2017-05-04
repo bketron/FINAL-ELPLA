@@ -5,8 +5,8 @@ const initialState = {
 
 export default function filterReducer(state=initialState, action) {
     switch (action.type) {
-    	case 'ADD_FILTER':
-    		return {...state, filters: [...state.filters, action.filter]}
+    	case 'ADD_FILTERS':
+    		return {...state, filters: [...state.filters, action.filters]}
     	case 'ADD_CHIP':
     		return {...state, chips: [...state.chips, action.chip]}
       default:

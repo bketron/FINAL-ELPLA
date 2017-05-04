@@ -1,6 +1,5 @@
 import React from 'react'
 import {filter} from '../api/filter'
-import {connect} from 'react-redux'
 
 const style = {
 	placeHolder:{
@@ -9,26 +8,21 @@ const style = {
 }
 
 const FilterForm = (props) => (
-
-// class FilterForm extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//     	partySize: '',
-//       dType: '',
-//     	gprto:'',
-//     	gprfrom:'',
-//     	gLocation:'',
-//     	fprto:'',
-//     	fprfrom:'',
-//     	fLocation:'',
-//     	aprto:'',
-//     	aprfrom:'',
-//     	aLocation:'',
-//     	fType:'',
-//     	aType:''
-//     }
-//   }
+    this.state = {
+      partySize: '',
+      dType: '',
+      gprto:'',
+      gprfrom:'',
+      gLocation:'',
+      fprto:'',
+      fprfrom:'',
+      fLocation:'',
+      aprto:'',
+      aprfrom:'',
+      aLocation:'',
+      fType:'',
+      aType:''
+  }
 
 
   handleChange = (e) => {
@@ -43,15 +37,15 @@ const FilterForm = (props) => (
     filter({
       partySize: this.state.partySize,
       dType: this.state.dType,
-    	gprto: this.state.prto,
-    	gprfrom:this.state.prfrom,
-    	gLocation:this.state.location,
-    	fprto: this.state.prto,
-    	fprfrom:this.state.prfrom,
-    	fLocation:this.state.location,
-    	aprto: this.state.prto,
-    	aprfrom:this.state.prfrom,
-    	aLocation:this.state.location,
+    	gprto: this.state.gprto,
+    	gprfrom:this.state.gprfrom,
+    	gLocation:this.state.gLocation,
+    	fprto: this.state.fprto,
+    	fprfrom:this.state.fprfrom,
+    	fLocation:this.state.fLocation,
+    	aprto: this.state.aprto,
+    	aprfrom:this.state.aprfrom,
+    	aLocation:this.state.aLocation,
     	fType:this.state.fType,
     	aType:this.state.aType
     })
@@ -126,6 +120,7 @@ const FilterForm = (props) => (
   }
 )
 
+<<<<<<< HEAD
 function mapStateToProps(state) {
   return {
       partySize: '',
@@ -146,3 +141,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(FilterForm)
 
 
+=======
+export default FilterForm
+>>>>>>> 18a754575b24346b7fa6bf9e6e0a58ed53e1dcaf
