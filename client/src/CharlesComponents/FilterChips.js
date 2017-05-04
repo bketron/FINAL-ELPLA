@@ -13,13 +13,13 @@ const = FilterChips = (props) =>
 
   updateBag(filter){
   	this.setState({
-  		chips: [...this.state.chips, {
+  		chips: [...this.props.chips, {
   			title: filter,
   			id: "id" + uuid()
   		}]
   	})
   }
-
+  
   eatChip(id){
   	this.setState({
   		chips: this.state.chips.filter(chip=>{
