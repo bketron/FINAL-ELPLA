@@ -2,6 +2,9 @@ import React from 'react'
 import {filterChip} from '../api/filter'
 import FilterPanel from './FilterPanel'
 import uuid from 'uuid'
+import Chip from './Chip'
+
+// const activeFilters = require('./')
 
 const styles = {
 	chipBag: {
@@ -19,7 +22,7 @@ class FilterChips extends React.Component {
 
   updateBag(filter){
   	this.setState({
-  		items: [...this.state.items, {
+  		chips: [...this.state.chips, {
   			title: filter,
   			id: "id" + uuid()
   		}]
@@ -36,11 +39,13 @@ class FilterChips extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style={styles.chipBag}>
-
-        </div>
-      </div>
+      <div style={styles.chipBag}>
+      	<span>
+      		{this.props.chips.map((chip)=>(
+        		<Chip eatChip={this.props.eatChip} {...chips} />
+      		))}
+      	</span>
+      </div>  
     )
   }
 }
