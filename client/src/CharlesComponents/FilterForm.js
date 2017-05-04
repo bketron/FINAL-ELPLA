@@ -1,30 +1,34 @@
 import React from 'react'
 import {filter} from '../api/filter'
+import {connect} from 'react-redux'
 
 const style = {
 	placeHolder:{
 	  display: 'none'
 	}
 }
-class FilterForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    	partySize: '',
-      dType: '',
-    	gprto:'',
-    	gprfrom:'',
-    	gLocation:'',
-    	fprto:'',
-    	fprfrom:'',
-    	fLocation:'',
-    	aprto:'',
-    	aprfrom:'',
-    	aLocation:'',
-    	fType:'',
-    	aType:''
-    }
-  }
+
+const FilterForm = (props) => (
+
+// class FilterForm extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//     	partySize: '',
+//       dType: '',
+//     	gprto:'',
+//     	gprfrom:'',
+//     	gLocation:'',
+//     	fprto:'',
+//     	fprfrom:'',
+//     	fLocation:'',
+//     	aprto:'',
+//     	aprfrom:'',
+//     	aLocation:'',
+//     	fType:'',
+//     	aType:''
+//     }
+//   }
 
 
   handleChange = (e) => {
@@ -120,5 +124,23 @@ class FilterForm extends React.Component {
       </div>
     )
   }
+)
+
+function mapStateToProps(state) {
+  return {
+      partySize: '',
+      dType: '',
+      gprto:'',
+      gprfrom:'',
+      gLocation:'',
+      fprto:'',
+      fprfrom:'',
+      fLocation:'',
+      aprto:'',
+      aprfrom:'',
+      aLocation:'',
+      fType:'',
+      aType:''
+  }
 }
-export default FilterForm         
+export default connect(mapStateToProps)(FilterForm)

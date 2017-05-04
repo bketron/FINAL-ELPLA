@@ -23,7 +23,7 @@ class FilterPanel extends React.Component {
           onTouchTap={this.handleToggle}
         />
  				<Drawer width={200} openSecondary={true} open={this.state.open} >
-          
+          <FilterChips />
           <FilterForm />
  				</Drawer>
       </div>

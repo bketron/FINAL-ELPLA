@@ -6,19 +6,10 @@ import Chip from './Chip'
 
 // const activeFilters = require('./')
 
-const styles = {
-	chipBag: {
-		width: '100%'
-	}
-}
 
-class FilterChips extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    	chips: []
-    }
-  }
+
+const = FilterChips = (props) => 
+  
 
   updateBag(filter){
   	this.setState({
@@ -39,7 +30,7 @@ class FilterChips extends React.Component {
 
   render() {
     return (
-      <div style={styles.chipBag}>
+      <div>
       	<span>
       		{this.props.chips.map((chip)=>(
         		<Chip eatChip={this.props.eatChip} {...chips} />
@@ -48,5 +39,13 @@ class FilterChips extends React.Component {
       </div>  
     )
   }
+)
+
+
+function mapStateToProps(appState){
+	return {
+		chips: appState.chips
+	}
 }
-export default FilterChips
+
+export default connect(mapStateToProps)(FilterChips)
