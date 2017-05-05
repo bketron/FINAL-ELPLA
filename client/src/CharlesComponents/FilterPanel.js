@@ -1,5 +1,5 @@
 import React from 'react'
-import {filter} from '../api/filter'
+// import {filter} from '../api/filter'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
 import FilterForm from './FilterForm'

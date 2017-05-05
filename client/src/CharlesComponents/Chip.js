@@ -1,5 +1,4 @@
 import React from 'react'
-import FilterForm from './FilterForm'
 
 
 
@@ -7,14 +6,16 @@ class Chip extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-    	filter: []
+    	filter: {}
     }
   }
 
   render() {
+    console.log("dude")
     return (
-      <div styles={style.chip}>
-        <span>{this.props.eatChip.filter}</span> 
+
+      <div>
+        <span>test{this.props.eatChip.chips}</span> 
         <button>X</button>
       </div>
     )

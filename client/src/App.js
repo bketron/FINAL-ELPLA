@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import './App.css'
 import {connect} from 'react-redux'
-import Test from './CharlesComponents/test'
-// import FilterPanel from './CharlesComponents/FilterPanel'
+// import Test from './CharlesComponents/test'
+import FilterPanel from './CharlesComponents/FilterPanel'
 // import FilterChips from './CharlesComponents/FilterChips'
 
 class App extends Component {
   render() {
     return (
       <div>
-      	<Test />
+      	<FilterPanel />
       </div>
     )
   }
