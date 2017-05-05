@@ -1,21 +1,17 @@
 import React from 'react'
 
-
+const style = {
+  chip: {
+    background: 'gray'
+  }
+}
 
 class Chip extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    	filter: {}
-    }
-  }
-
   render() {
-    console.log("dude")
     return (
-
-      <div>
-        <span>test{this.props.eatChip.chips}</span> 
+      <div style={style.chip}>
+        <span>{this.props.name}</span>
+        <span>{this.props.value}</span>
         <button>X</button>
       </div>
     )

@@ -7,10 +7,3 @@ export function addFilters(filters) {
 		filters: filters
 	})
 }
-
-export function filterChip (chip) {
-	store.dispach({
-		type: 'ADD_CHIP',
-		chip
-	})
-}

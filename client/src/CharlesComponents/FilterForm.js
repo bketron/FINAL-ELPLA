@@ -58,7 +58,7 @@ class FilterForm extends React.Component {
     // for(var i=0; i<this.state.length; i++){
     //   if(this.state[])
     // }
-    
+
     // this.setState({
     //  partySize: '',
     //   dType: '',
