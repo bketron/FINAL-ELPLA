@@ -1,5 +1,6 @@
 import React from 'react'
 import {addFilters} from '../api/filter'
+import {connect} from 'react-redux'
 
 const style = {
   placeHolder:{
@@ -27,6 +28,23 @@ class FilterForm extends React.Component {
     }
   }
 
+  componentWillReceiveProps(props) {
+    this.setState({
+      partySize: props.partySize,
+      dType: props.dType,
+      gprto:props.gprto,
+      gprfrom:props.gprfrom,
+      gLocation:props.gLocation,
+      fprto:props.fprto,
+      fprfrom:props.fprfrom,
+      fLocation:props.fLocation,
+      aprto:props.aprto,
+      aprfrom:props.aprfrom,
+      aLocation:props.aLocation,
+      fType:props.fType,
+      aType:props.aType
+    })
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -36,7 +54,6 @@ class FilterForm extends React.Component {
 
   handleSubmit = (e) => {  
     e.preventDefault()
-    console.log(this.state)
     addFilters({
       partySize: this.state.partySize,
       dType: this.state.dType,
@@ -52,6 +69,13 @@ class FilterForm extends React.Component {
       fType:this.state.fType,
       aType:this.state.aType
     })
+
+
+
+    // componentWillRecieveProps = (formValue) => {
+      
+    //   })
+    // }
 
     // var usedFilters = {}
 
@@ -81,21 +105,21 @@ class FilterForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <p>General</p>
-          <select onChange={this.handleChange} name='dType' value={this.state.value}>
+          <select onChange={this.handleChange} name='dType' value={this.state.dType}>
             <option style={style.placeHolder}>Select Date Type</option>
             <option value='Casual'>Casual</option>
             <option value='Professional'>Professional</option>
             <option value='Romantic'>Romantic</option>
           </select>
-          <input onChange={this.handleChange} type='number' placeholder='Party Size' value={this.partySize} name='partySize' /><br />
+          <input onChange={this.handleChange} type='number' placeholder='Party Size' value={this.state.partySize} name='partySize' /><br />
           <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.gprfrom} name='gprfrom' />
+          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.gprfrom} name='gprfrom' />
           <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.gprto} name='gprto' />
-          <input onChange={this.handleChange} type='text' placeholder='Location' value={this.gLocation} name='gLocation' />
+          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.gprto} name='gprto' />
+          <input onChange={this.handleChange} type='text' placeholder='Location' value={this.state.gLocation} name='gLocation' />
           
           <p>Food</p>
-          <select onChange={this.handleChange} value={this.state.value} name='fType'>
+          <select onChange={this.handleChange} value={this.state.fType} name='fType'>
             <option style={style.placeHolder}>Select Food Type</option>
             <option value='Chinese'>Chinese</option>
             <option value='Korean'>Korean</option>
@@ -105,13 +129,13 @@ class FilterForm extends React.Component {
             <option value='German'>German</option>
           </select><br />
           <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.fprfrom} name='fprfrom' />
+          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.fprfrom} name='fprfrom' />
           <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.fprto} name='fprto' />
-          <input onChange={this.handleChange} type='text' placeholder='Food Location' value={this.fLocation} name='fLocation' />
+          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.fprto} name='fprto' />
+          <input onChange={this.handleChange} type='text' placeholder='Food Location' value={this.state.fLocation} name='fLocation' />
           
           <p>Activity</p>
-          <select onChange={this.handleChange} name='aType' value={this.state.value}>
+          <select onChange={this.handleChange} name='aType' value={this.state.aType}>
             <option style={style.placeHolder}>Select Activity Type</option>
             <option value='Outdoor Physical'>Outdoor Physical</option>
             <option value='Indoor Physical'>Indoor Physical</option>
@@ -119,10 +143,10 @@ class FilterForm extends React.Component {
             <option value='Bar'>Bar</option>
           </select><br />
           <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.aprfrom} name='aprfrom' />
+          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.aprfrom} name='aprfrom' />
           <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.aprto} name='aprto' />
-          <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.aLocation} name='aLocation' /><br />
+          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.aprto} name='aprto' />
+          <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.state.aLocation} name='aLocation' /><br />
           <button onSubmit={this.handleSubmit} type='submit'>Filter</button>
         </form>
       </div>
@@ -130,5 +154,9 @@ class FilterForm extends React.Component {
   }
 }
 
-export default FilterForm
 
+function mapStateToProps(appState) {
+  return {...appState.filters}
+}
+
+export default connect(mapStateToProps)(FilterForm)

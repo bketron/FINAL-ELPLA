@@ -1,48 +1,30 @@
 import React from 'react'
 // import {filterChip} from '../api/filter'
 // import FilterPanel from './FilterPanel'
-import uuid from 'uuid'
-import Chip from './Chip'
+// import uuid from 'uuid'
 // import {filter} from '../api/filter'
+import Chip from './Chip'
 import {connect} from 'react-redux'
 // const activeFilters = require('./')
-
-
-
-
-// aLocation
-// aType
-// aprfrom
-// aprto
-// dType
-// fLocation
-// fType
-// fprfrom
-// fprto
-// gLocation
-// gprfrom
-// gprto
-// partySize
-
+// import {addFilters} from '../api/filter'
 
 class FilterChips extends React.Component {
   render() {
-    console.log(this.props.filters.aLocation)
     return (
       <div className="chips">
-        {this.props.filters.aLocation ? <Chip name="Activity Location" value={this.props.filters.aLocation} /> : ''}
-        {this.props.filters.aType ? <Chip name="Activity Type" value={this.props.filters.aType} /> : ''}
-        {this.props.filters.aprfrom ? <Chip name="Activity Price From" value={this.props.filters.aprfrom} /> : ''}
-        {this.props.filters.aprto ? <Chip name="Activity Price To" value={this.props.filters.aprto} /> : ''}
-        {this.props.filters.dType ? <Chip name="Date Type" value={this.props.filters.dType} /> : ''}
-        {this.props.filters.fLocation ? <Chip name="Food Location" value={this.props.filters.fLocation} /> : ''}
-        {this.props.filters.fType ? <Chip name="Food Type" value={this.props.filters.fType} /> : ''}
-        {this.props.filters.fprfrom ? <Chip name="Food Price From" value={this.props.filters.fprfrom} /> : ''}
-        {this.props.filters.fprto ? <Chip name="Food Price To" value={this.props.filters.fprto} /> : ''}
-        {this.props.filters.gLocation ? <Chip name="General Location" value={this.props.filters.gLocation} /> : ''}
-        {this.props.filters.gprfrom ? <Chip name="General Price From" value={this.props.filters.gprfrom} /> : ''}
-        {this.props.filters.gprto ? <Chip name="General Price To" value={this.props.filters.gprto} /> : ''}
-        {this.props.filters.partySize ? <Chip name="Party Size" value={this.props.filters.partySize} /> : ''}
+        {this.props.aLocation ? <Chip propName="aLocation" name="Activity Location" value={this.props.aLocation} /> : ''}
+        {this.props.aType ? <Chip propName="aType" name="Activity Type" value={this.props.aType} /> : ''}
+        {this.props.aprfrom ? <Chip propName="aprfrom" name="Activity Price From" value={this.props.aprfrom} /> : ''}
+        {this.props.aprto ? <Chip propName="aprto" name="Activity Price To" value={this.props.aprto} /> : ''}
+        {this.props.dType ? <Chip propName="dType" name="Date Type" value={this.props.dType} /> : ''}
+        {this.props.fLocation ? <Chip propName="fLocation" name="Food Location" value={this.props.fLocation} /> : ''}
+        {this.props.fType ? <Chip propName="fType" name="Food Type" value={this.props.fType} /> : ''}
+        {this.props.fprfrom ? <Chip propName="fprfrom" name="Food Price From" value={this.props.fprfrom} /> : ''}
+        {this.props.fprto ? <Chip propName="fprto" name="Food Price To" value={this.props.fprto} /> : ''}
+        {this.props.gLocation ? <Chip propName="gLocation" name="General Location" value={this.props.gLocation} /> : ''}
+        {this.props.gprfrom ? <Chip propName="gprfrom" name="General Price From" value={this.props.gprfrom} /> : ''}
+        {this.props.gprto ? <Chip propName="gprto" name="General Price To" value={this.props.gprto} /> : ''}
+        {this.props.partySize ? <Chip propName="partySize" name="Party Size" value={this.props.partySize} /> : ''}
       </div>
     )
   }
@@ -50,9 +32,7 @@ class FilterChips extends React.Component {
 
 
 function mapStateToProps(appState){
-	return {
-		filters: appState.filters
-	}
+	return {...appState.filters}
 }
 
 export default connect(mapStateToProps)(FilterChips)
