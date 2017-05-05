@@ -28,7 +28,7 @@ class FilterChips extends React.Component {
   
   eatChip(id){
   	this.setState({
-  		chips: this.state.chips.filter(chip=>{
+  		chips: this.props.chips.filter(chip=>{
   			return chip.id !== id
   		})
   	})
@@ -38,8 +38,10 @@ class FilterChips extends React.Component {
     console.log(this.props.chips)
     return (
       <div>
+      <p>Test{this.props.aType}</p>
       	<span>
       		{this.props.chips.map((chip)=>(
+
         		<Chip eatChip={this.props.eatChip} {...chip} />
       		))}
       	</span>
