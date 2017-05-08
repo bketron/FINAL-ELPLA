@@ -159,8 +159,6 @@ function mapStateToProps(appState) {
   return {...appState.filters}
 }
 
-<<<<<<< HEAD
+
 export default connect(mapStateToProps)(FilterForm)
-=======
-export default connect(mapStateToProps)(FilterForm)
->>>>>>> 9f51959dddc68a3157d07240a246a70e6d502e1f
+
