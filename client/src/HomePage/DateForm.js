@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import {addFilters} from '../api/filter.js'
+import FilterPanel from '../CharlesComponents/FilterPanel.js'
 
 const styles = {
     container: {
@@ -140,6 +141,8 @@ class DateForm extends Component {
                         <input style={styles.partyInput} onChange={this.handleChange} name="partySize" type="number" min="0" max="12" placeholder="Party Size" value={this.state.partySize} />
                         <input style={styles.maxPrice} onChange={this.handleChange} type="text" name="maxPrice" value={this.state.maxPrice} placeholder="Max. Price" />
                     </div>
+
+                    <FilterPanel />
 
                     <button style={styles.generateButton} onClick={this.handleSubmit} type="submit">Generate</button>
                 </form>

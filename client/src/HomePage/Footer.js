@@ -26,7 +26,6 @@ const styles = {
     list: {
         listStyleType: 'none',
         padding: '0px',
-        margin: '0px',
         display: 'flex',
         margin: 'auto'
     },
