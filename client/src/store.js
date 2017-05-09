@@ -1,6 +1,6 @@
 import {createStore} from 'redux'
-import messagingReducer from './reducers/messaging'
+import filterReducer from './reducers/filters'
 
-const store = createStore(messagingReducer)
+const store = createStore(filterReducer)
 
 export default store
