@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
 import './App.css'
+import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import FilterPanel from './CharlesComponents/FilterPanel'
+import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+
 
 class App extends Component {
- 	  render() {
-      return (
-      	<Router>
-        	<div>
-          		<FilterPanel />
-
-          		<Route exact={true} path="/Results" component={Results} />
-        	</div>
-        </Router>
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Home} />
+          <Route path="/Results" component={Results} />
+        </div>
+      </BrowserRouter>
       )
-    }
-  
-}
-
-
-const mapStateToProps = function(appState) {
-  return {
-    
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapStateToProps = function(appState) {
+  return {
+
+  }
+}
+
+export default connect (mapStateToProps)(App)
