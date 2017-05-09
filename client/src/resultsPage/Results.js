@@ -1,66 +1,74 @@
 import React from 'react'
 import data from './data.json'
+import { Link } from 'react-router-dom'
 
 const styles = {
 	container: {
 		margin:'auto',
-    	width:500,
-    	height:350,
+    	width:750,
+    	height:700,
     	padding:10,
     	backgroundColor:'rgb(166, 165, 163)',
     	lineHeight:5
 	},
 	img: {
-			width:400,
-			height:100,
-			backgroundColor:'blue',
+			width:700,
+			height:165,
+			backgroundColor:'yellow',
 			textAlign:'center',
-			marginLeft:50
+			marginLeft:20
 	},
-	name: {
-		width:150,
-		height:30,
-		lineHeight:2,
-		backgroundColor:'grey',
-		marginBottom:5,
-		marginTop:10,
-		textAlign:'center'
-	},
-	price: {
-		width:150,
-		height:30,
-		lineHeight:2,
-		backgroundColor:'grey',
-		marginBottom:5,
-		textAlign:'center'
-	},
-	type: {
-		width:150,
-		height:30,
-		lineHeight:2,
-		backgroundColor:'grey',
-		marginBottom:5,
-		textAlign:'center'
-	},
-	event: {
-		width:150,
-		height:30,
-		lineHeight:2,
-		backgroundColor:'grey',
-		marginBottom:5,
-		textAlign:'center'
-	},
-	location: {
-		width:150,
-		height:30,
-		lineHeight:2,
-		backgroundColor:'grey',
-		marginBottom:5,
-		textAlign:'center'
-	},
-	boxes: {
+	info: {
 		display:'flex',
-    flexDirection:'column'
+		marginLeft:20
+	},
+	rname: {
+		width:600,
+		marginTop:-20,
+		height:10
+
+	},
+	minfo: {
+		height:30,
+		width:100
+	},
+	general: {
+		
+		width:380,
+		height:300,
+		lineHeight:'normal',
+		wordWrap:'break-word'
+	},
+	bottom: {
+		display:'flex',
+		marginLeft:20
+	},
+	rimg: {
+		width:700,
+		height:165
+	},
+	map: {
+		width:300,
+		height:296,
+		marginRight:20
+	},
+	footer: {
+		backgroundColor:'red',
+		width:700,
+		height:150,
+		marginLeft:20,
+		marginTop:-30,
+		marginBottom:50,
+		lineHeight:'normal',
+		wordWrap:'break-word',
+		overflow:'scroll'
+	},
+	par: {
+		lineHeight:'normal',
+		wordWrap:'break-word'
+	},
+	p: {
+		fontWeight:'bold'
 	}
 }
 
@@ -69,7 +77,7 @@ class Results extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			results: data.restaurants
+			results: data.restaurants	
 		}
 	}
 
@@ -78,23 +86,32 @@ class Results extends React.Component {
     render() {
         return (
             <div style={styles.container}>
-            		<p style={styles.img}>img</p>
-            		<div style={styles.boxes}>
-            			<input style={styles.name} type="text" placeholder="Name" />
-            			<input style={styles.price} type="text" placeholder="Price" />
-            			<input style={styles.type} type="text" placeholder="Type" />
-            			<input style={styles.event} type="text" placeholder="Event" />
-            			<input style={styles.location} type="text" placeholder="Location" />
+
+            	{this.state.results.map(result=>(
+            	<div key={'result' + result.id}>
+            		<div style={styles.info}>
+            			<span style={styles.rname}>{result.name}</span>
+            			<Link to={"/moreinfo/"}><button style={styles.minfo}>More info</button></Link>
             		</div>
-            		{this.state.results.map(result=>(
-            			<div key={'result' + result.id}>
-            				<span>{result.name}</span>
-            				<span>{result.price}</span>
-            				<span>{result.type}</span>
-            				<span>{result.eventType}</span>
-            				<span>{result.location}</span>
+            		<p style={styles.img}><img style={styles.rimg} src={result.img} alt="img" /></p>
+            		<div style={styles.bottom}>
+            			<div>
+            				<iframe style={styles.map} src={result.map}></iframe>
             			</div>
-            		))}
+            			<div style={styles.general}>
+            				<p style={styles.p}>Website:</p> {result.website}
+            				<p style={styles.p}>Phone Number:</p> {result.phone}
+            				<p style={styles.p}>Address:</p> {result.address}
+            			</div>
+            		</div>
+            		<div style={styles.footer}>
+            			<p>About:</p>
+            			<span style={styles.par}>{result.about}</span>
+            			{result.eventType}
+            		</div>		
+            	</div>
+            	))}
+            	
             </div>
         )
     }
