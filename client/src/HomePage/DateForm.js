@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import {addFilters} from '../api/filter.js'
 
 const styles = {
     container: {
@@ -39,7 +40,14 @@ const styles = {
         margin: '10px 0px',
         fontSize: '16px'
     },
-    partyButton: {
+    dateSelect: {
+        height: '40px',
+        border: 'none',
+        outline: 'none',
+        borderRadius: '0px',
+        marginBottom: '10px'
+    },
+    partyInput: {
         borderRadius: '0px',
         height: '40px',
         width: '50%',
@@ -48,7 +56,7 @@ const styles = {
         backgroundColor: '#F7F7F7',
         color: '#0B3954',
         fontSize: '17px',
-        padding: '0px'
+        padding: '0px 0px 0px 10px'
     },
     maxPrice: {
         height: '40px',
@@ -60,7 +68,7 @@ const styles = {
         margin: '0px 0px 0px 10px',
         outline: 'none',
         border: 'none',
-        paddingLeft: '20px'
+        paddingLeft: '10px'
     },
     lowerForm: {
         display: 'flex',
@@ -86,6 +94,7 @@ const styles = {
         outline: 'none',
         marginTop: '10px',
         fontSize: '20px',
+        cursor: 'pointer'
         
     }
 }
@@ -96,7 +105,7 @@ class DateForm extends Component {
 
         this.state = {
             dateType: null,
-            partySize: 1,
+            partySize: '',
             maxPrice: ''
         }
     }
@@ -111,6 +120,7 @@ class DateForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        addFilters(this.state)
         console.log(this.state)
     }
 
@@ -119,15 +129,17 @@ class DateForm extends Component {
             <div style={styles.container}>
                 <p style={styles.title}>Date Generator</p>
                 <form style={styles.form}>
-
-                    <button style={styles.typeButton} type="button">Date Type</button>
+                    <select style={styles.dateSelect} name="dateType" onChange={this.handleChange}>
+                        <option name="dateType" value="any" selected>Any</option>
+                        <option name="dateType" value="meal">Meal Only</option>
+                        <option name="dateType" value="entertainment">Entertainment Only</option>
+                        <option name="dateType" value="both">Meal and Entertainment</option>
+                    </select>
 
                     <div style={styles.lowerForm}>
-                        <button style={styles.partyButton} type="button">Party Size</button>
-                        <input style={styles.maxPrice} type="text" name="maxPrice" value={this.state.maxPrice} placeholder="Max. Price" />
+                        <input style={styles.partyInput} onChange={this.handleChange} name="partySize" type="number" min="0" max="12" placeholder="Party Size" value={this.state.partySize} />
+                        <input style={styles.maxPrice} onChange={this.handleChange} type="text" name="maxPrice" value={this.state.maxPrice} placeholder="Max. Price" />
                     </div>
-
-                    <button style={styles.moreFiltersButton} type="button">More Filters</button>
 
                     <button style={styles.generateButton} onClick={this.handleSubmit} type="submit">Generate</button>
                 </form>

@@ -1,26 +1,19 @@
 import React, { Component } from 'react'
 import './App.css'
-import {connect} from 'react-redux'
-// import Test from './CharlesComponents/test'
-import FilterPanel from './CharlesComponents/FilterPanel'
-// import FilterChips from './CharlesComponents/FilterChips'
+import Home from './HomePage/Home'
+import {BrowserRouter, Route} from 'react-router-dom'
+
 
 class App extends Component {
   render() {
     return (
-      <div>
-      	<FilterPanel />
-      </div>
-    )
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Home} />
+        </div>
+      </BrowserRouter>
+      )
   }
 }
 
-
-const mapStateToProps = function(appState) {
-  return {
-    
-  }
-}
-
-export default connect(mapStateToProps)(App)
-// <FilterChips /><FilterPanel />
+export default App

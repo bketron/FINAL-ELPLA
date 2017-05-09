@@ -56,10 +56,6 @@ class TopBar extends Component {
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">Date Generator</a>
-                        </li>
-                        <li style={styles.listItem}><div style={styles.divLine}></div></li>
-                        <li style={styles.listItem}>
                             <a style={styles.link} href="">Social</a>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>

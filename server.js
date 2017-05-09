@@ -20,9 +20,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // })
 
 io.on('connection', function(socket){
-    socket.on('addMessage', function(message){
-        io.emit('newMessage', message)
-    })
 })
 
 server.listen(3001, function(){
