@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
 
-
-
 class App extends Component {
   render() {
     return (
@@ -14,7 +12,6 @@ class App extends Component {
         <div>
           <Route exact={true} path="/" component={Home} />
           <Route path="/Results" component={Results} />
-          
         </div>
       </BrowserRouter>
       )
