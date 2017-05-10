@@ -12,3 +12,16 @@ export function getRestaurant(searchObj) {
         })
     })
 }
+
+export function getOneRestaurant(searchObj) {
+	const url = `/yelpbusiness?businessId=${searchObj.businessId}`
+
+
+    axios.get(url).then(function(response){
+        console.log(response.data, searchObj, 'api')
+        store.dispatch({
+            type: 'GET_ONE_RESTAURANT',
+            info: response.data
+        })
+    })
+}
