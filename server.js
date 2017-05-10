@@ -23,17 +23,17 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 function getPriceType(price) {
 	if (price <= 10) {
-		return '$'
-	} else if (price >= 11 && <= 30) {
-		return '$$'
-	} else if (price >= 31 && <= 60) {
-		return '$$$'
+		return 1
+	} else if (price >= 11 && price <= 30) {
+		return 1,2
+	} else if (price >= 31 && price <= 60) {
+		return 1,2,3
 	}	else if (price >= 61) {
-		return '$$$$'
-	} else {
-		return ''
-	}
+		return 1,2,3,4
+	} 
 } 
+
+// getPriceType(req.query.maxPrice),
 
 
 
@@ -46,19 +46,31 @@ app.post('/proxy', function(req, res){
 })
 app.get('/yelpdata', function(req, res){
     //console.log(res, 'server')
+
+    var location =  'las vegas' || req.query.location
+
+    // function locCheck()){
+		  // if (req.query.location !== 'undefined'){
+		  // 	return req.query.location
+		  // } else {
+		  // 	return 'las vegas'
+		  // }
+    // }
+
+
     rapid.call('YelpAPI', 'getBusinesses', { 
         'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
-        'term': 'restaurants',
-        'location': req.query.location,
+        'term': req.query.term,
+        'location': location,
         'latitude': '',
         'longitude': '',
-        'radius': '',
+        'radius': '25000',
         'categories': '',
         'locale': '',
-        'limit': '',
+        'limit': '50',
         'offset': '',
         'sortBy': '',
-        'price': getPriceType(req.query.maxPrice),
+        'price': getPriceType(req.query.price),
         'openNow': '',
         'openAt': '',
         'attributes': ''
@@ -120,9 +132,6 @@ app.get('/yelpbusiness', function(req, res){
 //  }).on('error', (payload)=>{
 //       /*YOUR CODE GOES HERE*/ 
 //  });
-// })
-// app.listen(3001, function(){
-//     console.log('Server listening on port 3001')
 // })
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){
