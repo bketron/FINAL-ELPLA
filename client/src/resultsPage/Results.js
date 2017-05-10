@@ -1,6 +1,8 @@
 import React from 'react'
-import data from './data.json'
+import data from './data.json' 
 import { Link } from 'react-router-dom'
+
+
 
 const styles = {
 	container: {
@@ -86,7 +88,9 @@ class Results extends React.Component {
     render() {
         return (
             <div style={styles.container}>
-
+            <Link to={'/Favorite/'}>
+            	<button>Favorite</button>
+            </Link>
             	{this.state.results.map(result=>(
             	<div key={'result' + result.id}>
             		<div style={styles.info}>

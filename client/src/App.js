@@ -4,7 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
-
+import Favorite from './resultsPage/Favorite'
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
         <div>
           <Route exact={true} path="/" component={Home} />
           <Route path="/Results" component={Results} />
+          <Route path="/Favorite" component={Favorite} />
         </div>
       </BrowserRouter>
       )
