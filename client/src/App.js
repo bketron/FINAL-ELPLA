@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
 
-
 class App extends Component {
   render() {
     return (
@@ -26,3 +25,6 @@ const mapStateToProps = function(appState) {
 }
 
 export default connect (mapStateToProps)(App)
+
+
+// <Route path="/MoreInfo" component={MoreInfo} />

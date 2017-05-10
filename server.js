@@ -18,6 +18,25 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //         "foo":"bar"
 //     })
 // })
+
+
+
+function getPriceType(price) {
+	if (price <= 10) {
+		return 1
+	} else if (price >= 11 && price <= 30) {
+		return 1,2
+	} else if (price >= 31 && price <= 60) {
+		return 1,2,3
+	}	else if (price >= 61) {
+		return 1,2,3,4
+	} 
+} 
+
+// getPriceType(req.query.maxPrice),
+
+
+
 app.post('/proxy', function(req, res){
     var url = req.body.url
     
@@ -27,19 +46,31 @@ app.post('/proxy', function(req, res){
 })
 app.get('/yelpdata', function(req, res){
     //console.log(res, 'server')
+
+    var location =  'las vegas' || req.query.location
+
+    // function locCheck()){
+		  // if (req.query.location !== 'undefined'){
+		  // 	return req.query.location
+		  // } else {
+		  // 	return 'las vegas'
+		  // }
+    // }
+
+
     rapid.call('YelpAPI', 'getBusinesses', { 
         'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
-        'term': 'restaurants',
-        'location': req.query.loc,
+        'term': req.query.term,
+        'location': location,
         'latitude': '',
         'longitude': '',
-        'radius': '',
+        'radius': '25000',
         'categories': '',
         'locale': '',
-        'limit': '',
+        'limit': '50',
         'offset': '',
         'sortBy': '',
-        'price': '',
+        'price': getPriceType(req.query.price),
         'openNow': '',
         'openAt': '',
         'attributes': ''
@@ -49,6 +80,21 @@ app.get('/yelpdata', function(req, res){
     }).on('error', (payload)=>{
          res.send(payload); 
     });
+})
+
+
+app.get('/yelpbusiness', function(req, res){
+	rapid.call('/YelpAPI', 'getSingleBusiness', { 
+		'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
+		'businessId': req.query.businessId
+	 
+	}).on('success', (payload)=>{
+		 res.send(payload);
+	}).on('error', (payload)=>{
+		 res.send(payload);
+	})
+})
+
     // rapid.call('YelpAPI', 'getBusinesses', {
     // 'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
     // 'term': req.query.term,
@@ -72,7 +118,7 @@ app.get('/yelpdata', function(req, res){
     //          error:true
     //      })
     // })
-}),
+// }),
 // - example code, do not use -
 // app.get('/restaurant/:id', function(req, res){
 //  var id = req.query.id
@@ -87,14 +133,11 @@ app.get('/yelpdata', function(req, res){
 //       /*YOUR CODE GOES HERE*/ 
 //  });
 // })
-app.listen(3333, function(){
-    console.log('Server listening on port 3333')
-})
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){
         io.emit('newMessage', message)
     })
 })
-// server.listen(3001, function(){
-//     console.log('listening on port 3333')
-// })
+server.listen(3001, function(){
+    console.log('listening on port 3001')
+})
