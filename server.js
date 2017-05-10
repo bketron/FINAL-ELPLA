@@ -30,7 +30,7 @@ app.get('/yelpdata', function(req, res){
     rapid.call('YelpAPI', 'getBusinesses', { 
         'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
         'term': 'restaurants',
-        'location': req.query.loc,
+        'location': req.query.location,
         'latitude': '',
         'longitude': '',
         'radius': '',
@@ -49,6 +49,19 @@ app.get('/yelpdata', function(req, res){
     }).on('error', (payload)=>{
          res.send(payload); 
     });
+})
+
+rapid.call('/yelpbusiness', 'getSingleBusiness', { 
+	'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
+	'bussinessId': req.query.bussinessId
+ 
+}).on('success', (payload)=>{
+	 res.send(payload);
+}).on('error', (payload)=>{
+	 res.send(payload);
+});
+
+
     // rapid.call('YelpAPI', 'getBusinesses', {
     // 'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
     // 'term': req.query.term,
@@ -87,8 +100,8 @@ app.get('/yelpdata', function(req, res){
 //       /*YOUR CODE GOES HERE*/ 
 //  });
 // })
-app.listen(3333, function(){
-    console.log('Server listening on port 3333')
+app.listen(3001, function(){
+    console.log('Server listening on port 3001')
 })
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){
@@ -96,5 +109,5 @@ io.on('connection', function(socket){
     })
 })
 // server.listen(3001, function(){
-//     console.log('listening on port 3333')
+//     console.log('listening on port 3001')
 // })
