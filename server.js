@@ -18,6 +18,25 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //         "foo":"bar"
 //     })
 // })
+
+
+
+function getPriceType(price) {
+	if (price <= 10) {
+		return '$'
+	} else if (price >= 11 && <= 30) {
+		return '$$'
+	} else if (price >= 31 && <= 60) {
+		return '$$$'
+	}	else if (price >= 61) {
+		return '$$$$'
+	} else {
+		return ''
+	}
+} 
+
+
+
 app.post('/proxy', function(req, res){
     var url = req.body.url
     
@@ -39,7 +58,7 @@ app.get('/yelpdata', function(req, res){
         'limit': '',
         'offset': '',
         'sortBy': '',
-        'price': '',
+        'price': getPriceType(req.query.maxPrice),
         'openNow': '',
         'openAt': '',
         'attributes': ''

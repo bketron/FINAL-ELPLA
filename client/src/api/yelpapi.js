@@ -1,7 +1,8 @@
 import store from '../store'
+import axios from 'axios'
 
 export function getRestaurant(searchObj) {
-	const url = `/yelpdata?term=${searchObj.term}&location=${searchObj.location}&price=${searchObj.price}`
+	const url = `/yelpdata?term=restaurant&location=${searchObj.location}&price=${searchObj.maxprice}`
 
 
     axios.get(url).then(function(response){
@@ -25,3 +26,43 @@ export function getOneRestaurant(searchObj) {
         })
     })
 }
+
+export function generateDate(searchObj) {
+	const mealUrl = `/yelpdata?term=restaurant&location=${searchObj.location}&price=${searchObj.maxprice}`
+	const activityUrl = `/yelpdata?term=fun&location=${searchObj.location}&price=${searchObj.maxprice}`
+
+		if (searchObj.dateType === 'null' || 'both') {
+			axios.get(mealUrl).then(function(response){
+        console.log(response.data, searchObj, 'meal')
+        store.dispatch({
+            type: 'GET_RESTAURANT',
+            info: response.data
+      	})
+  		})
+			axios.get(activityUrl).then(function(response){
+        console.log(response.data, searchObj, 'activity')
+        store.dispatch({
+            type: 'GET_ACTIVITY',
+            info: response.data
+	      })
+	    })
+		} else if (searchObj.dateType === 'meal') {
+			axios.get(mealUrl).then(function(response){
+        console.log(response.data, searchObj, 'meal')
+        store.dispatch({
+            type: 'GET_RESTAURANT',
+            info: response.data
+      	})
+  		})
+		} else if (searchObj.dateType === 'entertainment') {
+			axios.get(activityUrl).then(function(response){
+        console.log(response.data, searchObj, 'activity')
+        store.dispatch({
+            type: 'GET_ACTIVITY',
+            info: response.data
+	      })
+	    })
+		}
+
+}
+
