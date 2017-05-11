@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './App.css'
-import Home from './HomePage/Home'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
+import Home from './HomePage/Home'
+import Results from './resultsPage/Results'
+import Directions from './DirectionsPage/Directions'
 
 
 class App extends Component {
@@ -11,6 +13,8 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={Home} />
+          <Route path="/Results" component={Results} />
+          <Route exact={true} path="/directions" component={Directions} />
         </div>
       </BrowserRouter>
       )
