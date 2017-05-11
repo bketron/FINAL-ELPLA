@@ -16,17 +16,24 @@ class Results extends Component {
 		this.state = {
 			restaurants: [],
 			res: {},
+			resLocation: {},
 			activities: [],
-			act: {}
+			act: {},
+			actLocation: {}
 		}
 	}
 
 	componentWillReceiveProps(props) {
+		var resId = (Math.random() * props.restaurants.length).toFixed(0)
+		var actId = (Math.random() * props.activities.length).toFixed(0)
+
 		this.setState({
 			restaurants: props.restaurants,
-			res: props.restaurants[(Math.random() * props.restaurants.length).toFixed(0)],
+			res: props.restaurants[resId],
+			resLocation: props.restaurants[resId].coordinates,
 			activities: props.activities,
-			act: props.activities[(Math.random() * props.activities.length).toFixed(0)]
+			act: props.activities[actId],
+			actLocation: props.activities[actId].coordinates
 		})
 
 		console.log((Math.random() * props.restaurants.length).toFixed(0))
@@ -34,10 +41,11 @@ class Results extends Component {
 
 	newAct = (e) => {
 		e.preventDefault()
-		actId += 1
+		var newId = (Math.random() * this.state.activities.length).toFixed(0)
 
 		this.setState({
-			act: this.state.activities[(Math.random() * this.state.activities.length).toFixed(0)]
+			act: this.state.activities[newId],
+			actLocation: this.state.activities[newId].coordinates
 		})
 
 		console.log(this.state)
@@ -45,10 +53,11 @@ class Results extends Component {
 
 	newRes = (e) => {
 		e.preventDefault()
-		resId += 1
+		var newId = (Math.random() * this.state.restaurants.length).toFixed(0)
 
 		this.setState({
-			res: this.state.restaurants[(Math.random() * this.state.restaurants.length).toFixed(0)]
+			res: this.state.restaurants[newId],
+			resLocation: this.state.restaurants[newId].coordinates
 		})
 
 		console.log(this.state)
@@ -56,40 +65,76 @@ class Results extends Component {
 
 	render() {
 		console.log(this.state.act)
+		console.log(this.state.res)
 		return (
-			<div>
-				<div>
-					<button type="button" onClick={this.newRes}>New Restaurant</button>
-					<p>{this.state.res.name}</p>
-					<img src={this.state.res.image_url} />
-					<ul>
-						<li>
-							<p>{this.state.res.display_phone}</p>
-						</li>
-						<li>
-							<p>{this.state.res.price}</p>
-						</li>
-						<li>
-							<p>{this.state.res.url}</p>
-						</li>
-					</ul>
+			<div style={styles.container}>
+				<div style={styles.activityContainer}>
+					<div style={styles.topBar}>
+						<p style={styles.title}>{this.state.act.name}</p>
+						<button style={styles.newButton} type="button" onClick={this.newAct}>New Activity</button>
+					</div>
+					<div style={styles.lowerSection}>
+						<img style={styles.image} src={this.state.act.image_url} />
+
+						<div style={styles.lowerInfo}>
+							<iframe
+							  width="600"
+							  height="450"
+							  frameborder="0"
+							  src={`https://www.google.com/maps/embed/v1/directions
+									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
+									&origin=The+Iron+Yard,Las+Vegas,NV
+									&destination=${this.state.actLocation.latitude},${this.state.actLocation.longitude}
+  									&avoid=tolls`} allowfullscreen>
+							</iframe>
+							<ul style={styles.list}>
+								<li style={styles.listItem}>
+									<p style={styles.phone}>{this.state.act.display_phone}</p>
+								</li>
+								<li style={styles.listItem}>
+									<p style={styles.price}>{this.state.act.price}</p>
+								</li>
+								<li style={styles.listItem}>
+									<a style={styles.website} href={this.state.act.url}>Website</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 
-				<div>
-					<button type="button" onClick={this.newAct}>New Activity</button>
-					<p>{this.state.act.name}</p>
-					<img src={this.state.act.image_url} />
-					<ul>
-						<li>
-							<p>{this.state.act.display_phone}</p>
-						</li>
-						<li>
-							<p>{this.state.act.price}</p>
-						</li>
-						<li>
-							<p>{this.state.act.url}</p>
-						</li>
-					</ul>
+				<div style={styles.activityContainer}>
+					<div style={styles.topBar}>
+						<p style={styles.title}>{this.state.res.name}</p>
+						<button style={styles.newButton} type="button" onClick={this.newRes}>New Activity</button>
+					</div>
+					<div style={styles.lowerSection}>
+						<img style={styles.image} src={this.state.res.image_url} />
+
+						<div style={styles.lowerInfo}>
+							<iframe
+							  width="600"
+							  height="450"
+							  frameborder="0"
+							  src={`https://www.google.com/maps/embed/v1/directions
+									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
+									&origin=The+Iron+Yard,Las+Vegas,NV
+									&destination=${this.state.resLocation.latitude},${this.state.resLocation.longitude}
+  									&avoid=tolls`} allowfullscreen>
+							</iframe>
+
+							<ul style={styles.list}>
+								<li style={styles.listItem}>
+									<p style={styles.phone}>{this.state.res.display_phone}</p>
+								</li>
+								<li style={styles.listItem}>
+									<p style={styles.price}>{this.state.res.price}</p>
+								</li>
+								<li style={styles.listItem}>
+									<a style={styles.website} href={this.state.res.url}>Website</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		)
