@@ -26,7 +26,6 @@ const styles = {
     list: {
         listStyleType: 'none',
         padding: '0px',
-        margin: '0px',
         display: 'flex',
         margin: 'auto'
     },
@@ -69,7 +68,7 @@ class Footer extends Component {
 
                 <div style={styles.textSection}>
                     <p style={styles.footerText}>
-                        elPla © 2016 | Crafted by Brennen, Charles & Sajid @ TheIronYard
+                        elPla © 2017 | Crafted by Brennen, Charles & Sajid @ TheIronYard
                     </p>
                 </div>
             </div>
