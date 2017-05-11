@@ -15,9 +15,9 @@ export default function filterReducer(state=initialState, action) {
         return {...state, data: action.data}
       case 'GET_ACTIVITY':
         return {...state, data: action.data}
-      case 'ADD_USERNAME'
+      case 'ADD_USERNAME':
         return {...state, username: action.username}
-      case 'ADD_PASSWORD'
+      case 'ADD_PASSWORD':
         return {...state, password: action.password}
       default:
           return state

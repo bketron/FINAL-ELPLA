@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
 import Directions from './DirectionsPage/Directions'
+import Login from './CharlesComponents/Login'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Route exact={true} path="/" component={Home} />
           <Route path="/Results" component={Results} />
           <Route exact={true} path="/directions" component={Directions} />
+          <Login />
         </div>
       </BrowserRouter>
       )
@@ -27,6 +29,3 @@ const mapStateToProps = function(appState) {
 }
 
 export default connect (mapStateToProps)(App)
-
-
-// <Route path="/MoreInfo" component={MoreInfo} />
