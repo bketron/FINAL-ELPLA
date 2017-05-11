@@ -89,7 +89,7 @@ class Results extends React.Component {
         return (
             <div style={styles.container}>
             <Link to={'/Favorite/'}>
-            	<button>Favorite</button>
+            	<button><i className="fa fa-star-o" aria-hidden="true"></i></button>
             </Link>
             	{this.state.results.map(result=>(
             	<div key={'result' + result.id}>

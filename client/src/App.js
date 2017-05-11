@@ -4,7 +4,8 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
-import Favorite from './resultsPage/Favorite'
+import Favorite from './FavoritePage/Favorite'
+
 
 class App extends Component {
   render() {
