@@ -6,7 +6,8 @@ var actId = 1
 
 const styles = {
 	container: {
-		padding: '30px'
+		padding: '30px',
+		backgroundColor: '#082B3F'
 	},
 	activityContainer: {
 		width: '80%',
@@ -25,11 +26,19 @@ const styles = {
 		outline: 'none',
 		border: 'none',
 		backgroundColor: '#FF6E00',
-		color: '#0B3954'
+		color: '#082B3F',
+		fontFamily: 'Montserrat, sans-serif'
 
 	},
 	title: {
 
+	},
+	imageContainer: {
+		width: '50%',
+		height: '400px',
+		padding: '20px',
+		overflow: 'hidden',
+		backgroundColor: 'grey'
 	},
 	image: {
 		maxWidth: '50%',
@@ -110,7 +119,9 @@ class Activity extends Component {
 						<button style={styles.newButton} type="button" onClick={this.newAct}>New Activity</button>
 					</div>
 					<div style={styles.lowerSection}>
-						<img style={styles.image} src={this.state.act.image_url} />
+						<div style={styles.imageContainer}>
+							<img style={styles.image} src={this.state.act.image_url} />
+						</div>
 
 						<div style={styles.lowerInfo}>
 
