@@ -55,7 +55,7 @@ class InfoSection extends Component {
                 </section>
 
                 <section style={styles.pictureSection}>
-                    <img style={styles.aboutPic} src="" />
+                    <img style={styles.aboutPic} alt='' src="" />
                 </section>
             </div>
         )
