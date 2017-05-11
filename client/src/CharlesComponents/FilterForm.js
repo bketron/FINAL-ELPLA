@@ -103,7 +103,6 @@ class FilterForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
           <p>General</p>
           <select onChange={this.handleChange} name='dType' value={this.state.dType}>
             <option style={style.placeHolder}>Select Date Type</option>
@@ -147,8 +146,7 @@ class FilterForm extends React.Component {
           <span>to</span>
           <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.aprto} name='aprto' />
           <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.state.aLocation} name='aLocation' /><br />
-          <button onSubmit={this.handleSubmit} type='submit'>Filter</button>
-        </form>
+          <button onClick={this.handleSubmit} type='submit'>Filter</button>
       </div>
     )
   }

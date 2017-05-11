@@ -1,12 +1,6 @@
 import {combineReducers, createStore} from 'redux'
-import filterReducer from './reducers/filters'
-import yelpReducer from './reducers/yelpreducer'
+import reducer from './reducers/reducer'
 
-const rootReducer = combineReducers({
-	filterReducer,
-	yelpReducer
-})
-
-const store = createStore(rootReducer)
+const store = createStore(reducer)
 
 export default store
