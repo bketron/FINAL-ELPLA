@@ -99,16 +99,6 @@ class Activity extends Component {
 						<img style={styles.image} src={this.state.act.image_url} />
 
 						<div style={styles.lowerInfo}>
-<iframe
-							  width="600"
-							  height="450"
-							  frameborder="0"
-							  src={`https://www.google.com/maps/embed/v1/directions
-									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
-									&origin=The+Iron+Yard,Las+Vegas,NV
-									&destination=${this.state.location.latitude},${this.state.location.longitude}
-  									&avoid=tolls`} allowfullscreen>
-							</iframe>
 
 							<ul style={styles.list}>
 								<li style={styles.listItem}>
@@ -123,6 +113,10 @@ class Activity extends Component {
 							</ul>
 						</div>
 					</div>
+				</div>
+
+				<div>
+					<button type="button" onClick={this.getDirections}>Get Directions</button>
 				</div>
 			</div>
 		)

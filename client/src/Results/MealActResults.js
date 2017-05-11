@@ -136,6 +136,10 @@ class Results extends Component {
 						</div>
 					</div>
 				</div>
+
+				<div>
+					<button type="button" onClick={this.getDirections}>Get Directions</button>
+				</div>
 			</div>
 		)
 	}
