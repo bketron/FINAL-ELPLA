@@ -120,7 +120,7 @@ const styles = {
 	}
 }
 
-class Activity extends Component {
+class Meal extends Component {
 	constructor(props) {
 		super()
 		this.state = {
@@ -259,4 +259,4 @@ const mapStateToProps = function(appState) {
 	}
 }
 
-export default connect(mapStateToProps)(Activity)
+export default connect(mapStateToProps)(Meal)
