@@ -8,10 +8,17 @@ import {connect} from 'react-redux'
 // const activeFilters = require('./')
 // import {addFilters} from '../api/filter'
 
+const styles = {
+  chips: {
+    display: 'flex',
+    flexDirection: 'column'
+  }
+}
+
 class FilterChips extends React.Component {
   render() {
     return (
-      <div className="chips">
+      <div className="chips" style={styles.chips}>
         {this.props.aLocation ? <Chip propName="aLocation" name="Activity Location" value={this.props.aLocation} /> : ''}
         {this.props.aType ? <Chip propName="aType" name="Activity Type" value={this.props.aType} /> : ''}
         {this.props.aprfrom ? <Chip propName="aprfrom" name="Activity Price From" value={this.props.aprfrom} /> : ''}
@@ -21,9 +28,9 @@ class FilterChips extends React.Component {
         {this.props.fType ? <Chip propName="fType" name="Food Type" value={this.props.fType} /> : ''}
         {this.props.fprfrom ? <Chip propName="fprfrom" name="Food Price From" value={this.props.fprfrom} /> : ''}
         {this.props.fprto ? <Chip propName="fprto" name="Food Price To" value={this.props.fprto} /> : ''}
-        {this.props.gLocation ? <Chip propName="gLocation" name="General Location" value={this.props.gLocation} /> : ''}
-        {this.props.gprfrom ? <Chip propName="gprfrom" name="General Price From" value={this.props.gprfrom} /> : ''}
-        {this.props.gprto ? <Chip propName="gprto" name="General Price To" value={this.props.gprto} /> : ''}
+        {this.props.gLocation ? <Chip propName="gLocation" name="Search Radius " value={this.props.gLocation} /> : ''}
+        {this.props.gprfrom ? <Chip propName="gprfrom" name="Min. Price $" value={this.props.gprfrom} /> : ''}
+        {this.props.gprto ? <Chip propName="gprto" name="Max.Price $" value={this.props.gprto} /> : ''}
         {this.props.partySize ? <Chip propName="partySize" name="Party Size" value={this.props.partySize} /> : ''}
       </div>
     )

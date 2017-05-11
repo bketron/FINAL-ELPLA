@@ -2,9 +2,53 @@ import React from 'react'
 import {addFilters} from '../api/filter'
 import {connect} from 'react-redux'
 
-const style = {
+const styles = {
   placeHolder:{
     display: 'none'
+  },
+  container: {
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  innerForm: {
+    padding: '10px'
+  },
+  header: {
+    textAlign: 'center'
+  },
+  subHeader: {
+    textAlign: 'center'
+  },
+  locationInput: {
+    height: '30px',
+    lineHeight: '30px',
+    width: '100%'
+  },
+  priceRanges: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  priceInput: {
+    width: '47%',
+    margin: '15px 0px',
+    height: '30px',
+    fontSize: '13px',
+    paddingLeft: '10px'
+  },
+  filterButton: {
+    position: 'absolute',
+    bottom: '0px',
+    width: '100%',
+    borderRadius: '0px',
+    border: 'none',
+    outline: 'none',
+    height: '60px',
+    lineHeight: '60px',
+    fontSize: '25px',
+    backgroundColor: '#0B3954',
+    color: '#FF6E00'
   }
 }
 
@@ -102,24 +146,35 @@ class FilterForm extends React.Component {
 
   render() {
     return (
+
       <div>
           <p>General</p>
+      <div style={styles.container}>
+          <div style={styles.innerForm}>
+          <p style={styles.header}>General Filters</p>
+      
           <select onChange={this.handleChange} name='dType' value={this.state.dType}>
-            <option style={style.placeHolder}>Select Date Type</option>
+            <option style={styles.placeHolder}>Select Date Type</option>
             <option value='Casual'>Casual</option>
             <option value='Professional'>Professional</option>
             <option value='Romantic'>Romantic</option>
           </select>
+
           <input onChange={this.handleChange} type='number' placeholder='Party Size' value={this.state.partySize} name='partySize' /><br />
-          <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.gprfrom} name='gprfrom' />
-          <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.gprto} name='gprto' />
-          <input onChange={this.handleChange} type='text' placeholder='Location' value={this.state.gLocation} name='gLocation' />
+
+          <p style={styles.subHeader}>Price Range</p>
+
+          <div style={styles.priceRanges}>
+            <input style={styles.priceInput} onChange={this.handleChange} type='number' placeholder='From' value={this.state.gprfrom} name='gprfrom' />
+            <input style={styles.priceInput} onChange={this.handleChange} type='number' placeholder='To' value={this.state.gprto} name='gprto' />
+          </div>
+
+          <p style={styles.subHeader}>Location</p>
+          <input style={styles.locationInput} onChange={this.handleChange} type='text' placeholder='Search Radius' value={this.state.gLocation} name='gLocation' />
           
-          <p>Food</p>
+          <p style={styles.header}>Food Filters</p>
           <select onChange={this.handleChange} value={this.state.fType} name='fType'>
-            <option style={style.placeHolder}>Select Food Type</option>
+            <option style={styles.placeHolder}>Select Food Type</option>
             <option value='Chinese'>Chinese</option>
             <option value='Korean'>Korean</option>
             <option value='Italian'>Italian</option>
@@ -127,26 +182,20 @@ class FilterForm extends React.Component {
             <option value='Mediterranean'>Mediterranean</option>
             <option value='German'>German</option>
           </select><br />
-          <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.fprfrom} name='fprfrom' />
-          <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.fprto} name='fprto' />
           <input onChange={this.handleChange} type='text' placeholder='Food Location' value={this.state.fLocation} name='fLocation' />
           
-          <p>Activity</p>
+          <p style={styles.header}>Activity Filters</p>
           <select onChange={this.handleChange} name='aType' value={this.state.aType}>
-            <option style={style.placeHolder}>Select Activity Type</option>
+            <option style={styles.placeHolder}>Select Activity Type</option>
             <option value='Outdoor Physical'>Outdoor Physical</option>
             <option value='Indoor Physical'>Indoor Physical</option>
             <option value='Show'>Show</option>
             <option value='Bar'>Bar</option>
           </select><br />
-          <label>Price Range</label>
-          <input onChange={this.handleChange} type='number' placeholder='From' value={this.state.aprfrom} name='aprfrom' />
-          <span>to</span>
-          <input onChange={this.handleChange} type='number' placeholder='To' value={this.state.aprto} name='aprto' />
           <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.state.aLocation} name='aLocation' /><br />
-          <button onClick={this.handleSubmit} type='submit'>Filter</button>
+
+          <button style={styles.filterButton} onClick={this.handleSubmit} type='submit'>Filter</button>
+          </div>
       </div>
     )
   }
