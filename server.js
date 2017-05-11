@@ -34,7 +34,9 @@ app.post('/register', function(req, res){
     var query 'INSERT INTO (username, password) VALUES (?, ?)'
 
     connection.query(query, [req.body.username, req.body.], function(err, results){
-
+        res.json({
+            'message': 'User Added'
+        })
     })
 })
 
