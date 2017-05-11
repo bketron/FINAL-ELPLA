@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 const styles = {
     container: {
@@ -11,26 +11,21 @@ const styles = {
     }
 }
 
-class Directions extends Component {
+class SingleStop extends Component {
     constructor(props){
         super(props)
-        this.state={
-            latitude: '',
-            longitude: ''
+        this.state = {
+            stops: []
         }
     }
 
     componentWillReceiveProps(props){
         console.log(props)
-
-        this.setState({
-            latitude: props.location.latitude,
-            longitude: props.location.longitude
-        })
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.props.stops.latitude)
+        console.log(this.props.stops.longitude)
         return (
             <div style={styles.container}>
 
@@ -40,20 +35,20 @@ class Directions extends Component {
 							  src={`https://www.google.com/maps/embed/v1/directions
 									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
 									&origin=The+Iron+Yard,Las+Vegas,NV
-									&destination=${this.props.location.latitude},${this.props.location.longitude}
+									&destination=${this.props.stops.latitude},${this.props.stops.longitude}
   									&avoid=tolls`} allowFullScreen>
 							</iframe>
 
                
-            </div>               
+            </div>
         )
     }
 }
 
 const mapStateToProps = function(appState) {
     return {
-        location: appState.geoLocation
+        stops: appState.directions
     }
 }
 
-export default connect(mapStateToProps)(Directions)
+export default connect(mapStateToProps)(SingleStop)

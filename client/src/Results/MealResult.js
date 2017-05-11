@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { addLocations } from '../api/yelpapi'
 
 var resId = 1
 
@@ -86,6 +86,20 @@ class Meal extends Component {
 		console.log(this.state)
 	}
 
+	getDirections = (e) => {
+		e.preventDefault()
+
+		addLocations({
+			latitude: this.state.location.latitude,
+			longitude: this.state.location.longitude
+		})
+
+		console.log(this.state.location.latitude)
+		console.log(this.state.location.longitude)
+
+		this.props.history.push('/directions/single')
+	}
+
 	render() {
 		console.log(this.state)
 		console.log(this.state.location)
@@ -100,17 +114,6 @@ class Meal extends Component {
 						<img style={styles.image} src={this.state.res.image_url} />
 
 						<div style={styles.lowerInfo}>
-<iframe
-							  width="600"
-							  height="450"
-							  frameborder="0"
-							  src={`https://www.google.com/maps/embed/v1/directions
-									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
-									&origin=The+Iron+Yard,Las+Vegas,NV
-									&destination=${this.state.location.latitude},${this.state.location.longitude}
-  									&avoid=tolls`} allowfullscreen>
-							</iframe>
-
 							<ul style={styles.list}>
 								<li style={styles.listItem}>
 									<p style={styles.phone}>{this.state.res.display_phone}</p>
@@ -124,6 +127,10 @@ class Meal extends Component {
 							</ul>
 						</div>
 					</div>
+				</div>
+
+				<div>
+					<button type="button" onClick={this.getDirections}>Get Directions</button>
 				</div>
 			</div>
 		)
