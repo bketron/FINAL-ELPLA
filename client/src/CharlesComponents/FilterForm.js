@@ -201,7 +201,11 @@ class FilterForm extends React.Component {
 
 
 function mapStateToProps(appState) {
-  return {...appState.filters}
+  return {
+    ...appState.filters,
+    username: appState.username
+  }
+
 }
 
 export default connect(mapStateToProps)(FilterForm)

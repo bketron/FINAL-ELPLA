@@ -5,8 +5,9 @@ import {connect} from 'react-redux'
 import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
 import Directions from './DirectionsPage/Directions'
-import Login from './CharlesComponents/Login'
-import Register from './CharlesComponents/Register'
+import Username from './CharlesComponents/Username'
+// import Login from './CharlesComponents/Login'
+// import Register from './CharlesComponents/Register'
 
 class App extends Component {
   render() {
@@ -16,8 +17,7 @@ class App extends Component {
           <Route exact={true} path="/" component={Home} />
           <Route path="/Results" component={Results} />
           <Route exact={true} path="/directions" component={Directions} />
-          <Login />
-          <Register />
+          <Username />
         </div>
       </BrowserRouter>
       )
@@ -26,7 +26,7 @@ class App extends Component {
 
 const mapStateToProps = function(appState) {
   return {
-
+    username: appState.username
   }
 }
 

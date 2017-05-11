@@ -23,3 +23,13 @@ export function addUser(username, password){
 		})
 	})
 }
+
+export function saveName(name) {
+	const appState = store.getState()
+	var username = appState.username
+
+	store.dispatch({
+		type: 'SAVE_USERNAME',
+		username: name
+	})
+}

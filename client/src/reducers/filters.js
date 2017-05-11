@@ -18,6 +18,8 @@ export default function filterReducer(state=initialState, action) {
         return {...state, username: action.username, password: action.password}
       case 'ADD_USER':
         return {...state, username: action.username, password: action.password}
+      case 'SAVE_USERNAME':
+          return {...state, username: action.username}
       default:
           return state
     }
