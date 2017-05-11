@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import {addFilters} from '../api/filter.js'
 import FilterPanel from '../CharlesComponents/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
-import {getRestaurants} from '../api/yelpapi'
+import {getRestaurants, getActivities} from '../api/yelpapi'
 
 const styles = {
     container: {
@@ -104,11 +104,10 @@ const styles = {
 }
 
 class DateForm extends Component {
-    constructor(props) {
-        super(props)
-
+    constructor() {
+        super()
         this.state = {
-            dateType: null,
+            dateType: 'entertainment',
             partySize: '',
             maxPrice: ''
         }
@@ -122,10 +121,36 @@ class DateForm extends Component {
 
     handleDropChange = (event, index, value) => {this.setState({value});}
 
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault()
+        var priceRange = ''
         // addFilters(this.state)
-        getRestaurants()
+        if(this.state.maxPrice !== ''){
+            if(this.state.maxPrice <= 10){
+                priceRange = '1'
+            }
+            if(this.state.maxPrice > 10 && this.state.maxPrice <= 30){
+                priceRange = '1,2'
+            }
+            if(this.state.maxPrice > 30 && this.state.maxPrice <=  60){
+                priceRange = '1,2,3'
+            }
+            if(this.state.maxPrice > 60){
+                priceRange = '1,2,3,4'
+            }
+        }
+
+        getRestaurants({
+            price: priceRange
+        })
+
+        getActivities({
+            price: priceRange
+        })
+
+        if(this.state.dateType === 'meal'){this.props.history.push('/results/meal')}
+        if(this.state.dateType === 'entertainment'){this.props.history.push('/results/activity')}
+        if(this.state.dateType === 'both'){this.props.history.push('/results/meal+act')}
     }
 
     render() {
@@ -134,15 +159,14 @@ class DateForm extends Component {
                 <p style={styles.title}>Date Generator</p>
                 <form style={styles.form} onSubmit={this.handleSubmit}>
                     <select style={styles.dateSelect} name="dateType" onChange={this.handleChange}>
-                        <option name="dateType" value="any" selected>Any</option>
+                        <option name="dateType" value="both" selected >Meal and Activity</option>
                         <option name="dateType" value="meal">Meal Only</option>
-                        <option name="dateType" value="entertainment">Entertainment Only</option>
-                        <option name="dateType" value="both">Meal and Entertainment</option>
+                        <option name="dateType" value="entertainment">Activity Only</option>
                     </select>
 
                     <div style={styles.lowerForm}>
                         <input style={styles.partyInput} onChange={this.handleChange} name="partySize" type="number" min="0" max="12" placeholder="Party Size" value={this.state.partySize} />
-                        <input style={styles.maxPrice} onChange={this.handleChange} type="text" name="maxPrice" value={this.state.maxPrice} placeholder="Max. Price" />
+                        <input style={styles.maxPrice} onChange={this.handleChange} type="number" name="maxPrice" min="0" value={this.state.maxPrice} placeholder="Max. Price" />
                     </div>
 
                     <FilterPanel />

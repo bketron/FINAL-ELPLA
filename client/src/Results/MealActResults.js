@@ -24,10 +24,12 @@ class Results extends Component {
 	componentWillReceiveProps(props) {
 		this.setState({
 			restaurants: props.restaurants,
-			res: props.restaurants[resId],
+			res: props.restaurants[(Math.random() * props.restaurants.length).toFixed(0)],
 			activities: props.activities,
-			act: props.activities[actId]
+			act: props.activities[(Math.random() * props.activities.length).toFixed(0)]
 		})
+
+		console.log((Math.random() * props.restaurants.length).toFixed(0))
 	}
 
 	newAct = (e) => {
@@ -35,7 +37,7 @@ class Results extends Component {
 		actId += 1
 
 		this.setState({
-			act: this.state.activities[actId]
+			act: this.state.activities[(Math.random() * this.state.activities.length).toFixed(0)]
 		})
 
 		console.log(this.state)
@@ -46,7 +48,7 @@ class Results extends Component {
 		resId += 1
 
 		this.setState({
-			res: this.state.restaurants[resId]
+			res: this.state.restaurants[(Math.random() * this.state.restaurants.length).toFixed(0)]
 		})
 
 		console.log(this.state)
@@ -65,6 +67,9 @@ class Results extends Component {
 							<p>{this.state.res.display_phone}</p>
 						</li>
 						<li>
+							<p>{this.state.res.price}</p>
+						</li>
+						<li>
 							<p>{this.state.res.url}</p>
 						</li>
 					</ul>
@@ -77,6 +82,9 @@ class Results extends Component {
 					<ul>
 						<li>
 							<p>{this.state.act.display_phone}</p>
+						</li>
+						<li>
+							<p>{this.state.act.price}</p>
 						</li>
 						<li>
 							<p>{this.state.act.url}</p>

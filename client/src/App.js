@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import './App.css'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, hashHistory as history} from 'react-router-dom'
 import Home from './HomePage/Home'
-import Results from './Results/Results'
+import MealActResults from './Results/MealActResults'
+import MealResult from './Results/MealResult'
+import ActivityResult from './Results/ActivityResult'
 import Directions from './DirectionsPage/Directions'
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter history={history}>
         <div>
           <Route exact={true} path="/" component={Home} />
-          <Route path="/results" component={Results} />
-          <Route exact={true} path="/directions" component={Directions} />
+          <Route exact={true} path="/results/meal+act" component={MealActResults} />
+          <Route exact={true} path="/results/meal" component={MealResult} />
+          <Route exact={true} path="/results/activity" component={ActivityResult} />
+          <Route path="/directions" component={Directions} />
         </div>
       </BrowserRouter>
       )

@@ -193,17 +193,15 @@ class FilterForm extends React.Component {
             <option value='Bar'>Bar</option>
           </select><br />
           <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.state.aLocation} name='aLocation' /><br />
+          </div>
 
           <button style={styles.filterButton} onClick={this.handleSubmit} type='submit'>Filter</button>
-          </div>
+      </div>
       </div>
     )
   }
 }
 
 
-function mapStateToProps(appState) {
-  return {...appState.filters}
-}
 
-export default connect(mapStateToProps)(FilterForm)
+export default FilterForm
