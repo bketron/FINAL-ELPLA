@@ -2,8 +2,8 @@ import axios from 'axios'
 import store from '../store'
 import io from 'socket.io-client'
 
-// const socket = io.connect('http://localhost:3001')
-const socket = io.connect('http://10.68.0.141:3001')
+const socket = io.connect('http://localhost:3001')
+// const socket = io.connect('http://10.68.0.141:3001')
 
 
 export function getRestaurants(searchObj) {

@@ -107,7 +107,7 @@ class DateForm extends Component {
     constructor() {
         super()
         this.state = {
-            dateType: 'entertainment',
+            dateType: 'both',
             partySize: '',
             maxPrice: ''
         }
