@@ -4,22 +4,39 @@ const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const request = require('request')
-const RapidAPI = require('rapidapi-connect');
-const rapid = new RapidAPI("Datenightrandomizer", "ecf01253-e862-4634-9484-41435ba1f574");
+const RapidAPI = require('rapidapi-connect')
+const rapid = new RapidAPI("Datenightrandomizer", "ecf01253-e862-4634-9484-41435ba1f574")
+const mysql      = require('mysql');
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'elPlaAdmin',
+  password : 'Fin@lPr0ject',
+  database : 'elPla'
+})
+
+connection.connect()
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-// app.get("*", function(req, res){
-//     res.sendfile(__dirname + '/client/public/index.html')
-// })
-// app.get("/api", function(req, res){
-//     res.json({
-//         "foo":"bar"
-//     })
-// })
 
 
+app.post('/login', function(req, res){
+    var query = 'SELECT * FROM users WHERE username=? AND password=?'
+
+    connection.query(query, [req.body.username, req.body.password, function(err, results)]{      
+        res.json(results)
+    })
+})
+
+app.post('/register', function(req, res){
+    var query 'INSERT INTO (username, password) VALUES (?, ?)'
+
+    connection.query(query, [req.body.username, req.body.], function(err, results){
+
+    })
+})
 
 function getPriceType(price) {
 	if (price <= 10) {
@@ -133,6 +150,8 @@ app.get('/yelpbusiness', function(req, res){
 //       /*YOUR CODE GOES HERE*/ 
 //  });
 // })
+
+
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){
         io.emit('newMessage', message)
