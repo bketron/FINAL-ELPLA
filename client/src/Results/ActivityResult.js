@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { addLocations } from '../api/yelpapi'
 
 var actId = 1
 
@@ -83,6 +83,20 @@ class Activity extends Component {
 		})
 
 		console.log(this.state)
+	}
+
+	getDirections = (e) => {
+		e.preventDefault()
+		
+		addLocations({
+			latitude: this.state.location.latitude,
+			longitude: this.state.location.longitude
+		})
+
+		console.log(this.state.location.latitude)
+		console.log(this.state.location.longitude)
+
+		this.props.history.push('/directions/single')
 	}
 
 	render() {

@@ -58,9 +58,9 @@ export function getActivities(searchObj) {
 	}
 }
 
-export function addLocation(geo) {
+export function addLocations(stops) {
 	store.dispatch({
-		type: 'ADD_LOCATION',
-		location: geo
+		type: 'ADD_LOCATIONS',
+		stops
 	})
 }

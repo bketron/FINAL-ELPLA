@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addLocation } from '../api/yelpapi'
+import { addLocations } from '../api/yelpapi'
 
 const styles = {
 	resImage: {
@@ -69,15 +69,17 @@ class Results extends Component {
 	getDirections = (e) => {
 		e.preventDefault()
 		
-		addLocation({
-			latitude: this.state.resLocation.latitude,
-			longitude: this.state.resLocation.longitude
+		addLocations({
+			lat1: this.state.resLocation.latitude,
+			long1: this.state.resLocation.longitude,
+			lat2: this.state.actLocation.latitude,
+			long2: this.state.actLocation.longitude
 		})
 
 		console.log(this.state.resLocation.latitude)
 		console.log(this.state.resLocation.longitude)
 
-		this.props.history.push('/directions')
+		this.props.history.push('/directions/multi')
 	}
 
 	render() {
@@ -94,16 +96,6 @@ class Results extends Component {
 						<img style={styles.image} src={this.state.act.image_url} />
 
 						<div style={styles.lowerInfo}>
-							<iframe
-							  width="600"
-							  height="450"
-							  frameborder="0"
-							  src={`https://www.google.com/maps/embed/v1/directions
-									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
-									&origin=The+Iron+Yard,Las+Vegas,NV
-									&destination=${this.state.actLocation.latitude},${this.state.actLocation.longitude}
-  									&avoid=tolls`} allowfullscreen>
-							</iframe>
 							<ul style={styles.list}>
 								<li style={styles.listItem}>
 									<p style={styles.phone}>{this.state.act.display_phone}</p>
@@ -128,16 +120,6 @@ class Results extends Component {
 						<img style={styles.image} src={this.state.res.image_url} />
 
 						<div style={styles.lowerInfo}>
-							<iframe
-							  width="600"
-							  height="450"
-							  frameborder="0"
-							  src={`https://www.google.com/maps/embed/v1/directions
-									?key=AIzaSyDF64L_QOvF-0_cQ_goyyaMpBt_sVfcHMw
-									&origin=The+Iron+Yard,Las+Vegas,NV
-									&destination=${this.state.resLocation.latitude},${this.state.resLocation.longitude}
-  									&avoid=tolls`} allowfullscreen>
-							</iframe>
 
 							<ul style={styles.list}>
 								<li style={styles.listItem}>
