@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Username from '../CharlesComponents/Username'
 
 const styles = {
     container: {
@@ -62,7 +63,12 @@ class TopBar extends Component {
                         <li style={styles.listItem}>
                             <a style={styles.link} href="">About</a>
                         </li>
+                        <li style={styles.listItem}><div style={styles.divLine}></div></li>
+                        <li style={styles.listItem}>
+                            <Username />
+                        </li>
                     </ul>
+                    
                 </div>
             </div>
         )

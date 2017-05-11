@@ -18,6 +18,7 @@ class App extends Component {
           <Route path="/Results" component={Results} />
           <Route exact={true} path="/directions" component={Directions} />
           <Username />
+          
         </div>
       </BrowserRouter>
       )
