@@ -51,7 +51,7 @@ app.post('/login', function(req, res){
 
 
 app.post('/register', function(req, res){
-    var query 'INSERT INTO (username, password) VALUES (?, ?)'
+    var query 'INSERT INTO users (username, password) VALUES (?, ?)'
 
     connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){
         res.json({

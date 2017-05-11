@@ -8,18 +8,18 @@ api.setTokenPath('/login')
 export function login(username, password) {
 	api.login(username, password, function(){
 		store.dispatch({
-			type: 'LOGIN'
+			type: 'LOGIN',
 			username
 		})
 	})
 }
 
 export function addUser(username, password){
-	axios.post('/register').then(function(response){
+	axios.post('http://localhost:3000/register').then(function(response){
 		store.dispatch({
-			type: 'LOGIN'
+			type: 'REGISTER',
 			username,
-			password,
+			password
 		})
 	})
 }

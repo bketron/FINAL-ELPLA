@@ -6,6 +6,7 @@ import Home from './HomePage/Home'
 import Results from './resultsPage/Results'
 import Directions from './DirectionsPage/Directions'
 import Login from './CharlesComponents/Login'
+import Register from './CharlesComponents/Register'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path="/Results" component={Results} />
           <Route exact={true} path="/directions" component={Directions} />
           <Login />
+          <Register />
         </div>
       </BrowserRouter>
       )
