@@ -13,6 +13,7 @@
     "express": "^4.15.2",
     "fontawesome": "^4.7.2",
     "google-maps-react": "^1.0.19",
+    "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.0",
     "mysql": "^2.13.0",

@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-
+// ==============================Login Stuff====================================================
 app.post('/login', function(req, res){
     var query = 'SELECT * FROM users WHERE username=? AND password=?'
 
@@ -61,7 +61,7 @@ app.post('/register', function(req, res){
 })
 
 function isAuthenticated(req, res, next) {
-    const token = req.get('token')
+    const token = req.get('Authoization')
 
     if (!token) {
         res.status(401).json({
@@ -83,6 +83,8 @@ function isAuthenticated(req, res, next) {
         })
     }
 }
+
+// ======================================================================================================
 
 function getPriceType(price) {
 	if (price <= 10) {

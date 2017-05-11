@@ -1,5 +1,5 @@
 import React from 'react'
-import login from '../api/UserAPI'
+import addUser from '../api/UserAPI'
 
 class Login extends React.Component {
   constructor() {
