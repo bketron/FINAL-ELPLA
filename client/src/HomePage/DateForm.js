@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import {addFilters} from '../api/filter.js'
 import FilterPanel from '../CharlesComponents/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
-import {getRestaurant} from '../api/yelpapi'
+import {getRestaurants} from '../api/yelpapi'
 
 const styles = {
     container: {
@@ -125,7 +125,7 @@ class DateForm extends Component {
         e.preventDefault()
         addFilters(this.state)
         console.log(this.state)
-        generateDate(this.state)
+        getRestaurants()
     }
 
     render() {

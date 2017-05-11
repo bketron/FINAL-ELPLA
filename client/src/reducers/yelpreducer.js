@@ -1,11 +1,11 @@
 const initialState = {
-    data:{}
+    restaurants:[]
 }
 
 export default function yelpReducer(state=initialState, action) {
     switch (action.type) {
-    	case 'GET_RESTAURANT':
-      	return  {...state, data: action.data}
+        case 'GET_RESTAURANTS':
+            return {...state, restaurants: action.data}
       default:
           return state
     }
