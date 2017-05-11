@@ -68,7 +68,19 @@ function isAuthenticated(req, res, next) {
             message:'Not Authenticated'
         })
     } else {
-        next()
+        var tokenSQL = 'SELECT count(1) AS count FROM users WHERE token = ?'
+
+        connection.query(tokenSQL, [token], function(err, results){
+            const count = results[0].count
+
+            if (count === 1) {
+                next()
+            } else {
+                res.status(401).json({
+                    message:'Not Authenticated'
+                })
+            }
+        })
     }
 }
 
