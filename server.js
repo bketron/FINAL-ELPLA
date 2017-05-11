@@ -6,6 +6,8 @@ const io = require('socket.io')(server)
 const request = require('request')
 const RapidAPI = require('rapidapi-connect')
 const rapid = new RapidAPI("Datenightrandomizer", "ecf01253-e862-4634-9484-41435ba1f574")
+const uuid = require('uuid')
+const sha1 = require('sha1')
 const mysql      = require('mysql');
 const connection = mysql.createConnection({
   host     : 'localhost',
@@ -25,20 +27,50 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.post('/login', function(req, res){
     var query = 'SELECT * FROM users WHERE username=? AND password=?'
 
-    connection.query(query, [req.body.username, req.body.password, function(err, results)]{      
-        res.json(results)
+    connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){      
+        if (results.length > 0) {
+
+            const token = uuid()
+
+            var tokenSQL = "UPDATE users SET token = ? WHERE id = " + results[0].id
+
+            connection.query(tokenSQL, [token], function(err, updaters){
+                res.json({
+                    message: 'login sucessful',
+                    token: token
+                })
+            })
+        } else {
+            res.status(401).json({
+                'message':"Wrong username or password"
+            })
+        }
     })
 })
+
+
 
 app.post('/register', function(req, res){
     var query 'INSERT INTO (username, password) VALUES (?, ?)'
 
-    connection.query(query, [req.body.username, req.body.], function(err, results){
+    connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){
         res.json({
             'message': 'User Added'
         })
     })
 })
+
+function isAuthenticated(req, res, next) {
+    const token = req.get('token')
+
+    if (!token) {
+        res.status(401).json({
+            message:'Not Authenticated'
+        })
+    } else {
+        next()
+    }
+}
 
 function getPriceType(price) {
 	if (price <= 10) {
