@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addLocation } from '../api/yelpapi'
 
 const styles = {
 	resImage: {
@@ -16,9 +17,11 @@ class Results extends Component {
 		this.state = {
 			restaurants: [],
 			res: {},
+			resAddress: '',
 			resLocation: {},
 			activities: [],
 			act: {},
+			actAddress: '',
 			actLocation: {}
 		}
 	}
@@ -61,6 +64,20 @@ class Results extends Component {
 		})
 
 		console.log(this.state)
+	}
+
+	getDirections = (e) => {
+		e.preventDefault()
+		
+		addLocation({
+			latitude: this.state.resLocation.latitude,
+			longitude: this.state.resLocation.longitude
+		})
+
+		console.log(this.state.resLocation.latitude)
+		console.log(this.state.resLocation.longitude)
+
+		this.props.history.push('/directions')
 	}
 
 	render() {

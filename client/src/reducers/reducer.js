@@ -2,7 +2,8 @@ const initialState = {
     restaurants:[],
     singleRes: {},
     activities: [],
-    filters: {}
+    filters: {},
+    geoLocation: {}
 }
 
 export default function yelpReducer(state=initialState, action) {
@@ -15,6 +16,8 @@ export default function yelpReducer(state=initialState, action) {
     		return {...state, filters: action.filters}
     	case 'ADD_ACTIVITIES':
     		return {...state, activities: action.activities}
+        case 'ADD_LOCATION':
+            return {...state, geoLocation: action.location}
       default:
           return state
     }
