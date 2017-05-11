@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import {BrowserRouter, Route} from 'react-router-dom'
-import {connect} from 'react-redux'
 import Home from './HomePage/Home'
-import Results from './resultsPage/Results'
+import Results from './Results/Results'
 import Directions from './DirectionsPage/Directions'
 
 class App extends Component {
@@ -12,7 +11,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={Home} />
-          <Route path="/Results" component={Results} />
+          <Route path="/results" component={Results} />
           <Route exact={true} path="/directions" component={Directions} />
         </div>
       </BrowserRouter>
@@ -20,13 +19,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = function(appState) {
-  return {
-
-  }
-}
-
-export default connect (mapStateToProps)(App)
+export default App
 
 
 // <Route path="/MoreInfo" component={MoreInfo} />

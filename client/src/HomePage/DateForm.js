@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 // import SelectField from 'material-ui/SelectField'
 // import MenuItem from 'material-ui/MenuItem'
 import {addFilters} from '../api/filter.js'
 import FilterPanel from '../CharlesComponents/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
-import {getRestaurant} from '../api/yelpapi'
+import {getRestaurants} from '../api/yelpapi'
 
 const styles = {
     container: {
@@ -104,7 +105,7 @@ const styles = {
 
 class DateForm extends Component {
     constructor(props) {
-        super()
+        super(props)
 
         this.state = {
             dateType: null,
@@ -119,20 +120,19 @@ class DateForm extends Component {
         })
     }
 
-    handleDropChange = (event, index, value) => this.setState({value});
+    handleDropChange = (event, index, value) => {this.setState({value});}
 
-    handleSubmit = (e) => {
+    handleSubmit(e){
         e.preventDefault()
-        addFilters(this.state)
-        console.log(this.state)
-        generateDate(this.state)
+        // addFilters(this.state)
+        getRestaurants()
     }
 
     render() {
         return (
             <div style={styles.container}>
                 <p style={styles.title}>Date Generator</p>
-                <form style={styles.form}>
+                <form style={styles.form} onSubmit={this.handleSubmit}>
                     <select style={styles.dateSelect} name="dateType" onChange={this.handleChange}>
                         <option name="dateType" value="any" selected>Any</option>
                         <option name="dateType" value="meal">Meal Only</option>
@@ -146,8 +146,8 @@ class DateForm extends Component {
                     </div>
 
                     <FilterPanel />
-
-                    <button style={styles.generateButton} onClick={this.handleSubmit} type="submit">Generate</button>
+                    
+                    <button style={styles.generateButton} type="submit">Generate</button>
                 </form>
             </div>
         )

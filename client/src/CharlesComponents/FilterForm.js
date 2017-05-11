@@ -146,11 +146,13 @@ class FilterForm extends React.Component {
 
   render() {
     return (
+
+      <div>
+          <p>General</p>
       <div style={styles.container}>
-        <form onSubmit={this.handleSubmit} style={styles.form}>
           <div style={styles.innerForm}>
           <p style={styles.header}>General Filters</p>
-
+      
           <select onChange={this.handleChange} name='dType' value={this.state.dType}>
             <option style={styles.placeHolder}>Select Date Type</option>
             <option value='Casual'>Casual</option>
@@ -191,9 +193,9 @@ class FilterForm extends React.Component {
             <option value='Bar'>Bar</option>
           </select><br />
           <input onChange={this.handleChange} type='text' placeholder='Event Location' value={this.state.aLocation} name='aLocation' /><br />
+
+          <button style={styles.filterButton} onClick={this.handleSubmit} type='submit'>Filter</button>
           </div>
-          <button style={styles.filterButton} onSubmit={this.handleSubmit} type='submit'>Filter</button>
-        </form>
       </div>
     )
   }
