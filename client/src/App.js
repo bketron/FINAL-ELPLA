@@ -1,22 +1,18 @@
 import React, { Component } from 'react'
 import './App.css'
 import Home from './HomePage/Home'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      
-    }
-  }
-
   render() {
     return (
-      <div>
-        <Home />
-      </div>
-    )
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Home} />
+        </div>
+      </BrowserRouter>
+      )
   }
 }
 
