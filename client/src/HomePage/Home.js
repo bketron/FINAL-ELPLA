@@ -5,8 +5,6 @@ import InfoSection from './InfoSection'
 import IronYard from './IronYard'
 import Footer from './Footer'
 import Reviews from './Reviews'
-import {connect} from 'react-redux'
-
 
 const styles = {
     container: {

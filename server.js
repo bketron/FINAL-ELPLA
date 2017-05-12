@@ -9,15 +9,15 @@ const RapidAPI = require('rapidapi-connect')
 const rapid = new RapidAPI("Datenightrandomizer", "ecf01253-e862-4634-9484-41435ba1f574")
 const uuid = require('uuid')
 const sha1 = require('sha1')
-const mysql      = require('mysql');
-const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'elPlaAdmin',
-  password : 'Fin@lPr0ject',
-  database : 'elPla'
-})
+const mysql = require('mysql');
+// const connection = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'elPlaAdmin',
+//   password : 'Fin@lPr0ject',
+//   database : 'elPla'
+// })
 
-connection.connect()
+// connection.connect()
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies

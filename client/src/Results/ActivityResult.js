@@ -4,8 +4,6 @@ import { addLocations } from '../api/yelpapi'
 
 import TopBar from '../HomePage/TopBar'
 
-var resId = 1
-
 const styles = {
 	container: {
 		padding: '100px',
@@ -182,7 +180,7 @@ class Activity extends Component {
 						</div>
 						<div style={styles.lowerSection}>
 							<div style={styles.imageContainer}>
-								<img style={styles.image} src={this.state.act.image_url} />
+								<img style={styles.image} src={this.state.act.image_url} alt="cover"/>
 							</div>
 
 							<div style={styles.infoContainer}>
