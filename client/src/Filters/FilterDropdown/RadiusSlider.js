@@ -31,7 +31,7 @@ class RadiusSlider extends Component {
                     value={this.state.sliderVal}
                     onChange={this.handleSlider}
                     style={{
-                        width: '40%',
+                        width: '80%',
                         margin: '0px'
                     }}
                 />

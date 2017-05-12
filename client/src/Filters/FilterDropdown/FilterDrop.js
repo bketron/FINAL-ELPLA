@@ -3,6 +3,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Popover from 'material-ui/Popover'
 
 import RadiusSlider from './RadiusSlider'
+import FoodTypes from './FoodTypes'
+import ActivityTypes from './ActivityTypes'
+import Rating from './Rating'
 
 class FilterDrop extends Component {
     constructor(props){
@@ -61,7 +64,14 @@ class FilterDrop extends Component {
                     }}
                 >
                     <div>
-                        <RadiusSlider />
+                        <div style={{width:'50%'}}>
+                            <RadiusSlider />
+                        </div>
+                        <div style={{width:'50%'}}>
+                            <FoodTypes />
+                            <ActivityTypes />
+                        </div>
+                        <Rating />
                     </div>
                 </Popover>
             </div>
