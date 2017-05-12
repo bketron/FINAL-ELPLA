@@ -136,7 +136,9 @@ class Results extends Component {
 					</div>
 				</div>
 
-				<div>
+				<div style={{
+					margin: '30px 0px'
+				}}>
 					<button type="button" onClick={this.getDirections}>Get Directions</button>
 				</div>
 			</div>

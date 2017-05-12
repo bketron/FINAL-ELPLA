@@ -166,7 +166,7 @@ class DateForm extends Component {
 
                     <div style={styles.lowerForm}>
                         <input style={styles.partyInput} onChange={this.handleChange} name="partySize" type="number" min="0" max="12" placeholder="Party Size" value={this.state.partySize} />
-                        <input style={styles.maxPrice} onChange={this.handleChange} type="number" name="maxPrice" min="0" value={this.state.maxPrice} placeholder="Max. Price" />
+                        <input style={styles.maxPrice} onChange={this.handleChange} type="number" name="maxPrice" min="0" value={this.state.maxPrice} placeholder="Max. Price (per person)" />
                     </div>
 
                     <FilterPanel />

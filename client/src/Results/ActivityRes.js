@@ -124,29 +124,29 @@ class Meal extends Component {
 	constructor(props) {
 		super()
 		this.state = {
-			restaurants: [],
-			res: {},
+			activities: [],
+			act: {},
 			location: {}
 		}
 	}
 
 	componentWillReceiveProps(props) {
 		console.log(props)
-		var id = (Math.random() * props.restaurants.length).toFixed(0)
+		var id = (Math.random() * props.activities.length).toFixed(0)
 		this.setState({
-			restaurants: props.restaurants,
-			res: props.restaurants[id],
-			location: props.restaurants[id].coordinates
+			activities: props.activities,
+			act: props.activities[id],
+			location: props.activities[id].coordinates
 		})
 	}
 
-	newRes = (e) => {
+	newAct = (e) => {
 		e.preventDefault()
-		var newId = (Math.random() * this.state.restaurants.length).toFixed(0)
+		var newId = (Math.random() * this.state.activities.length).toFixed(0)
 
 		this.setState({
-			res: this.state.restaurants[newId],
-			location: this.state.restaurants[newId].coordinates
+			act: this.state.activities[newId],
+			location: this.state.activities[newId].coordinates
 		})
 
 		console.log(this.state)
@@ -175,17 +175,17 @@ class Meal extends Component {
 				<div style={styles.container}>
 					<div style={styles.resContainer}>
 						<div style={styles.topBar}>
-							<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
+							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>
 						</div>
 						<div style={styles.lowerSection}>
 							<div style={styles.imageContainer}>
-								<img style={styles.image} src={this.state.res.image_url} />
+								<img style={styles.image} src={this.state.act.image_url} />
 							</div>
 
 							<div style={styles.infoContainer}>
 								<ul style={styles.list}>
 									<li style={styles.listItem}>
-										<p style={styles.title}>{this.state.res.name}</p>
+										<p style={styles.title}>{this.state.act.name}</p>
 									</li>
 
 									<li style={styles.listItem}><div style={styles.titleLine}></div></li>
@@ -216,7 +216,7 @@ class Meal extends Component {
 													marginRight: '7px'
 												}} className="fa fa-circle" aria-hidden="true"></i>
 
-												<span>{this.state.res.review_count} </span>
+												<span>{this.state.act.review_count} </span>
 												 Reviews
 											</p>
 										</div>
@@ -224,19 +224,19 @@ class Meal extends Component {
 									<li style={styles.listItem}>
 										<div style={styles.infoProp}>
 											<p style={styles.infoLabel}>Phone Number: </p>
-											<p style={styles.phone}>{this.state.res.display_phone}</p>
+											<p style={styles.phone}>{this.state.act.display_phone}</p>
 										</div>
 									</li>
 									<li style={styles.listItem}>
 										<div style={styles.infoProp}>
 											<p style={styles.infoLabel}>Price Range (per person): </p>
-											<p style={styles.price}>{this.state.res.price}</p>
+											<p style={styles.price}>{this.state.act.price}</p>
 										</div>
 									</li>
 									<li style={styles.listItem}>
 										<div style={styles.infoProp}>
 											<p style={styles.infoLabel}>Website: </p>
-											<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
+											<a style={styles.website} href={this.state.act.url}>{this.state.act.name}</a>
 										</div>
 									</li>
 								</ul>
@@ -244,9 +244,7 @@ class Meal extends Component {
 						</div>
 					</div>
 
-					<div style={{
-						margin: '30px 0px'
-					}}>
+					<div>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
 				</div>
@@ -257,7 +255,7 @@ class Meal extends Component {
 
 const mapStateToProps = function(appState) {
 	return {
-		restaurants: appState.restaurants
+		activities: appState.activities
 	}
 }
 
