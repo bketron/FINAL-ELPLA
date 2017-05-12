@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import {addFilters} from '../api/filter.js'
 import FilterPanel from '../CharlesComponents/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
-import {getRestaurant} from '../api/yelpapi'
+// import {getRestaurant} from '../api/yelpapi'
 
 const styles = {
     container: {

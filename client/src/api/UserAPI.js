@@ -1,5 +1,5 @@
 import store from '../store'
-import axios from 'axios'
+// import axios from 'axios'
 import api from '../lib/api'
 
 api.new('http://localhost:3000')
@@ -14,22 +14,20 @@ export function login(username, password) {
 	})
 }
 
-export function addUser(username, password){
-	axios.post('http://localhost:3000/register').then(function(response){
-		store.dispatch({
-			type: 'REGISTER',
-			username,
-			password
-		})
-	})
-}
+// export function addUser(username, password){
+// 	axios.post('http://localhost:3000/register').then(function(response){
+// 		store.dispatch({
+// 			type: 'REGISTER',
+// 			username,
+// 			password
+// 		})
+// 	})
+// }
 
-export function saveName(name) {
-	const appState = store.getState()
-	var username = appState.username
-
+export function saveName(username) {
+	console.log(username)
 	store.dispatch({
 		type: 'SAVE_USERNAME',
-		username: name
+		username: username
 	})
 }

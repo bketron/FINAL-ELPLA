@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import Username from '../CharlesComponents/Username'
+import {connect} from 'react-redux'
+
+
 
 const styles = {
     container: {
@@ -46,7 +49,11 @@ const styles = {
 }
 
 class TopBar extends Component {
+    
+    
+
     render(){
+        console.log(this.props, 'props')
         return (
             <div style={styles.container}>
                 <p style={styles.title}>elPla</p>
@@ -65,7 +72,7 @@ class TopBar extends Component {
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <Username />
+                           <Username/>
                         </li>
                     </ul>
                     
@@ -75,4 +82,12 @@ class TopBar extends Component {
     }
 }
 
-export default TopBar
+
+function mapStateToProps(appState) {
+    console.log(appState, 'appState')
+  return {
+    ...appState.filters,
+    username: appState.username
+  }
+}
+export default connect(mapStateToProps)(TopBar)

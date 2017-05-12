@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { saveName } from '../api/UserAPI'
 import {connect} from 'react-redux'
 import Dialog from 'material-ui/Dialog';
-import RaisedButton from 'material-ui/RaisedButton'
+
 
 class Username extends Component {
   constructor() {
@@ -11,14 +11,6 @@ class Username extends Component {
       username: '',
       open: false
     }
-  }
-
-
-  handleSubmit = (e) => {
-
-    e.preventDefault()
-    saveName(this.state.username)
-
   }
 
   handleChange = (e) => {
@@ -42,20 +34,20 @@ class Username extends Component {
   }
 
   render() {
-
+    console.log(this.state.username, 'state_username')
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+        <a onTouchTap={this.handleOpen}>Sign in</a>
         <Dialog
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <form onSubmit={this.handleSubmit, this.handleClose}>
+          <form onSubmit={this.handleSubmit && this.handleClose}>
             <p>Sign in</p>
-            <input onChange={this.handleChange} placeholder='Username' type='text' name='username' value={this.state.username}/><br />
-            <input onChange={this.handleChange} placeholder='Password' type='password' name='password' value={this.state.password}/>
-            <button type='submit'>Submit</button>
+            <input onChange={this.handleChange} placeholder='Username' type='text' name='username' defaultValue={this.state.username}/><br />
+            <input onChange={this.handleChange} placeholder='Password' type='password' name='password' defaultValue={this.state.password}/>
+            <button>Submit</button>
             <button onClick={this.handleClose}>Cancel</button>
           </form>
         </Dialog>

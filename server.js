@@ -160,45 +160,6 @@ app.get('/yelpbusiness', function(req, res){
 	})
 })
 
-    // rapid.call('YelpAPI', 'getBusinesses', {
-    // 'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
-    // 'term': req.query.term,
-    // 'location': req.query.location,
-    // 'latitude': '',
-    // 'longitude': '',
-    // 'radius': '8046',
-    // 'categories': '',
-    // 'locale': '',
-    // 'limit': '',
-    // 'offset': '',
-    // 'sortBy': '',
-    // 'price': req.query.price,
-    // 'openNow': 'true',
-    // 'openAt': '',
-    // 'attributes': ''
-    // }).on('success', (payload)=>{
-    //      res.json(payload)
-    // }).on('error', (payload)=>{
-    //      res.json({
-    //          error:true
-    //      })
-    // })
-// }),
-// - example code, do not use -
-// app.get('/restaurant/:id', function(req, res){
-//  var id = req.query.id
-//  rapid.call('YelpAPI', 'getSingleBusiness', { 
-//      'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
-//      'bussinessId': id
-     
-//  }).on('success', (payload)=>{
-//       /*YOUR CODE GOES HERE*/ 
-//       res.json(payload)
-//  }).on('error', (payload)=>{
-//       /*YOUR CODE GOES HERE*/ 
-//  });
-// })
-
 
 io.on('connection', function(socket){
     socket.on('addMessage', function(message){

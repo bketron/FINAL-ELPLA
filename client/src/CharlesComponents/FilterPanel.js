@@ -5,11 +5,11 @@ import Drawer from 'material-ui/Drawer'
 import FilterForm from './FilterForm'
 import FilterChips from './FilterChips'
 
-const styles = {
-  drawer: {
-    width: '650px'
-  }
-}
+// const styles = {
+//   drawer: {
+//     width: '650px'
+//   }
+// }
 
 class FilterPanel extends React.Component {
   constructor(props) {
