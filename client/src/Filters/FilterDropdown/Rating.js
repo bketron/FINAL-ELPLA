@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import FlatButton from 'material-ui/FlatButton'
 
 var stars = {
     star1solid: 'none',
@@ -17,17 +16,6 @@ var stars = {
     star4solid: 'none',
     star4half: 'none',
     star4empty: 'block'
-}
-
-const styles = {
-    button: {
-        border: 'none',
-        outline: 'none'
-    },
-    icon: {
-        color: '#9E9E9E',
-        backgroundColor: '#BDBDBD'
-    }
 }
 
 class Rating extends Component {
