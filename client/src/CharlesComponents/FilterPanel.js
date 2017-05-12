@@ -37,4 +37,4 @@ class FilterPanel extends React.Component {
     )
   }
 }
-export default FilterPanel         
+export default FilterPanel  

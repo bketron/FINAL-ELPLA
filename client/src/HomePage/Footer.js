@@ -68,7 +68,7 @@ class Footer extends Component {
 
                 <div style={styles.textSection}>
                     <p style={styles.footerText}>
-                        elPla © 2016 | Crafted by Brennen, Charles & Sajid @ TheIronYard
+                        elPla © 2017 | Crafted by Brennen, Charles & Sajid @ TheIronYard
                     </p>
                 </div>
             </div>
