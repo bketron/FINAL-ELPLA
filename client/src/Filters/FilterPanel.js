@@ -28,6 +28,8 @@ class FilterPanel extends React.Component {
           label="More Filters"
           onTouchTap={this.handleToggle}
           className="drawerToggleButton"
+          backgroundColor='#0B3954'
+          labelColor='#FF6E00'
         />
  				<Drawer width={300} openSecondary={true} open={this.state.open}>
           <FilterChips />

@@ -37,7 +37,13 @@ handleChange = (e) => {
       }}>
         <DateType />
         <PriceRange />
-        <TextField onChange={this.handleChange} name="searchRadius" hintText="Search Radius" value={this.state.searchRadius}/>
+        <TextField 
+            onChange={this.handleChange}
+            name="searchRadius"
+            hintText="Search Radius"
+            hintStyle={{color: '#0B3954'}}
+            underlineFocusStyle={{borderColor: '#FF6E00'}}
+            value={this.state.searchRadius}/>
         <MealCategories />
         <ActivityCategories />
       </div>
