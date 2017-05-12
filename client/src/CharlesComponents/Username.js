@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { saveName } from '../api/UserAPI'
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 import Dialog from 'material-ui/Dialog';
 
 
@@ -34,7 +34,6 @@ class Username extends Component {
   }
 
   render() {
-    console.log(this.state.username, 'state_username')
     return (
       <div>
         <a onTouchTap={this.handleOpen}>Sign in</a>
@@ -46,7 +45,7 @@ class Username extends Component {
           <form onSubmit={this.handleSubmit}>
             <p>Sign in</p>
             <input onChange={this.handleChange} placeholder='Username' type='text' name='username' defaultValue={this.state.username}/><br />
-            <input onChange={this.handleChange} placeholder='Password' type='password' name='password' defaultValue={this.state.password}/>
+            <input onChange={this.handleChange} placeholder='Password' type='password' name='password' defaultValue={this.state.password}/><br />
             <button>Submit</button>
             <button onClick={this.handleClose}>Cancel</button>
           </form>
@@ -56,9 +55,10 @@ class Username extends Component {
   }
 }
 
-function mapStateToProps(appState){
-  console.log(appState)
-  return {username: appState.username}
-}
+export default Username
 
-export default connect(mapStateToProps)(Username)
+// function mapStateToProps(appState){
+//   return {username: appState.username}
+// }
+
+// export default connect(mapStateToProps)(Username)

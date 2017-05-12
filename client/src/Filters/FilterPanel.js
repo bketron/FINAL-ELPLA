@@ -2,14 +2,14 @@ import React from 'react'
 // import {filter} from '../api/filter'
 import RaisedButton from 'material-ui/RaisedButton'
 import Drawer from 'material-ui/Drawer'
-import FilterForm from './FilterForm'
+import FilterForm from './FilterForm/FilterForm'
 import FilterChips from './FilterChips'
 
-// const styles = {
-//   drawer: {
-//     width: '650px'
-//   }
-// }
+const styles = {
+  drawer: {
+    width: '650px'
+  }
+}
 
 class FilterPanel extends React.Component {
   constructor(props) {
@@ -28,6 +28,8 @@ class FilterPanel extends React.Component {
           label="More Filters"
           onTouchTap={this.handleToggle}
           className="drawerToggleButton"
+          backgroundColor='#0B3954'
+          labelColor='#FF6E00'
         />
  				<Drawer width={300} openSecondary={true} open={this.state.open}>
           <FilterChips />

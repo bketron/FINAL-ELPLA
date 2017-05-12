@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Username from '../CharlesComponents/Username'
 import {connect} from 'react-redux'
-
-
+import {Link} from 'react-router-dom'
+import FlatButton from 'material-ui/FlatButton'
+import SocialMenu from './SocialMenu'
 
 const styles = {
     container: {
@@ -18,7 +19,9 @@ const styles = {
         lineHeight: '80px',
         color: 'rgba(11,57,84,0.8)',
         margin: '0px 0px 0px 45px',
-        fontFamily: 'Pontano Sans, sans-serif'
+        fontFamily: 'Pontano Sans, sans-serif',
+        textDecoration: 'none',
+        cursor: 'pointer'
     },
     list: {
         padding: '0px',
@@ -35,12 +38,13 @@ const styles = {
     link: {
         textDecoration: 'none',
         color: 'rgba(125,125,125,0.6)',
-        margin: '0 15px',
+        margin: '0 40px',
         lineHeight: '30px',
         fontSize: '13px',
         position: 'relative',
         top: '-3px',
-        fontFamily: 'Pontano Sans, sans-serif'
+        fontFamily: 'Pontano Sans, sans-serif',
+        cursor: 'pointer'
     },
     divLine: {
         height: '23px',
@@ -50,29 +54,86 @@ const styles = {
 
 class TopBar extends Component {
     
-    
+   
 
     render(){
-        console.log(this.props, 'props')
         return (
             <div style={styles.container}>
-                <p style={styles.title}>elPla</p>
+                <Link style={styles.title} to="/">Date Gen</Link>
                 <div>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">Home</a>
+                            <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <a style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '-6px',
+                                        width: '100px',
+                                    }} href="/">Home</a>
+                                </div>
+                            </FlatButton>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">Social</a>
+                            <SocialMenu />
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">About</a>
+                            <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <a style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '-6px',
+                                        width: '100px',
+                                    }} href="/#about">About</a>
+                                </div>
+                            </FlatButton>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                           {this.props.username ? this.props.username : <Username />} 
+                           <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <div style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '0px',
+                                        width: '100px',
+                                        display: 'inlineBlock'
+                                    }}>
+
+                                    {this.props.username ? this.props.username : <Username />}
+                                    </div>
+                                </div>
+                            </FlatButton>
                         </li>
                     </ul>
                     
@@ -84,9 +145,7 @@ class TopBar extends Component {
 
 
 function mapStateToProps(appState) {
-    console.log(appState, 'appState')
   return {
-    ...appState.filters,
     username: appState.username
   }
 }

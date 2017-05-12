@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField'
 // import SelectField from 'material-ui/SelectField'
 // import MenuItem from 'material-ui/MenuItem'
 import {addFilters} from '../api/filter.js'
-import FilterPanel from '../CharlesComponents/FilterPanel.js'
+import FilterPanel from '../Filters/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
-// import {getRestaurant} from '../api/yelpapi'
+import {getRestaurants, getActivities} from '../api/yelpapi'
 
 const styles = {
     container: {
@@ -103,11 +107,10 @@ const styles = {
 }
 
 class DateForm extends Component {
-    constructor(props) {
+    constructor() {
         super()
-
         this.state = {
-            dateType: null,
+            dateType: '',
             partySize: '',
             maxPrice: ''
         }
@@ -119,35 +122,169 @@ class DateForm extends Component {
         })
     }
 
-    handleDropChange = (event, index, value) => this.setState({value});
+    handleDropChange = (event, index, value) => {
+        this.setState({
+            dateType: value
+        })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        addFilters(this.state)
-        console.log(this.state)
-        generateDate(this.state)
+        var priceRange = ''
+        // addFilters(this.state)
+        if(this.state.maxPrice !== ''){
+            if(this.state.maxPrice <= 10){
+                priceRange = '1'
+            }
+            if(this.state.maxPrice > 10 && this.state.maxPrice <= 30){
+                priceRange = '1,2'
+            }
+            if(this.state.maxPrice > 30 && this.state.maxPrice <=  60){
+                priceRange = '1,2,3'
+            }
+            if(this.state.maxPrice > 60){
+                priceRange = '1,2,3,4'
+            }
+        }
+
+        getRestaurants({
+            price: priceRange
+        })
+
+        getActivities({
+            price: priceRange
+        })
+
+        if(this.state.dateType === ''){this.props.history.push('/results/meal+act')}
+        if(this.state.dateType === 'meal'){this.props.history.push('/results/meal')}
+        if(this.state.dateType === 'entertainment'){this.props.history.push('/results/activity')}
+        if(this.state.dateType === 'both'){this.props.history.push('/results/meal+act')}
     }
 
     render() {
         return (
             <div style={styles.container}>
                 <p style={styles.title}>Date Generator</p>
-                <form style={styles.form}>
-                    <select style={styles.dateSelect} name="dateType" onChange={this.handleChange}>
-                        <option name="dateType" value="any" selected>Any</option>
-                        <option name="dateType" value="meal">Meal Only</option>
-                        <option name="dateType" value="entertainment">Entertainment Only</option>
-                        <option name="dateType" value="both">Meal and Entertainment</option>
-                    </select>
+                <form style={styles.form} onSubmit={this.handleSubmit}>
+                    <DropDownMenu
+                        value={this.state.dateType}
+                        onChange={this.handleDropChange}
+                        autoWidth={false}
+                        style={{
+                            width: '100%',
+                            backgroundColor: 'white',
+                            height: '40px',
+                            margin: '0px 0px 10px 0px'
+                        }}
+                        labelStyle={{
+                            lineHeight: '40px',
+                            padding: '0px 15px',
+                        }}
+                        selectedMenuItemStyle={{
+                            color: '#FF6E00',
+                        }}
+                        underlineStyle={{
+                            margin: '-1px 0px'
+                        }}
+                        menuItemStyle={{
+                            width: '100%'
+                        }}
+                        iconStyle = {{
+                            border: '10px',
+                            boxSizing: 'border-box',
+                            display: 'inline-block',
+                            fontFamily: 'Roboto, sans-serif',
+                            WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
+                            cursor: 'pointer',
+                            textDecoration: 'none',
+                            margin: '0px',
+                            padding: '12px',
+                            outline: 'none',
+                            fontSize: '0px',
+                            fontWeight: 'inherit',
+                            position: 'absolute',
+                            zIndex: '1',
+                            overflow: 'visible',
+                            transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
+                            width: '48px',
+                            height: '48px',
+                            fill: 'rgb(224, 224, 224)',
+                            right: '16px',
+                            top: '-2px',
+                            background: 'none'
+                        }}
+                    >
+                        <MenuItem
+                            value=''
+                            disabled={true}
+                            primaryText="Date Type"
+                        />
+                        <MenuItem value='meal' primaryText="Meal Only" />
+                        <MenuItem value='entertainment' primaryText="Activity Only" />
+                        <MenuItem value='both' primaryText="Meal and Activity" />
+                    </DropDownMenu>
 
                     <div style={styles.lowerForm}>
-                        <input style={styles.partyInput} onChange={this.handleChange} name="partySize" type="number" min="0" max="12" placeholder="Party Size" value={this.state.partySize} />
-                        <input style={styles.maxPrice} onChange={this.handleChange} type="text" name="maxPrice" value={this.state.maxPrice} placeholder="Max. Price" />
+                        <TextField
+                            hintText="Party Size"
+                            onChange={this.handleChange}
+                            name="partySize"
+                            underlineFocusStyle={{borderColor: '#FF6E00'}}
+                            value={this.state.partySize}
+                            type="number"
+                            style={{
+                                backgroundColor: 'white',
+                                height: '40px',
+                            }}
+                            hintStyle={{
+                                position: 'absolute',
+                                top: '8px',
+                                left: '15px',
+                                color: 'black'
+                            }}
+                            inputStyle = {{
+                                lineHeight: '40px',
+                                fontSize: '17px',
+                                padding: '0px 15px'
+                            }}
+                            underlineStyle={{
+                                position: 'relative',
+                                top: '0px'
+                            }}
+                        />
+                        
+                        <TextField
+                            hintText="Max. Price (per person)"
+                            onChange={this.handleChange}
+                            name="maxPrice"
+                            underlineFocusStyle={{borderColor: '#FF6E00'}}
+                            value={this.state.maxPrice}
+                            type="number"
+                            style={{
+                                backgroundColor: 'white',
+                                height: '40px',
+                            }}
+                            hintStyle={{
+                                position: 'absolute',
+                                top: '8px',
+                                left: '15px',
+                                color: 'black'
+                            }}
+                            inputStyle = {{
+                                lineHeight: '40px',
+                                fontSize: '17px',
+                                padding: '0px 15px'
+                            }}
+                            underlineStyle={{
+                                position: 'relative',
+                                top: '0px'
+                            }}
+                        />
                     </div>
 
                     <FilterPanel />
-
-                    <button style={styles.generateButton} onClick={this.handleSubmit} type="submit">Generate</button>
+                    
+                    <button style={styles.generateButton} type="submit">Generate</button>
                 </form>
             </div>
         )

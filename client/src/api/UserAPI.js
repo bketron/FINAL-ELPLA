@@ -25,7 +25,6 @@ import store from '../store'
 // }
 
 export function saveName(username) {
-	console.log(username)
 	store.dispatch({
 		type: 'SAVE_USERNAME',
 		username: username

@@ -1,69 +1,66 @@
-import store from '../store'
 import axios from 'axios'
+import store from '../store'
+import io from 'socket.io-client'
 
-export function getRestaurant(searchObj) {
-	const url = `/yelpdata?term=restaurant&location=${searchObj.location}&price=${searchObj.maxPrice}`
+const socket = io.connect('http://localhost:3001')
+// const socket = io.connect('http://10.68.0.141:3001')
 
 
-    axios.get(url).then(function(response){
-        console.log(response.data, searchObj, 'api')
-        store.dispatch({
-            type: 'GET_RESTAURANT',
-            info: response.data
-        })
-    })
+export function getRestaurants(searchObj) {
+	console.log(searchObj.price)
+	if(searchObj.price !== ''){
+		axios.get('http://localhost:3001/yelpstuff?term=restaurant&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
+			console.log(resp.data.businesses)
+			store.dispatch({
+				type: 'ADD_RESTAURANTS',
+				restaurants: resp.data.businesses
+			})
+		})
+	} else {
+		axios.get(`http://localhost:3001/yelpstuff?term=restaurant&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
+			console.log(resp.data.businessses)
+			store.dispatch({
+				type: 'ADD_RESTAURANTS',
+				restaurants: resp.data.businesses
+			})
+		})
+	}
 }
 
-export function getOneRestaurant(searchObj) {
-	const url = `/yelpbusiness?businessId=${searchObj.businessId}`
-
-
-    axios.get(url).then(function(response){
-        console.log(response.data, searchObj, 'api')
-        store.dispatch({
-            type: 'GET_ONE_RESTAURANT',
-            info: response.data
-        })
-    })
+export function getRestaurant(id) {
+	console.log(id)
+	axios.get(`http://localhost:3001/yelprest?bussinessId=${id.restId}`).then(function(response){
+		store.dispatch({
+			type: 'SINGLE_RESTAURANT',
+			restaurant: response.data
+		})
+	})
 }
 
-export function generateDate(searchObj) {
-	const mealUrl = `/yelpdata?term=restaurant&location=${searchObj.location}&price=${searchObj.maxPrice}`
-	const activityUrl = `/yelpdata?term=fun&location=${searchObj.location}&price=${searchObj.maxPrice}`
-
-
-		if (searchObj.dateType === 'meal') {
-			axios.get(mealUrl).then(function(response){
-        console.log(response.data, searchObj, 'meal')
-        store.dispatch({
-            type: 'GET_RESTAURANT',
-            info: response.data
-      	})
-  		})
-		} else if (searchObj.dateType === 'entertainment') {
-			axios.get(activityUrl).then(function(response){
-        console.log(response.data, searchObj, 'activity')
-        store.dispatch({
-            type: 'GET_ACTIVITY',
-            info: response.data
-	      })
-	    })
-		} else {
-				axios.get(mealUrl).then(function(response){
-	        console.log(response.data, searchObj, 'meal')
-	        store.dispatch({
-	            type: 'GET_RESTAURANT',
-	            info: response.data
-	      	})
-	  		})
-				axios.get(activityUrl).then(function(response){
-	        console.log(response.data, searchObj, 'activity')
-	        store.dispatch({
-	            type: 'GET_ACTIVITY',
-	            info: response.data
-		      })
-		    })
-		}
-
+export function getActivities(searchObj) {
+	console.log(searchObj.price)
+	if(searchObj.price !== ''){
+		axios.get('http://localhost:3001/yelpstuff?term=fun&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
+			console.log(resp.data.businesses)
+			store.dispatch({
+				type: 'ADD_ACTIVITIES',
+				activities: resp.data.businesses
+			})
+		})
+	} else {
+		axios.get(`/yelpstuff?term=fun&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
+			console.log(resp.data.businessses)
+			store.dispatch({
+				type: 'ADD_ACTIVITIES',
+				activities: resp.data.businesses
+			})
+		})
+	}
 }
 
+export function addLocations(stops) {
+	store.dispatch({
+		type: 'ADD_LOCATIONS',
+		stops
+	})
+}

@@ -20,4 +20,3 @@ export function removeFilter(filter) {
 		filters: filters
 	})
 }
-
