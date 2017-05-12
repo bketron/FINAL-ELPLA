@@ -6,7 +6,8 @@ const styles = {
         height: '600px',
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: '#DDDDDD'
+        backgroundColor: '#DDDDDD',
+        overflow: 'hidden'
     },
     reviewContainer: {
         margin: 'auto'
