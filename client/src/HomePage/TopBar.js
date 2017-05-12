@@ -36,7 +36,7 @@ const styles = {
     link: {
         textDecoration: 'none',
         color: 'rgba(125,125,125,0.6)',
-        margin: '0 15px',
+        margin: '0 40px',
         lineHeight: '30px',
         fontSize: '13px',
         position: 'relative',
