@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DropDownMenu from 'material-ui/DropDownMenu';
+import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 const styles = {
@@ -22,16 +22,17 @@ class DateType extends Component {
     render() {
         return (
             <div>
-                <DropDownMenu
+                <SelectField
+                    floatingLabelText="Date Type"
+                    floatingLabelStyle={{color: '#0B3954'}}
+                    selectedMenuItemStyle={{color: '#FF6E00'}}
                     value={this.state.dateType}
                     onChange={this.handleChange}
-                    style={styles.dropdown}
-                    autoWidth={false}
-                >
-                    <MenuItem value="both" primaryText="Meal and Activity" />
-                    <MenuItem value="meal" primaryText="Meal Only" />
-                    <MenuItem value="activity" primaryText="Activity Only" />
-                </DropDownMenu>
+                 >
+                    <MenuItem value='both' primaryText="Meal and Activity" />
+                    <MenuItem value='meal' primaryText="Meal Only" />
+                    <MenuItem value='activity' primaryText="Activity Only" />
+                 </SelectField>
             </div>
         )
     }
