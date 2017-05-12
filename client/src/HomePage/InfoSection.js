@@ -37,11 +37,7 @@ const styles = {
         fontSize: '14px',
         color: 'rgba(125,125,125,0.8)'
     },
-    aboutPic: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'black'
-    }
+   
 }
 
 class InfoSection extends Component {
@@ -55,7 +51,7 @@ class InfoSection extends Component {
                 </section>
 
                 <section style={styles.pictureSection}>
-                    <img style={styles.aboutPic} src="" />
+                    
                 </section>
             </div>
         )
