@@ -41,6 +41,10 @@ const styles = {
         width: '100%',
         height: '100%',
         backgroundColor: 'black'
+    },
+    target: {
+        position: 'relative',
+        top: '-200px'
     }
 }
 
@@ -48,6 +52,7 @@ class InfoSection extends Component {
     render() {
         return (
             <div style={styles.container}>
+                <a style={styles.target} name="about"></a>
                 <section style={styles.aboutSection}>
                     <p style={styles.header}>About Us</p>
                     <div style={styles.divLine}></div>
@@ -55,7 +60,7 @@ class InfoSection extends Component {
                 </section>
 
                 <section style={styles.pictureSection}>
-                    <img style={styles.aboutPic} src="" />
+                    <img style={styles.aboutPic} alt='' src="" />
                 </section>
             </div>
         )

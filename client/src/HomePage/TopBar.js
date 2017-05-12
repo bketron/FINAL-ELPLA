@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 const styles = {
     container: {
@@ -14,7 +15,9 @@ const styles = {
         lineHeight: '80px',
         color: 'rgba(11,57,84,0.8)',
         margin: '0px 0px 0px 45px',
-        fontFamily: 'Pontano Sans, sans-serif'
+        fontFamily: 'Pontano Sans, sans-serif',
+        textDecoration: 'none',
+        cursor: 'pointer'
     },
     list: {
         padding: '0px',
@@ -36,7 +39,8 @@ const styles = {
         fontSize: '13px',
         position: 'relative',
         top: '-3px',
-        fontFamily: 'Pontano Sans, sans-serif'
+        fontFamily: 'Pontano Sans, sans-serif',
+        cursor: 'pointer'
     },
     divLine: {
         height: '23px',
@@ -48,19 +52,19 @@ class TopBar extends Component {
     render(){
         return (
             <div style={styles.container}>
-                <p style={styles.title}>elPla</p>
+                <Link style={styles.title} to="/">Date Gen</Link>
                 <div>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">Home</a>
+                            <Link style={styles.link} to="/">Home</Link>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">Social</a>
+                            <Link style={styles.link} to="/social">Social</Link>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="">About</a>
+                            <a style={styles.link} href="#about">About</a>
                         </li>
                     </ul>
                 </div>

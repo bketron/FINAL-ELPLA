@@ -5,6 +5,12 @@ import Drawer from 'material-ui/Drawer'
 import FilterForm from './FilterForm'
 import FilterChips from './FilterChips'
 
+const styles = {
+  drawer: {
+    width: '650px'
+  }
+}
+
 class FilterPanel extends React.Component {
   constructor(props) {
     super(props)
@@ -19,10 +25,11 @@ class FilterPanel extends React.Component {
     return (
       <div>
       	<RaisedButton
-          label="Toggle Drawer"
+          label="More Filters"
           onTouchTap={this.handleToggle}
+          className="drawerToggleButton"
         />
- 				<Drawer width={200} openSecondary={true} open={this.state.open} >
+ 				<Drawer width={300} openSecondary={true} open={this.state.open}>
           <FilterChips />
           <FilterForm />
  				</Drawer>
@@ -30,4 +37,4 @@ class FilterPanel extends React.Component {
     )
   }
 }
-export default FilterPanel         
+export default FilterPanel  

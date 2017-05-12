@@ -17,7 +17,7 @@ class Home extends Component {
         return (
             <div style={styles.container}>
                     <TopBar />
-                    <DateForm />
+                    <DateForm history={this.props.history}/>
                     <InfoSection />
                     <IronYard />
                     <Footer />
