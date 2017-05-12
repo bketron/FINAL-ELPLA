@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
+import SocialMenu from './SocialMenu'
+
 const styles = {
     container: {
         width: '100%',
@@ -60,7 +62,7 @@ class TopBar extends Component {
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <Link style={styles.link} to="/social">Social</Link>
+                            <SocialMenu />
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
