@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 
 import Map, {GoogleApiWrapper} from '../../src/index.js'
 
+
+
 const Container = React.createClass({
   getInitialState: function() {
     return {

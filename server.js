@@ -24,65 +24,65 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 // ==============================Login Stuff====================================================
-app.post('/login', function(req, res){
-    var query = 'SELECT * FROM users WHERE username=? AND password=?'
+// app.post('/login', function(req, res){
+//     var query = 'SELECT * FROM users WHERE username=? AND password=?'
 
-    connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){      
-        if (results.length > 0) {
+//     connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){      
+//         if (results.length > 0) {
 
-            const token = uuid()
+//             const token = uuid()
 
-            var tokenSQL = "UPDATE users SET token = ? WHERE id = " + results[0].id
+//             var tokenSQL = "UPDATE users SET token = ? WHERE id = " + results[0].id
 
-            connection.query(tokenSQL, [token], function(err, updaters){
-                res.json({
-                    message: 'login sucessful',
-                    token: token
-                })
-            })
-        } else {
-            res.status(401).json({
-                'message':"Wrong username or password"
-            })
-        }
-    })
-})
+//             connection.query(tokenSQL, [token], function(err, updaters){
+//                 res.json({
+//                     message: 'login sucessful',
+//                     token: token
+//                 })
+//             })
+//         } else {
+//             res.status(401).json({
+//                 'message':"Wrong username or password"
+//             })
+//         }
+//     })
+// })
 
 
 
-app.post('/register', function(req, res){
-    var query 'INSERT INTO users (username, password) VALUES (?, ?)'
+// app.post('/register', function(req, res){
+//     var query 'INSERT INTO users (username, password) VALUES (?, ?)'
 
-    connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){
-        res.json({
-            'message': 'User Added'
-        })
-    })
-})
+//     connection.query(query, [req.body.username, sha1(req.body.password)], function(err, results){
+//         res.json({
+//             'message': 'User Added'
+//         })
+//     })
+// })
 
-function isAuthenticated(req, res, next) {
-    const token = req.get('Authoization')
+// function isAuthenticated(req, res, next) {
+//     const token = req.get('Authoization')
 
-    if (!token) {
-        res.status(401).json({
-            message:'Not Authenticated'
-        })
-    } else {
-        var tokenSQL = 'SELECT count(1) AS count FROM users WHERE token = ?'
+//     if (!token) {
+//         res.status(401).json({
+//             message:'Not Authenticated'
+//         })
+//     } else {
+//         var tokenSQL = 'SELECT count(1) AS count FROM users WHERE token = ?'
 
-        connection.query(tokenSQL, [token], function(err, results){
-            const count = results[0].count
+//         connection.query(tokenSQL, [token], function(err, results){
+//             const count = results[0].count
 
-            if (count === 1) {
-                next()
-            } else {
-                res.status(401).json({
-                    message:'Not Authenticated'
-                })
-            }
-        })
-    }
-}
+//             if (count === 1) {
+//                 next()
+//             } else {
+//                 res.status(401).json({
+//                     message:'Not Authenticated'
+//                 })
+//             }
+//         })
+//     }
+// }
 
 // ======================================================================================================
 
