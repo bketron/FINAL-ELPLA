@@ -7,7 +7,6 @@ import Footer from './Footer'
 import Reviews from './Reviews'
 import {connect} from 'react-redux'
 
-
 const styles = {
     container: {
         height: '100%',
@@ -23,6 +22,7 @@ class Home extends Component {
                     <DateForm history={this.props.history}/>
                     <InfoSection />
                     <Reviews />
+                    <ReviewForm />
                     <IronYard />
                     <Footer />
             </div>
