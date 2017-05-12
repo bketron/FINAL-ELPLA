@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // import SelectField from 'material-ui/SelectField'
 // import MenuItem from 'material-ui/MenuItem'
 import {addFilters} from '../api/filter.js'
-import FilterPanel from '../CharlesComponents/FilterPanel.js'
+import FilterPanel from '../Filters/FilterPanel.js'
 import {generateDate} from '../api/yelpapi'
 import {getRestaurants, getActivities} from '../api/yelpapi'
 
