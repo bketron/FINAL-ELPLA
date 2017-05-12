@@ -5,11 +5,17 @@ import Dialog from 'material-ui/Dialog'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
+var userError = ''
+var passError = ''
+
 class Username extends Component {
   constructor() {
     super()
     this.state = {
       username: '',
+      password: '',
+      userError: '',
+      passError: '',
       open: false
     }
   }
@@ -18,13 +24,33 @@ class Username extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+
+    console.log('Username:', this.state.username)
+    console.log('Password:', this.state.password)
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    saveName(this.state.username)
-    this.setState({open: false})
+
+    if(this.state.username === '' || this.state.password === ''){
+        if(this.state.username === ''){
+          this.setState({
+            userError: 'This field is required!'
+          })
+        } else {this.setState({userError: ''})}
+
+        if(this.state.password === ''){
+          this.setState({
+            passError: 'This field is required!'
+          })
+        } else {this.setState({passError: ''})}
+
+    } else {
+          saveName(this.state.username)
+          this.setState({open: false})
+    }
   }
+  
 
   handleOpen = () => {
     this.setState({open: true})
@@ -43,7 +69,12 @@ class Username extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
           bodyStyle={{
-            padding: '0px'
+            padding: '0px',
+            height: '265px',
+            overflowY: 'auto'
+          }}
+          style={{
+            overflowY: 'auto'
           }}
         >
           <form onSubmit={this.handleSubmit} style={{padding: '0px 20px'}}>
@@ -60,6 +91,7 @@ class Username extends Component {
             }}>
               <TextField
                   hintText="Username"
+                  errorText={this.state.userError}
                   name="username"
                   value={this.state.username}
                   underlineFocusStyle={{borderColor: '#FF6E00'}}
@@ -72,10 +104,12 @@ class Username extends Component {
                   }}
                   inputStyle={{padding: '0px 10px'}}
                   hintStyle={{padding: '0px 10px'}}
+
               /><br />
 
               <TextField
                   hintText="Password"
+                  errorText={this.state.passError}
                   name="password"
                   type="password"
                   value={this.state.password}
@@ -107,6 +141,9 @@ class Username extends Component {
                   display: 'block'
                 }}
                 type="submit"
+                buttonStyle={{
+                  marginBottom: '20px'
+                }}
             />
           </form>
         </Dialog>
@@ -121,4 +158,4 @@ export default Username
 //   return {username: appState.username}
 // }
 
-// export default connect(mapStateToProps)(Username)
+// export default connect(mapStateToProps)(Username)  
