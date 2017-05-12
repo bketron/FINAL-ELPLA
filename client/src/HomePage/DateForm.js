@@ -194,7 +194,7 @@ class DateForm extends Component {
                             boxSizing: 'border-box',
                             display: 'inline-block',
                             fontFamily: 'Roboto, sans-serif',
-                            '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
+                            WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
                             cursor: 'pointer',
                             textDecoration: 'none',
                             margin: '0px',
