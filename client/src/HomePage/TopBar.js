@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import FlatButton from 'material-ui/FlatButton'
 
 import SocialMenu from './SocialMenu'
 
@@ -58,7 +59,25 @@ class TopBar extends Component {
                 <div>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
-                            <Link style={styles.link} to="/">Home</Link>
+                            <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <a style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '-6px',
+                                        width: '100px',
+                                    }} href="/">Home</a>
+                                </div>
+                            </FlatButton>
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
@@ -66,7 +85,25 @@ class TopBar extends Component {
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                            <a style={styles.link} href="#about">About</a>
+                            <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <a style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '-6px',
+                                        width: '100px',
+                                    }} href="/#about">About</a>
+                                </div>
+                            </FlatButton>
                         </li>
                     </ul>
                 </div>
