@@ -8,7 +8,7 @@ class RadiusSlider extends Component {
 
     handleSlider = (event, value) => {
         this.setState({sliderVal: value});
-        console.log(this.state)
+        console.log(this.state.sliderVal, 'state')
     }
 
     render() {

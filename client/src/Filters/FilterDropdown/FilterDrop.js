@@ -12,7 +12,8 @@ class FilterDrop extends Component {
         super(props)
 
         this.state = {
-            open: false
+            open: false,
+            searchRadius: 12.5
         }
     }
 
