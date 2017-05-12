@@ -244,7 +244,9 @@ class Meal extends Component {
 						</div>
 					</div>
 
-					<div>
+					<div style={{
+						margin: '30px 0px'
+					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
 				</div>

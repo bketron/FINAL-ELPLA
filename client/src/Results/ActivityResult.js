@@ -108,6 +108,9 @@ const styles = {
 	catTitle: {
 		color: 'white'
 	},
+	bottomSection: {
+		marginTop: '40px'
+	},
 	directionsButton: {
 		border: 'none',
 		outline: 'none',
@@ -116,7 +119,7 @@ const styles = {
 		color: '#0B3954',
 		padding: '0px 20px',
 		fontSize: '18px',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
 	}
 }
 
@@ -244,7 +247,9 @@ class Activity extends Component {
 						</div>
 					</div>
 
-					<div>
+					<div style={{
+						margin: '30px 0px'
+					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
 				</div>
