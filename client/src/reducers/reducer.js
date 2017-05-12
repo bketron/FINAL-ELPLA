@@ -3,7 +3,8 @@ const initialState = {
     singleRes: {},
     activities: [],
     filters: {},
-    directions: {}
+    directions: {},
+    username:''
 }
 
 export default function yelpReducer(state=initialState, action) {
@@ -18,6 +19,8 @@ export default function yelpReducer(state=initialState, action) {
     		return {...state, activities: action.activities}
         case 'ADD_LOCATIONS':
             return {...state, directions: action.stops}
+        case 'SAVE_USERNAME':
+            return {...state, username: action.username}
       default:
           return state
     }

@@ -2,13 +2,6 @@ import React, { Component } from 'react'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-const styles = {
-    dropdown: {
-        width: '300px',
-        margin: 'auto'
-    }
-}
-
 class DateType extends Component {
     state = {
         dateType: 'both'

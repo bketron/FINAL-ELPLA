@@ -41,6 +41,9 @@ class FilterDrop extends Component {
                     labelColor="#FF6E00"
                     fullWidth={true}
                     backgroundColor="#0B3954"
+                    buttonStyle={{
+                        height: '40px'
+                    }}
                     style={{
                         marginTop: '10px',
                         borderRadius: '0px',

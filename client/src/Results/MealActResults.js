@@ -8,9 +8,6 @@ const styles = {
 	}
 }
 
-var resId = 1
-var actId = 1
-
 class Results extends Component {
 	constructor(props) {
 		super()
@@ -93,7 +90,7 @@ class Results extends Component {
 						<button style={styles.newButton} type="button" onClick={this.newAct}>New Activity</button>
 					</div>
 					<div style={styles.lowerSection}>
-						<img style={styles.image} src={this.state.act.image_url} />
+						<img style={styles.image} src={this.state.act.image_url} alt="activity cover"/>
 
 						<div style={styles.lowerInfo}>
 							<ul style={styles.list}>
@@ -117,7 +114,7 @@ class Results extends Component {
 						<button style={styles.newButton} type="button" onClick={this.newRes}>New Activity</button>
 					</div>
 					<div style={styles.lowerSection}>
-						<img style={styles.image} src={this.state.res.image_url} />
+						<img style={styles.image} src={this.state.res.image_url} alt="restaurant cover"/>
 
 						<div style={styles.lowerInfo}>
 

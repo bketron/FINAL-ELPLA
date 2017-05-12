@@ -48,6 +48,7 @@ const styles = {
 class Reviews extends Component {
     render(){
         return (
+        <div>
             <div style={styles.container}>
                 <div style={styles.slideCont}>
                     <Slider
@@ -100,6 +101,7 @@ class Reviews extends Component {
                     </Slider>
                 </div>
             </div>
+        </div>
         )
     }
 }
