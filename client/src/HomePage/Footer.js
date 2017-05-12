@@ -55,13 +55,19 @@ class Footer extends Component {
                 <div style={styles.linkSection}>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
-                            <i style={styles.socialIcon} className="fa fa-twitter" aria-hidden="true"></i>
+                            <a href="https://www.twitter.com/elPlaApp/">
+                                <i style={styles.socialIcon} className="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
                         </li>
                         <li style={styles.listItem}>
-                            <i style={styles.socialIcon} className="fa fa-facebook" aria-hidden="true"></i>
+                            <a href="https://www.facebook.com/">
+                                <i style={styles.socialIcon} className="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
                         </li>
                         <li style={styles.listItem}>
-                            <i style={styles.socialIcon} className="fa fa-instagram" aria-hidden="true"></i>
+                            <a href="https://www.instagram.com/">
+                                <i style={styles.socialIcon} className="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

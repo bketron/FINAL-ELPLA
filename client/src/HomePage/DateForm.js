@@ -239,7 +239,8 @@ class DateForm extends Component {
                             hintStyle={{
                                 position: 'absolute',
                                 top: '8px',
-                                left: '15px'
+                                left: '15px',
+                                color: 'black'
                             }}
                             inputStyle = {{
                                 lineHeight: '40px',
@@ -266,7 +267,8 @@ class DateForm extends Component {
                             hintStyle={{
                                 position: 'absolute',
                                 top: '8px',
-                                left: '15px'
+                                left: '15px',
+                                color: 'black'
                             }}
                             inputStyle = {{
                                 lineHeight: '40px',
