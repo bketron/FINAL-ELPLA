@@ -72,7 +72,7 @@ class TopBar extends Component {
                         </li>
                         <li style={styles.listItem}><div style={styles.divLine}></div></li>
                         <li style={styles.listItem}>
-                           <Username/>
+                           {this.props.username ? this.props.username : <Username />} 
                         </li>
                     </ul>
                     
