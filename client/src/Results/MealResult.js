@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
+import { Link } from 'react-router-dom'
 
 import TopBar from '../HomePage/TopBar'
 
@@ -248,6 +249,10 @@ class Meal extends Component {
 						margin: '30px 0px'
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
+						<Link to={'/Favorite/'}>
+            				<button><i className="fa fa-star-o" aria-hidden="true"></i></button>
+            			</Link>
+
 					</div>
 				</div>
 			</section>
