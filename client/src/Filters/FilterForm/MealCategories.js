@@ -48,6 +48,8 @@ class MealCats extends Component {
                 hintText="Food Categories"
                 value={foodCats}
                 onChange={this.handleChange}
+                floatingLabelText="Food Categories"
+                floatingLabelStyle={{color: '#FF6E00'}}
             >
                 {this.menuItems(foodCats)}
             </SelectField>
