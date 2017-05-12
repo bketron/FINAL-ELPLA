@@ -4,6 +4,7 @@ import DateForm from './DateForm'
 import InfoSection from './InfoSection'
 import IronYard from './IronYard'
 import Footer from './Footer'
+import Reviews from './Reviews'
 
 const styles = {
     container: {
@@ -19,6 +20,7 @@ class Home extends Component {
                     <TopBar />
                     <DateForm history={this.props.history}/>
                     <InfoSection />
+                    <Reviews />
                     <IronYard />
                     <Footer />
             </div>
