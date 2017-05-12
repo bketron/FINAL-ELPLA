@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField'
 // import MenuItem from 'material-ui/MenuItem'
 import {addFilters} from '../api/filter.js'
 import FilterPanel from '../Filters/FilterPanel.js'
+import FilterDrop from '../Filters/FilterDropdown/FilterDrop.js'
 import {generateDate} from '../api/yelpapi'
 import {getRestaurants, getActivities} from '../api/yelpapi'
 
@@ -282,7 +283,8 @@ class DateForm extends Component {
                         />
                     </div>
 
-                    <FilterPanel />
+                    <FilterDrop />
+                    {/*<FilterPanel />*/}
                     
                     <button style={styles.generateButton} type="submit">Generate</button>
                 </form>
