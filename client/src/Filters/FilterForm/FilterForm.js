@@ -41,7 +41,8 @@ handleChange = (e) => {
             onChange={this.handleChange}
             name="searchRadius"
             hintText="Search Radius"
-            hintStyle={{color: '#FF6E00'}}
+            hintStyle={{color: '#0B3954'}}
+            underlineFocusStyle={{borderColor: '#FF6E00'}}
             value={this.state.searchRadius}/>
         <MealCategories />
         <ActivityCategories />

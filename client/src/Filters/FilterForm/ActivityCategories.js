@@ -49,7 +49,8 @@ class ActCats extends Component {
                 value={foodCats}
                 onChange={this.handleChange}
                 floatingLabelText="Activity Categories"
-                floatingLabelStyle={{color: '#FF6E00'}}
+                floatingLabelStyle={{color: '#0B3954'}}
+                selectedMenuItemStyle={{color: '#FF6E00'}}
             >
                 {this.menuItems(foodCats)}
             </SelectField>

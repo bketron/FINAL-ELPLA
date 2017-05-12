@@ -24,7 +24,8 @@ class DateType extends Component {
             <div>
                 <SelectField
                     floatingLabelText="Date Type"
-                    floatingLabelStyle={{color: '#FF6E00'}}
+                    floatingLabelStyle={{color: '#0B3954'}}
+                    selectedMenuItemStyle={{color: '#FF6E00'}}
                     value={this.state.dateType}
                     onChange={this.handleChange}
                  >
