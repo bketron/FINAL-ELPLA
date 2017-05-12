@@ -35,8 +35,6 @@ class Results extends Component {
 			act: props.activities[actId],
 			actLocation: props.activities[actId].coordinates
 		})
-
-		console.log((Math.random() * props.restaurants.length).toFixed(0))
 	}
 
 	newAct = (e) => {
@@ -47,8 +45,6 @@ class Results extends Component {
 			act: this.state.activities[newId],
 			actLocation: this.state.activities[newId].coordinates
 		})
-
-		console.log(this.state)
 	}
 
 	newRes = (e) => {
@@ -60,7 +56,6 @@ class Results extends Component {
 			resLocation: this.state.restaurants[newId].coordinates
 		})
 
-		console.log(this.state)
 	}
 
 	getDirections = (e) => {
@@ -73,15 +68,10 @@ class Results extends Component {
 			long2: this.state.actLocation.longitude
 		})
 
-		console.log(this.state.resLocation.latitude)
-		console.log(this.state.resLocation.longitude)
-
 		this.props.history.push('/directions/multi')
 	}
 
 	render() {
-		console.log(this.state.act)
-		console.log(this.state.res)
 		return (
 			<div style={styles.container}>
 				<div style={styles.activityContainer}>

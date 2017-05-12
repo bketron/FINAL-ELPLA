@@ -92,15 +92,15 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(cors())
 
 
-app.get("*", function(req, res){
-    res.sendfile(__dirname + '/client/public/index.html')
+app.get("/", function(req, res){
+    res.sendFile(__dirname + '/client/public/index.html')
 })
 
 
 app.get('/yelpstuff', function(req, res){
 	//console.log(res, 'server')
 	rapid.call('YelpAPI', 'getBusinesses', { 
-	'accessToken': 'SL6alfUTxepXGG38qBlJoVlmTKkhG4H2g07wQ8myZTngUdlIoOdqkaJ1eu2CzbN5KvaqDpgjO9tQfmwJqSQNqJcHCvktf_qryrHb9g5Q9pPWP16BsNc_-L2vPQIIWXYx',
+	'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
 	'term': req.query.term,
 	'location': req.query.location,
 	'latitude': '',
@@ -133,7 +133,7 @@ io.on('connection', function(socket){
 app.get('/yelprest', function(req, res){
 	//console.log(res, 'server')
 	rapid.call('YelpAPI', 'getSingleBusiness', { 
-		'accessToken': 'SL6alfUTxepXGG38qBlJoVlmTKkhG4H2g07wQ8myZTngUdlIoOdqkaJ1eu2CzbN5KvaqDpgjO9tQfmwJqSQNqJcHCvktf_qryrHb9g5Q9pPWP16BsNc_-L2vPQIIWXYx',
+		'accessToken': 'skhuidCAIIIwvtD_D1REk4esgDo3N3L-9pqZ_w0FGVGomSSCV-c0YjusLZOFLVld207Z_GL0OzwdahWx84k_Vt7zpIRkm3avfbXc4E09EpbohbX4MDv5bBRiHcYEWXYx',
 		'bussinessId': req.query.bussinessId
 	 
 		}).on('success', (payload)=>{

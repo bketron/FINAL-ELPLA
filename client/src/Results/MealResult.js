@@ -129,7 +129,6 @@ class Meal extends Component {
 	}
 
 	componentWillReceiveProps(props) {
-		console.log(props)
 		var id = (Math.random() * props.restaurants.length).toFixed(0)
 		this.setState({
 			restaurants: props.restaurants,
@@ -147,7 +146,6 @@ class Meal extends Component {
 			location: this.state.restaurants[newId].coordinates
 		})
 
-		console.log(this.state)
 	}
 
 	getDirections = (e) => {
@@ -158,15 +156,10 @@ class Meal extends Component {
 			longitude: this.state.location.longitude
 		})
 
-		console.log(this.state.location.latitude)
-		console.log(this.state.location.longitude)
-
 		this.props.history.push('/directions/single')
 	}
 
 	render() {
-		console.log(this.state)
-		console.log(this.state.location)
 		return (
 			<section>
 				<TopBar />
