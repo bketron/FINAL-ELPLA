@@ -9,7 +9,7 @@ const socket = io.connect('http://localhost:3001')
 export function getRestaurants(searchObj) {
 	console.log(searchObj.price)
 	if(searchObj.price !== ''){
-		axios.get('http://localhost:3001/yelpstuff?term=tasty&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
+		axios.get('http://localhost:3001/yelpstuff?term=tasty&location=89105&price=' + searchObj.price).then(function(resp){
 			console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
@@ -17,7 +17,7 @@ export function getRestaurants(searchObj) {
 			})
 		})
 	} else {
-		axios.get(`http://localhost:3001/yelpstuff?term=tasty&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
+		axios.get(`http://localhost:3001/yelpstuff?term=tasty&location=89105&price=1,2,3,4`).then(function(resp){	
 			console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
@@ -40,7 +40,7 @@ export function getRestaurant(id) {
 export function getActivities(searchObj) {
 	console.log(searchObj.price)
 	if(searchObj.price !== ''){
-		axios.get('http://localhost:3001/yelpstuff?term=fun&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
+		axios.get('http://localhost:3001/yelpstuff?term=fun&location=89105&price=' + searchObj.price).then(function(resp){
 			console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',
@@ -48,7 +48,7 @@ export function getActivities(searchObj) {
 			})
 		})
 	} else {
-		axios.get(`/yelpstuff?term=fun&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
+		axios.get(`/yelpstuff?term=fun&location=89105&price=1,2,3,4`).then(function(resp){	
 			console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',

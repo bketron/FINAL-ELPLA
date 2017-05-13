@@ -14,6 +14,7 @@ const styles = {
 }
 
 class Home extends Component {
+
     render() {
         return (
             <div style={styles.container}>

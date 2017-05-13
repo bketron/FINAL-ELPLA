@@ -34,6 +34,7 @@ class RadiusSlider extends Component {
                         width: '80%',
                         margin: '0px'
                     }}
+                    selectionColor= 'orange'
                 />
             </div>
         )
