@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import Popover from 'material-ui/Popover'
+import IconButton from 'material-ui/IconButton'
 
 import RadiusSlider from './RadiusSlider'
 import FoodTypes from './FoodTypes'
@@ -12,7 +13,9 @@ class FilterDrop extends Component {
         super(props)
 
         this.state = {
-            open: false
+            open: false,
+            searchRadius: 12.5,
+            delivery: false
         }
     }
 
@@ -69,6 +72,11 @@ class FilterDrop extends Component {
                     <div>
                         <div style={{width:'50%'}}>
                             <RadiusSlider />
+                            
+                            <IconButton tooltip="delivery" touch={true} tooltipPosition="bottom-center">
+                                <i className="material-icons">local_shipping</i>
+                            </IconButton>
+
                         </div>
                         <div style={{width:'50%'}}>
                             <FoodTypes />

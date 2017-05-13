@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
 
 import TopBar from '../HomePage/TopBar'
+import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
 	container: {
@@ -127,7 +128,8 @@ class Activity extends Component {
 		this.state = {
 			activities: [],
 			act: {},
-			location: {}
+			location: {},
+			status: 'loading'
 		}
 	}
 
@@ -137,7 +139,8 @@ class Activity extends Component {
 		this.setState({
 			activities: props.activities,
 			act: props.activities[id],
-			location: props.activities[id].coordinates
+			location: props.activities[id].coordinates,
+			status: 'hide'
 		})
 	}
 
@@ -147,7 +150,7 @@ class Activity extends Component {
 
 		this.setState({
 			act: this.state.activities[newId],
-			location: this.state.activities[newId].coordinates
+			location: this.state.activities[newId].coordinates,
 		})
 
 		console.log(this.state)
@@ -174,6 +177,18 @@ class Activity extends Component {
 			<section>
 				<TopBar />
 				<div style={styles.container}>
+					<RefreshIndicator
+						size={50}
+						left={70}
+						top={0}
+						loadingColor="#FF9800"
+						status={this.state.status}
+						style={{
+							display: 'block'
+						}}
+    				/>
+
+
 					<div style={styles.resContainer}>
 						<div style={styles.topBar}>
 							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>

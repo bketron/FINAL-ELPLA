@@ -92,8 +92,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(cors())
 
 
-app.get("*", function(req, res){
-    res.sendfile(__dirname + '/client/public/index.html')
+app.get("/", function(req, res){
+    res.sendFile(__dirname + '/client/public/index.html')
 })
 
 
