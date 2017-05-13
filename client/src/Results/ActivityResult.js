@@ -273,7 +273,7 @@ class Activity extends Component {
 					</div>
 
 					<div style={{
-						margin: '30px 0px',
+						margin: '30px 0px 0px',
 						display: this.state.loaded
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>

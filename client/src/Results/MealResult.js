@@ -3,8 +3,14 @@ import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
 
 import TopBar from '../HomePage/TopBar'
+import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
+	main: {
+		height: '100vh',
+		width: '100vw',
+		backgroundColor: 'rgb(221,221,221)'
+	},
 	container: {
 		padding: '100px',
 		backgroundColor: '#082B3F'
@@ -124,7 +130,10 @@ class Meal extends Component {
 		this.state = {
 			restaurants: [],
 			res: {},
-			location: {}
+			location: {},
+			status: 'loading',
+			loaded: 'none',
+			loadDisp: 'block'
 		}
 	}
 
@@ -134,7 +143,10 @@ class Meal extends Component {
 		this.setState({
 			restaurants: props.restaurants,
 			res: props.restaurants[id],
-			location: props.restaurants[id].coordinates
+			location: props.restaurants[id].coordinates,
+			status: 'hide',
+			loaded: 'block',
+			loadDisp: 'none'
 		})
 	}
 
@@ -168,87 +180,103 @@ class Meal extends Component {
 		console.log(this.state)
 		console.log(this.state.location)
 		return (
-			<section>
-				<TopBar />
-				<div style={styles.container}>
-					<div style={styles.resContainer}>
-						<div style={styles.topBar}>
-							<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
+			<div style={styles.main}>
+				<section>
+					<TopBar />
+					<RefreshIndicator
+							size={70}
+							left={70}
+							top={0}
+							loadingColor="#FF6E00"
+							status={this.state.status}
+							style={{
+								display: this.state.loadDisp,
+								margin: '300px auto',
+								position: 'initial',
+								transform: 'none'
+							}}
+						/>
+
+					<div style={{display: this.state.loaded}}>
+						<div style={styles.resContainer}>
+							<div style={styles.topBar}>
+								<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
+							</div>
+							<div style={styles.lowerSection}>
+								<div style={styles.imageContainer}>
+									<img style={styles.image} src={this.state.res.image_url} alt="cover" />
+								</div>
+
+								<div style={styles.infoContainer}>
+									<ul style={styles.list}>
+										<li style={styles.listItem}>
+											<p style={styles.title}>{this.state.res.name}</p>
+										</li>
+
+										<li style={styles.listItem}><div style={styles.titleLine}></div></li>
+
+										<li style={styles.listItem}>
+											<div style={styles.infoProp}>
+												<p style={styles.stars}>
+													<i style={{
+														color: 'white'
+													}} className="fa fa-star-o" aria-hidden="true"></i>
+													<i style={{
+														color: 'white'
+													}} className="fa fa-star-o" aria-hidden="true"></i>
+													<i style={{
+														color: 'white'
+													}} className="fa fa-star-o" aria-hidden="true"></i>
+													<i style={{
+														color: 'white'
+													}} className="fa fa-star-o" aria-hidden="true"></i>
+													<i style={{
+														color: 'white'
+													}} className="fa fa-star-o" aria-hidden="true"></i>
+
+													<i style={{
+														color: 'rgba(200,200,200,0.4)',
+														fontSize: '11px',
+														marginLeft: '7px',
+														marginRight: '7px'
+													}} className="fa fa-circle" aria-hidden="true"></i>
+
+													<span>{this.state.res.review_count} </span>
+													Reviews
+												</p>
+											</div>
+										</li>
+										<li style={styles.listItem}>
+											<div style={styles.infoProp}>
+												<p style={styles.infoLabel}>Phone Number: </p>
+												<p style={styles.phone}>{this.state.res.display_phone}</p>
+											</div>
+										</li>
+										<li style={styles.listItem}>
+											<div style={styles.infoProp}>
+												<p style={styles.infoLabel}>Price Range (per person): </p>
+												<p style={styles.price}>{this.state.res.price}</p>
+											</div>
+										</li>
+										<li style={styles.listItem}>
+											<div style={styles.infoProp}>
+												<p style={styles.infoLabel}>Website: </p>
+												<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
-						<div style={styles.lowerSection}>
-							<div style={styles.imageContainer}>
-								<img style={styles.image} src={this.state.res.image_url} alt="cover" />
-							</div>
 
-							<div style={styles.infoContainer}>
-								<ul style={styles.list}>
-									<li style={styles.listItem}>
-										<p style={styles.title}>{this.state.res.name}</p>
-									</li>
-
-									<li style={styles.listItem}><div style={styles.titleLine}></div></li>
-
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.stars}>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-
-												<i style={{
-													color: 'rgba(200,200,200,0.4)',
-													fontSize: '11px',
-													marginLeft: '7px',
-													marginRight: '7px'
-												}} className="fa fa-circle" aria-hidden="true"></i>
-
-												<span>{this.state.res.review_count} </span>
-												 Reviews
-											</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Phone Number: </p>
-											<p style={styles.phone}>{this.state.res.display_phone}</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Price Range (per person): </p>
-											<p style={styles.price}>{this.state.res.price}</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Website: </p>
-											<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
-										</div>
-									</li>
-								</ul>
-							</div>
+						<div style={{
+							margin: '30px 0px'
+						}}>
+							<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 						</div>
 					</div>
-
-					<div style={{
-						margin: '30px 0px'
-					}}>
-						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
-					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		)
 	}
 }
