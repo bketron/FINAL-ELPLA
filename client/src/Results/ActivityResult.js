@@ -6,9 +6,14 @@ import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
+	main: {
+		height: '100vh',
+		width: '100vw',
+		backgroundColor: 'rgb(221,221,221)'
+	},
 	container: {
 		padding: '100px',
-		backgroundColor: '#082B3F'
+		backgroundColor: 'rgb(221,221,221)'
 	},
 	resContainer: {
 		
@@ -178,13 +183,14 @@ class Activity extends Component {
 		console.log(this.state)
 		console.log(this.state.location)
 		return (
+			<div style={styles.main} >
 			<section>
 				<TopBar />
 				<RefreshIndicator
-						size={50}
+						size={70}
 						left={70}
 						top={0}
-						loadingColor="#FF9800"
+						loadingColor="#FF6E00"
 						status={this.state.status}
 						style={{
 							display: this.state.loadDisp,
@@ -274,6 +280,7 @@ class Activity extends Component {
 					</div>
 				</div>
 			</section>
+			</div>
 		)
 	}
 }

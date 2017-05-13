@@ -9,7 +9,7 @@ const socket = io.connect('http://localhost:3001')
 export function getRestaurants(searchObj) {
 	console.log(searchObj.price)
 	if(searchObj.price !== ''){
-		axios.get('http://localhost:3001/yelpstuff?term=restaurant&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
+		axios.get('http://localhost:3001/yelpstuff?term=tasty&location=Las+Vegas&price=' + searchObj.price).then(function(resp){
 			console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
@@ -17,7 +17,7 @@ export function getRestaurants(searchObj) {
 			})
 		})
 	} else {
-		axios.get(`http://localhost:3001/yelpstuff?term=restaurant&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
+		axios.get(`http://localhost:3001/yelpstuff?term=tasty&location=Las+Vegas&price=1,2,3,4`).then(function(resp){	
 			console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
