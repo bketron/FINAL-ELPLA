@@ -16,14 +16,9 @@ class ReviewForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     saveReview(this.state.review)
-    this.setState = ({
+    this.setState({
     	review: ''
     })
-  }
-  clearForm = () => {
-  	this.setState =({
-
-  	})
   }
   render() {
     return (
@@ -32,7 +27,6 @@ class ReviewForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
         	<input onChange={this.handleChange} type='text' placeholder='' name='review' value={this.state.review} />
         	<button type='submit' onClick={this.handleSubmit}>Submit</button>
-        	<button onClick={this.clearForm}type='reset'>Clear</button>
       	</form>
       </div>
     )

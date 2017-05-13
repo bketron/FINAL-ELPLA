@@ -5,7 +5,7 @@ import InfoSection from './InfoSection'
 import IronYard from './IronYard'
 import Footer from './Footer'
 import Reviews from './Reviews'
-import {connect} from 'react-redux'
+import ReviewForm from '../CharlesComponents/ReviewForm'
 
 const styles = {
     container: {

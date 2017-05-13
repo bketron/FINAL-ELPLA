@@ -1,6 +1,6 @@
 import store from '../store'
 // import axios from 'axios'
-// import api from '../lib/api'
+import axios from 'axios'
 
 // api.new('http://localhost:3000')
 // api.setTokenPath('/login')
@@ -39,7 +39,8 @@ export function saveName(username) {
 // }
 
 export function saveReview(review){
-	api.post('/review').then(function(response){
+	axios.post('/review', {review:review}).then(function(response){
+		console.log(response)
 		store.dispatch({
 			type: 'SAVE_REVIEW',
 				review
