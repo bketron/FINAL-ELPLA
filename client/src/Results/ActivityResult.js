@@ -129,7 +129,9 @@ class Activity extends Component {
 			activities: [],
 			act: {},
 			location: {},
-			status: 'loading'
+			status: 'loading',
+			loaded: 'none',
+			loadDisp: 'block'
 		}
 	}
 
@@ -140,7 +142,9 @@ class Activity extends Component {
 			activities: props.activities,
 			act: props.activities[id],
 			location: props.activities[id].coordinates,
-			status: 'hide'
+			status: 'hide',
+			loaded: 'block',
+			loadDisp: 'none'
 		})
 	}
 
@@ -176,20 +180,22 @@ class Activity extends Component {
 		return (
 			<section>
 				<TopBar />
-				<div style={styles.container}>
-					<RefreshIndicator
+				<RefreshIndicator
 						size={50}
 						left={70}
 						top={0}
 						loadingColor="#FF9800"
 						status={this.state.status}
 						style={{
-							display: 'block'
+							display: this.state.loadDisp,
+							margin: '300px auto',
+							position: 'initial',
+							transform: 'none'
 						}}
     				/>
 
-
-					<div style={styles.resContainer}>
+				<div style={{display: this.state.loaded}}>
+					<div >
 						<div style={styles.topBar}>
 							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>
 						</div>
@@ -261,7 +267,8 @@ class Activity extends Component {
 					</div>
 
 					<div style={{
-						margin: '30px 0px'
+						margin: '30px 0px',
+						display: this.state.loaded
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
