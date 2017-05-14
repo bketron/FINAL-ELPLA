@@ -1,5 +1,6 @@
 import React from 'react'
 import {saveReview} from '../api/UserAPI'
+import {connect} from 'react-redux'
 
 class ReviewForm extends React.Component {
   constructor() {
@@ -14,10 +15,10 @@ class ReviewForm extends React.Component {
     })
   }
   handleSubmit = (e) => {
+    var name = this.props.username
     e.preventDefault()
-    saveReview(this.state.review,this.state.name)
+    saveReview(this.state.review, name)
     this.setState({
-    	name: '',
       review: ''
     })
   }
@@ -26,7 +27,7 @@ class ReviewForm extends React.Component {
       <div>
         Review Form
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} type='text' placeholder='Enter your name' name='name' value={this.state.name} />
+          
         	<input onChange={this.handleChange} type='textarea' placeholder='Write a review' name='review' value={this.state.review} />
         	<button type='submit' onClick={this.handleSubmit}>Submit</button>
       	</form>
@@ -34,4 +35,11 @@ class ReviewForm extends React.Component {
     )
   }
 }
-export default ReviewForm
+
+function mapStateToProps(appState){
+  return {username: appState.username}
+}
+
+export default connect(mapStateToProps)(ReviewForm)
+
+// <input onChange={this.handleChange} type='text' placeholder='Enter your name' name='name' value={this.state.name} />
