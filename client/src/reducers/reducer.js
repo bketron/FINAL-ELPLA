@@ -5,7 +5,8 @@ const initialState = {
     filters: {},
     directions: {},
     username:'',
-    review: ''
+    review: '',
+    name: ''
 }
 
 export default function yelpReducer(state=initialState, action) {
@@ -23,7 +24,7 @@ export default function yelpReducer(state=initialState, action) {
         case 'SAVE_USERNAME':
             return {...state, username: action.username}
         case 'SAVE_REVIEW':
-            return {...state, review: action.review}
+            return {...state, name: action.name, review: action.review}
       default:
           return state
     }

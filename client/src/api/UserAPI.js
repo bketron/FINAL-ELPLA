@@ -38,12 +38,13 @@ export function saveName(username) {
 // 	})
 // }
 
-export function saveReview(review){
-	axios.post('/review', {review:review}).then(function(response){
+export function saveReview(review, name){
+	axios.post('/review', {review:review, name:name}).then(function(response){
 		console.log(response)
 		store.dispatch({
 			type: 'SAVE_REVIEW',
-				review
+				review,
+				name
 		})
 	})
 }

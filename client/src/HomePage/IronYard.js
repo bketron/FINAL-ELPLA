@@ -56,7 +56,7 @@ class IronYard extends Component {
                 <section style={styles.infoSection}>
                     <p style={styles.header}>The Iron Yard</p>
                     <div style={styles.divLine}></div>
-                    <p style={styles.caption}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                    <p style={styles.caption}>Can a code school help you prepare for a career in tech? Can you really train for jobs in software development, web design or computer programming in a matter of weeks? If these are the questions you’re pondering, we’re here to help guide you. Developers and designers are in demand in Las Vegas, and we want to prepare you with the skills you need to land one of those jobs - and a career you love. At The Iron Yard, our full-time and part-time courses are designed with input from Las Vegas tech employers so we make sure our graduates are ready for those jobs.</p>
                 </section>
             </div>
         )

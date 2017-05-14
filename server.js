@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 app.post('/review', function(req, res){
-    var query = 'INSERT INTO reviews (review) VALUES (?)'
-    connection.query(query, [req.body.review], function(err, results){
+    var query = 'INSERT INTO reviews (review,name) VALUES (?,?)'
+    connection.query(query, [req.body.review, req.body.name], function(err, results){
         res.json({
             'message': 'Thank you for your review'
         })
