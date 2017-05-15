@@ -56,7 +56,7 @@ class InfoSection extends Component {
                 <section style={styles.aboutSection}>
                     <p style={styles.header}>About Us</p>
                     <div style={styles.divLine}></div>
-                    <p style={styles.caption}>The year was 2017. Three unlikely comrades joined forces to unravel the mysteries of figuring out what to do on a first date. Several methods were attempted to no avail. Suddenly, one of the three had a flash of incite, “We take the decision from them and automate it!”. This is how the elPla date generator was born. Powered by Yelp™, and allowing for filtered parameters, users are able to generate a place to eat, a thing to do, or both. The user can then get directions, or generate a new random meal/activity, This is all to assist in reducing the amount of thought the average human devotes to social interaction, freeing those brain cells to consider the mysteries of time and space. </p>
+                    <p style={styles.caption}>The year was 2017. Three unlikely comrades joined forces to unravel the mysteries of figuring out what to do on a first date. Several methods were attempted to no avail. Suddenly, one of the three had a flash of incite, “We take the decision from them and automate it!”. This is how the elPla date generator was born. Powered by Yelp™, and allowing for filtered parameters, users are able to generate a place to eat, a thing to do, or both. The user can then get directions, or generate a new random meal/activity. This is all to assist in reducing the amount of thought the average human devotes to social interaction, freeing those brain cells to consider the mysteries of time and space. </p>
                 </section>
 
                 <section style={styles.pictureSection}>

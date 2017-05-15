@@ -86,17 +86,17 @@ class Reviews extends Component {
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>I would never have found that bouncy castle spot without this app. Much appreciated elPla.<span style={styles.reviewerName}>- CombatComic</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>When I was in a pinch and could not find a place I hadn't eaten at, elPla was there. When my husband devorced me for never eatting at the same place twice, elPla was there. When I needed to find a thing to do when I excaped from the institute, elpla was there. <span style={styles.reviewerName}>- IUseMyName</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>Grand Tata, she is elPla app. So many for the finding of the food times, but there is wild pig time in the blocking of the farm. She is make big fight for the foods with pork eatting. Then she die. Thanking you elPla peoples. <span style={styles.reviewerName}>- IamRaduHello</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
                     </Slider>
                 </div>
