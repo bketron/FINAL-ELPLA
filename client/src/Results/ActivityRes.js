@@ -178,7 +178,9 @@ class Meal extends Component {
 							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>
 						</div>
 						<div style={styles.lowerSection}>
+
 							<div style={styles.imageContainer}>
+							<h1>Hey</h1>
 								<img style={styles.image} src={this.state.act.image_url} />
 							</div>
 
