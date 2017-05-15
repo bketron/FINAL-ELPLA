@@ -1,32 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 
-const styles = {
-	list: {
-		
-    	
-    	border:'1px solid black',
-    	backgroundColor:'grey',
-    	marginTop:70,
-    	width:500,
-    	height:400
-	},
-	li: {
-		border:'1px solid black',
-		listStyle:'none'
-	},
-	heading: {
-		textAlign: 'center'
-	}
-}
-
-export default class Display extends React.Component {
-	render() {
-		return <div style={styles.list}>
-				<h1 style={styles.heading}>Saved</h1>
-				{this.props.items.map((item, i) => {
-					return <li style={styles.li} key={item}> { item } </li>
-				})}
-			   </div>
-	}
+export default class FaveList extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Saved List</h1>
+        {this.props.items.map((item, i) => {
+          return (
+            <div>  
+              <p>Name of Place: {item.text} </p>
+              <p>Rate: {item.rate}/10 </p>
+              <p>Notes: {item.note} </p>
+              <button onClick={this.props.removeItem}>Delete</button>
+            </div>
+          )
+        })}
+      </div>
+    )     
+  }
 }
