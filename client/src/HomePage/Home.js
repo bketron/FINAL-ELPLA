@@ -14,6 +14,7 @@ const styles = {
 }
 
 class Home extends Component {
+
     render() {
         return (
             <div style={styles.container}>
@@ -27,5 +28,6 @@ class Home extends Component {
         )
     }
 }
+
 
 export default Home
