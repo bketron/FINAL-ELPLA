@@ -249,7 +249,7 @@ class Meal extends Component {
 						margin: '30px 0px'
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
-						<Link to={'/feedBackClass/'}>
+						<Link to={'/favorites/'}>
             				<button><i className="fa fa-star-o" aria-hidden="true"></i></button>
             			</Link>
 

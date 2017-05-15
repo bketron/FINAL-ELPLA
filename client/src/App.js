@@ -20,7 +20,7 @@ class App extends Component {
           <Route exact={true} path="/results/activity" component={ActivityResult} />
           <Route exact={true} path="/directions/single" component={SingleStop} />
           <Route exact={true} path="/directions/multi" component={MultiStop} />
-          <Route exact={true} path="/FavoriteList" component={FavoriteList} />          
+          <Route exact={true} path="/favorites" component={FavoriteList} />          
         </div>
       </BrowserRouter>
       )

@@ -7,7 +7,10 @@ const styles={
     border:'1px solid black',
     overflow:'scroll',
     width: 600,
-    height:400
+    height:400,
+    backgroundColor:'rgb(242,242,242)',
+    borderRadius:8,
+    marginBottom:20 
 
   },
   box: {
@@ -15,14 +18,17 @@ const styles={
     marginBottom:30,
     marginLeft:20,
     marginRight:20,
-    marginTop:30
+    marginTop:30,
+    wordWrap:'break-word'
 
   },
   lilbox: {
     marginTop:30
   },
   h1: {
-    marginLeft:100
+    marginLeft:100,
+    color:'white',
+    textAlign:'center'
   }
 }
 
