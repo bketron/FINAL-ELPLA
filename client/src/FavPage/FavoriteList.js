@@ -5,6 +5,7 @@ import FaveList from './FaveList'
 
 const styles = {
   container: {
+    display:'flex',
     paddingLeft:100,
     paddingTop:50
   },
@@ -21,6 +22,7 @@ const styles = {
   fave: {
     marginTop:70,
     width:500,
+    overflow:'scroll'
   }
 }
 
@@ -82,13 +84,13 @@ export default class FavoriteList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={styles.container}>
         <div>
           <h1> Save The Moment  </h1>
           <form onSubmit={this.handleSubmit.bind(this)}>
             Name of Place:<input style={styles.nop} onChange={this.handleChange} name='text' value={this.state.text} />
           <br/>
-            Rate:<input style={styles.rate} onChange={this.handleChange} name='rate' value={this.state.rate} />
+            Rate:<input style={styles.rate} onChange={this.handleChange} name='rate' value={this.state.rate} />/10
           <br/>
             Notes:<input style={styles.note} onChange={this.handleChange} name='note' value={this.state.note} />
           <br/>
