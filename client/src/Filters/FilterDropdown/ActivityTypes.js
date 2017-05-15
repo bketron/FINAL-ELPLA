@@ -44,6 +44,10 @@ class ActivityTypes extends Component {
                 selectedMenuItemStyle={{
                     color: '#FF6E00'
                 }}
+                style={{
+                    width: '200px',
+                    marginTop: '0px'
+                }}
             >
                 {this.menuItems(types)}
             </SelectField>

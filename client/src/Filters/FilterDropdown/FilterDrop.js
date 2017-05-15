@@ -2,11 +2,13 @@ import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import Popover from 'material-ui/Popover'
 import IconButton from 'material-ui/IconButton'
+import FlatButton from 'material-ui/FlatButton'
 
 import RadiusSlider from './RadiusSlider'
 import FoodTypes from './FoodTypes'
 import ActivityTypes from './ActivityTypes'
 import Rating from './Rating'
+import Delivery from './Delivery'
 
 class FilterDrop extends Component {
     constructor(props){
@@ -66,23 +68,46 @@ class FilterDrop extends Component {
                     onRequestClose={this.handleRequestClose}
                     style={{
                         width: '36.5%',
-                        borderRadius: '0px 0px 2px 2px'
+                        borderRadius: '0px 0px 2px 2px',
+                        height: '200px'
                     }}
                 >
-                    <div>
-                        <div style={{width:'50%'}}>
+                    <div 
+                        style={{display: 'flex',
+                                overflow: 'hidden',
+                                height: '200px'
+                            }}
+                        >
+                        <div style={{
+                                width:'50%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                paddingTop: '20px'
+                            }}>
+
+                            <div style={{
+                                display: 'flex'
+                            }}>
+                                <Delivery />
+                                <Rating />
+                            </div>
+
                             <RadiusSlider />
                             
-                            <IconButton tooltip="delivery" touch={true} tooltipPosition="bottom-center">
-                                <i className="material-icons">local_shipping</i>
-                            </IconButton>
+
 
                         </div>
-                        <div style={{width:'50%'}}>
+                        <div style={{
+                                width:'50%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
+                            }}>
                             <FoodTypes />
                             <ActivityTypes />
                         </div>
-                        <Rating />
+                        
                     </div>
                 </Popover>
             </div>
