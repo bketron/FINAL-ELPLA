@@ -47,6 +47,10 @@ class FoodTypes extends Component {
                 selectedMenuItemStyle={{
                     color: '#FF6E00'
                 }}
+                style={{
+                    width: '200px',
+                    marginTop: '5px'
+                }}
             >
                 {this.menuItems(types)}
             </SelectField>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Slider from 'material-ui/Slider'
 
+
 class RadiusSlider extends Component {
     state = {
         sliderVal: 12.5
@@ -13,7 +14,10 @@ class RadiusSlider extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{
+                position: 'relative',
+                top: '5px'
+            }}>
                 <div>
                     <p style={{margin: '0px'}}>
                         <span style={{
@@ -25,16 +29,16 @@ class RadiusSlider extends Component {
                     </p>
                 </div>
                 <Slider
+                    id="radiusSlider"
                     min={0.5}
                     max={25}
                     step={0.1}
                     value={this.state.sliderVal}
                     onChange={this.handleSlider}
-                    style={{
-                        width: '80%',
-                        margin: '0px'
+                    sliderStyle={{
+                        fill: 'orange',
+                        width: '200px'
                     }}
-                    selectionColor= 'orange'
                 />
             </div>
         )

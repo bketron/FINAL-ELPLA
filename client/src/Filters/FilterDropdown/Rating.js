@@ -22,12 +22,23 @@ class Rating extends Component {
     constructor(props){
         super()
         this.state = {
-            searchRating: 1
+            searchRating: 1,
+            star1solid: 'none',
+            star1empty: 'block',
+            star2solid: 'none',
+            star2empty: 'block',
+            star3solid: 'none',
+            star3empty: 'block',
+            star4solid: 'none',
+            star4empty: 'block',
+            star5solid: 'none',
+            star5empty: 'block',
         }
     }
 
-    setSearchRating = (value) => {
+    setSearchRating = (event, value) => {
         console.log(value)
+        console.log(event.target.name)
 
         if(value === 1){
             stars.star1empty = 'none'
@@ -86,54 +97,226 @@ class Rating extends Component {
         }
     }
 
+    toggleOneStar = (e) => {
+            this.setState({
+                searchRating: 1,
+                star1solid: 'block',
+                star1empty: 'none',
+                star2solid: 'none',
+                star2empty: 'block',
+                star3solid: 'none',
+                star3empty: 'block',
+                star4solid: 'none',
+                star4empty: 'block',
+                star5solid: 'none',
+                star5empty: 'block'
+            })
+
+            console.log('1 star', this.state.searchRating)
+    }
+
+    toggleTwoStar = (e) => {
+            this.setState({
+                searchRating: 2,
+                star1solid: 'block',
+                star1empty: 'none',
+                star2solid: 'block',
+                star2empty: 'none',
+                star3solid: 'none',
+                star3empty: 'block',
+                star4solid: 'none',
+                star4empty: 'block',
+                star5solid: 'none',
+                star5empty: 'block'
+            })
+
+            console.log('2 stars', this.state.searchRating)
+    }
+
+    toggleThreeStar = (e) => {
+            this.setState({
+                searchRating: 3,
+                star1solid: 'block',
+                star1empty: 'none',
+                star2solid: 'block',
+                star2empty: 'none',
+                star3solid: 'block',
+                star3empty: 'none',
+                star4solid: 'none',
+                star4empty: 'block',
+                star5solid: 'none',
+                star5empty: 'block'
+            })
+
+            console.log('3 stars', this.state.searchRating)
+    }
+
+    toggleFourStar = (e) => {
+            this.setState({
+                searchRating: 4,
+                star1solid: 'block',
+                star1empty: 'none',
+                star2solid: 'block',
+                star2empty: 'none',
+                star3solid: 'block',
+                star3empty: 'none',
+                star4solid: 'block',
+                star4empty: 'none',
+                star5solid: 'none',
+                star5empty: 'block'
+            })
+
+            console.log('4 stars', this.state.searchRating)
+    }
+
+    toggleFiveStar = (e) => {
+            this.setState({
+                searchRating: 5,
+                star1solid: 'block',
+                star1empty: 'none',
+                star2solid: 'block',
+                star2empty: 'none',
+                star3solid: 'block',
+                star3empty: 'none',
+                star4solid: 'block',
+                star4empty: 'none',
+                star5solid: 'block',
+                star5empty: 'none'
+            })
+
+            console.log('5 stars', this.state.searchRating)
+    }
+
     render() {
         return (
             <div>
                 <div>
-                    <button type="button" onClick={this.setSearchRating(1)}>
+                    <button
+                        onClick={this.toggleOneStar}
+                        name="one"
+                        type="button"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none'
+                        }}
+                    >
                         <div>
-                            <i style={{
-                                display: stars.star1solid
+                            <i 
+                                name="one"
+                                style={{
+                                display: this.state.star1solid,
+                                color: '#FF6E00'
                             }} className="fa fa-star" aria-hidden="true"></i>
 
-                            <i style={{
-                                display: stars.star1empty
+                            <i 
+                                style={{
+                                display: this.state.star1empty,
+                                color: '#282828'
                             }} className="fa fa-star-o" aria-hidden="true"></i>
                         </div>
                     </button>
 
-                    <button type="button" onClick={this.setSearchRating(2)}>
+                    <button
+                        onClick={this.toggleTwoStar}
+                        name="one"
+                        type="button"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none'
+                        }}
+                    >
                         <div>
-                            <i style={{
-                                display: stars.star2solid
+                            <i 
+                                name="one"
+                                style={{
+                                display: this.state.star2solid,
+                                color: '#FF6E00'
                             }} className="fa fa-star" aria-hidden="true"></i>
 
-                            <i style={{
-                                display: stars.star2empty
+                            <i 
+                                style={{
+                                display: this.state.star2empty,
+                                color: '#282828'
                             }} className="fa fa-star-o" aria-hidden="true"></i>
                         </div>
                     </button>
 
-                    <button type="button" onClick={this.setSearchRating(3)}>
+                    <button
+                        onClick={this.toggleThreeStar}
+                        name="one"
+                        type="button"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none'
+                        }}
+                    >
                         <div>
-                            <i style={{
-                                display: stars.star3solid
+                            <i 
+                                name="one"
+                                style={{
+                                display: this.state.star3solid,
+                                color: '#FF6E00'
                             }} className="fa fa-star" aria-hidden="true"></i>
 
-                            <i style={{
-                                display: stars.star3empty
+                            <i 
+                                style={{
+                                display: this.state.star3empty,
+                                color: '#282828'
                             }} className="fa fa-star-o" aria-hidden="true"></i>
                         </div>
                     </button>
 
-                    <button type="button" onClick={this.setSearchRating(4)}>
+                    <button
+                        onClick={this.toggleFourStar}
+                        name="one"
+                        type="button"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none'
+                        }}
+                    >
                         <div>
-                            <i style={{
-                                display: stars.star4solid
+                            <i 
+                                name="one"
+                                style={{
+                                display: this.state.star4solid,
+                                color: '#FF6E00'
                             }} className="fa fa-star" aria-hidden="true"></i>
 
-                            <i style={{
-                                display: stars.star4empty
+                            <i 
+                                style={{
+                                display: this.state.star4empty,
+                                color: '#282828'
+                            }} className="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </button>
+
+                    <button
+                        onClick={this.toggleFiveStar}
+                        name="one"
+                        type="button"
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none'
+                        }}
+                    >
+                        <div>
+                            <i 
+                                name="one"
+                                style={{
+                                display: this.state.star5solid,
+                                color: '#FF6E00'
+                            }} className="fa fa-star" aria-hidden="true"></i>
+
+                            <i 
+                                style={{
+                                display: this.state.star5empty,
+                                color: '#282828'
                             }} className="fa fa-star-o" aria-hidden="true"></i>
                         </div>
                     </button>
