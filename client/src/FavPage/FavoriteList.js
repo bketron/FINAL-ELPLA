@@ -56,7 +56,8 @@ const styles = {
   },
   tittle: {
     display:'flex',
-    flexDirection:'column'
+    flexDirection:'column',
+    marginLeft:100
   },
   h1: {
     color:'white'
