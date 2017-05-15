@@ -103,7 +103,29 @@ class TopBar extends Component {
                                         width: '100px',
                                     }} href="/#about">About</a>
                                 </div>
-                            </FlatButton>
+                            </FlatButton>   
+                        </li>
+                        <li style={styles.listItem}><div style={styles.divLine}></div></li>
+                        <li style={styles.listItem}>
+                            <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <a style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '-6px',
+                                        width: '100px',
+                                    }} href="/favorites">Favorites</a>
+                                </div>
+                            </FlatButton>   
                         </li>
                     </ul>
                 </div>

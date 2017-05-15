@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
+import { Link } from 'react-router-dom'
 
 import TopBar from '../HomePage/TopBar'
 
@@ -120,6 +121,19 @@ const styles = {
 		padding: '0px 20px',
 		fontSize: '18px',
 		fontWeight: 'bold',
+		marginBottom:-10
+	},
+	faveButton: {
+		border: 'none',
+		outline: 'none',
+		height: '40px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		padding: '0px 20px',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		width:168,
+		marginTop:-10
 	}
 }
 
@@ -252,6 +266,9 @@ class Activity extends Component {
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
+					<Link to={'/favorites/'}>
+            			<button style={styles.faveButton}>Add to Favorites</button>
+            		</Link>
 				</div>
 			</section>
 		)

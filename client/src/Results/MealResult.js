@@ -117,7 +117,20 @@ const styles = {
 		color: '#0B3954',
 		padding: '0px 20px',
 		fontSize: '18px',
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		marginBottom:-10
+	},
+	faveButton: {
+		border: 'none',
+		outline: 'none',
+		height: '40px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		padding: '0px 20px',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		width:168,
+		marginTop:-10
 	}
 }
 
@@ -248,12 +261,11 @@ class Meal extends Component {
 					<div style={{
 						margin: '30px 0px'
 					}}>
-						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
-						<Link to={'/favorites/'}>
-            				<button><i className="fa fa-star-o" aria-hidden="true"></i></button>
-            			</Link>
-
+						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>	
 					</div>
+					<Link to={'/favorites/'}>
+            			<button style={styles.faveButton}>Add to Favorites</button>
+            		</Link>
 				</div>
 			</section>
 		)
