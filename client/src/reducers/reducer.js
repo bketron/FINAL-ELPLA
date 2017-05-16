@@ -1,4 +1,5 @@
 const initialState = {
+    favorites: [],
     restaurants:[],
     singleRes: {},
     activities: [],
@@ -25,6 +26,8 @@ export default function yelpReducer(state=initialState, action) {
             return {...state, username: action.username}
         case 'SAVE_REVIEW':
             return {...state, name: action.name, review: action.review}
+        case 'ADD_TO_FAVORITES':
+            return {...state, favorites:[...state.favorites, action.date]}
       default:
           return state
     }

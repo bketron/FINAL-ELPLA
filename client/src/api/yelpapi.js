@@ -64,3 +64,10 @@ export function addLocations(stops) {
 		stops
 	})
 }
+
+export function addToFavorites(date) {
+	store.dispatch({
+		type: 'ADD_TO_FAVORITES',
+		date
+	})
+}
