@@ -149,6 +149,8 @@ class MealActResultsNew extends Component {
         }
 
         console.log(favObj)
+
+        addToFavorites(favObj)
     }
 
     getRating = (rating) => {
