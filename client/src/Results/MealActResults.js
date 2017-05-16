@@ -20,7 +20,7 @@ const styles = {
 	},
 	title: {
 		color:'white',
-		fontSize:25,
+		fontSize:20,
 		borderBottom:'3px solid #ff6E00',
 		textAlign:'center'
 	},
@@ -82,6 +82,16 @@ const styles = {
 	},
 	price: {
 		marginRight:5
+	},
+	regen: {
+		border: 'none',
+		outline: 'none',
+		height: '25px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		borderRadius:5
 	}
 }
 
@@ -170,7 +180,7 @@ class Results extends Component {
 				<div style={styles.left}>
 					<div style={styles.topBar}>
 						<p style={styles.title}>{this.state.act.name}</p>
-						<button style={styles.newButton} type="button" onClick={this.newAct}>New Activity</button>
+						<button style={styles.regen} type="button" onClick={this.newAct}>Re-Generate</button>
 					</div>
 					<div style={styles.lowerSection}>
 						<img style={styles.image} src={this.state.act.image_url} />
@@ -190,7 +200,7 @@ class Results extends Component {
 								<li style={styles.listItem}>
 									<div style={styles.flex2}>
 										<p style={styles.website}>Website: </p>
-										<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
+										<a style={styles.website} href={this.state.act.url}>{this.state.act.name}</a>
 									</div>
 								</li>
 							</ul>
@@ -205,24 +215,35 @@ class Results extends Component {
 				<div style={styles.activityContainer}>
 					<div style={styles.topBar}>
 						<p style={styles.title}>{this.state.res.name}</p>
-						<button style={styles.newButton} type="button" onClick={this.newRes}>New Activity</button>
+						<button style={styles.regen} type="button" onClick={this.newRes}>Re-Generate</button>
 					</div>
 					<div style={styles.lowerSection}>
 						<img style={styles.image} src={this.state.res.image_url} />
 
 						<div style={styles.lowerInfo}>
 
-							<ul style={styles.list}>
+							<ul style={styles.box}>
 								<li style={styles.listItem}>
-									<p style={styles.phone}>{this.state.res.display_phone}</p>
+								  <div style={styles.flex1}>
+									<p style={styles.phone}>Phone number: </p>
+									<p style={styles.phone1}>{this.state.res.display_phone}</p>
+								  </div>
+								</li>
+								<li style={styles.flex3}>
+									<p style={styles.price}>Price Range (per person):</p>
+									<p>{this.state.res.price}</p>
 								</li>
 								<li style={styles.listItem}>
-									<p style={styles.price}>{this.state.res.price}</p>
-								</li>
-								<li style={styles.listItem}>
-									<a style={styles.website} href={this.state.res.url}>Website</a>
+									<div style={styles.flex2}>
+										<p style={styles.website}>Website: </p>
+										<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
+									</div>
 								</li>
 							</ul>
+							<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>	
+							<Link to={'/favorites/'}>
+            					<button style={styles.faveButton}>Add to Favorites</button>
+            				</Link>
 						</div>
 					</div>
 				</div>
@@ -230,8 +251,6 @@ class Results extends Component {
 				<div style={{
 					margin: '30px 0px'
 				}}>
-					<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
-				
 				</div>
 			</div>
 		</div>
