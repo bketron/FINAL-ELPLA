@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
 import { Link } from 'react-router-dom'
-import TopBar from '../HomePage/TopBar'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
@@ -14,6 +13,7 @@ const styles = {
 	},
 	container: {
 		display:'flex',
+		flexDirection: 'row',
 		backgroundColor:'rgb(8,43,63)',
 		height:600
 	},
@@ -262,6 +262,7 @@ class Results extends Component {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 		</div>
 		)

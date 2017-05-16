@@ -293,7 +293,7 @@ class Meal extends Component {
             		</Link>
 				</div>
 			</section>
-
+			</div>
 		)
 	}
 }
