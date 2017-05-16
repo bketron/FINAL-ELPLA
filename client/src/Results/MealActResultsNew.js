@@ -141,9 +141,11 @@ class MealActResultsNew extends Component {
             resName: res.name,
             resPhone: res.display_phone,
             resAddress: this.state.resAddress,
-            actName: res.name,
-            actPhone: res.display_phone,
+            resRating: this.state.resRating,
+            actName: act.name,
+            actPhone: act.display_phone,
             actAddress: this.state.actAddress,
+            actRating: this.state.actRating
         }
 
         console.log(favObj)
@@ -254,7 +256,7 @@ class MealActResultsNew extends Component {
 						}}
     			    />
 
-                    
+                <div style={{display: this.state.loaded}}>
                     <FlatButton
                         backgroundColor="rgba(100,100,100,0.1)"
                         style={{
@@ -346,6 +348,7 @@ class MealActResultsNew extends Component {
                             />
                         </section>
                     </div>
+                </div>
             </div>
         )
     }
