@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
+import { Link } from 'react-router-dom'
 
 import TopBar from '../HomePage/TopBar'
-
-var resId = 1
+import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
+	main: {
+		height: '100vh',
+		width: '100vw',
+		backgroundColor: 'rgb(221,221,221)'
+	},
 	container: {
 		padding: '100px',
-		backgroundColor: '#082B3F'
+		backgroundColor: 'rgb(221,221,221)'
 	},
 	resContainer: {
 		
@@ -120,6 +125,19 @@ const styles = {
 		padding: '0px 20px',
 		fontSize: '18px',
 		fontWeight: 'bold',
+		marginBottom:-10
+	},
+	faveButton: {
+		border: 'none',
+		outline: 'none',
+		height: '40px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		padding: '0px 20px',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		width:168,
+		marginTop:-10
 	}
 }
 
@@ -129,7 +147,10 @@ class Activity extends Component {
 		this.state = {
 			activities: [],
 			act: {},
-			location: {}
+			location: {},
+			status: 'loading',
+			loaded: 'none',
+			loadDisp: 'block'
 		}
 	}
 
@@ -139,7 +160,10 @@ class Activity extends Component {
 		this.setState({
 			activities: props.activities,
 			act: props.activities[id],
-			location: props.activities[id].coordinates
+			location: props.activities[id].coordinates,
+			status: 'hide',
+			loaded: 'block',
+			loadDisp: 'none'
 		})
 	}
 
@@ -149,7 +173,7 @@ class Activity extends Component {
 
 		this.setState({
 			act: this.state.activities[newId],
-			location: this.state.activities[newId].coordinates
+			location: this.state.activities[newId].coordinates,
 		})
 
 		console.log(this.state)
@@ -173,16 +197,31 @@ class Activity extends Component {
 		console.log(this.state)
 		console.log(this.state.location)
 		return (
+			<div style={styles.main} >
 			<section>
 				<TopBar />
-				<div style={styles.container}>
-					<div style={styles.resContainer}>
+				<RefreshIndicator
+						size={70}
+						left={70}
+						top={0}
+						loadingColor="#FF6E00"
+						status={this.state.status}
+						style={{
+							display: this.state.loadDisp,
+							margin: '300px auto',
+							position: 'initial',
+							transform: 'none'
+						}}
+    				/>
+
+				<div style={{display: this.state.loaded}}>
+					<div >
 						<div style={styles.topBar}>
 							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>
 						</div>
 						<div style={styles.lowerSection}>
 							<div style={styles.imageContainer}>
-								<img style={styles.image} src={this.state.act.image_url} />
+								<img style={styles.image} src={this.state.act.image_url} alt="cover"/>
 							</div>
 
 							<div style={styles.infoContainer}>
@@ -248,12 +287,17 @@ class Activity extends Component {
 					</div>
 
 					<div style={{
-						margin: '30px 0px'
+						margin: '30px 0px 0px',
+						display: this.state.loaded
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
+					<Link to={'/favorites/'}>
+            			<button style={styles.faveButton}>Add to Favorites</button>
+            		</Link>
 				</div>
 			</section>
+			</div>
 		)
 	}
 }

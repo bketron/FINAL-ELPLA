@@ -56,7 +56,9 @@ class IronYard extends Component {
                 <section style={styles.infoSection}>
                     <p style={styles.header}>The Iron Yard</p>
                     <div style={styles.divLine}></div>
+
                     <p style={styles.caption}>Can a code school help you prepare for a career in tech? Can you really train for jobs in software development, web design or computer programming in a matter of weeks? If these are the questions you’re pondering, we’re here to help guide you. Developers and designers are in demand in Las Vegas, and we want to prepare you with the skills you need to land one of those jobs - and a career you love. At The Iron Yard, our full-time and part-time courses are designed with input from Las Vegas tech employers so we make sure our graduates are ready for those jobs.</p>
+                    <p style={styles.caption}>This site or app was created as a final project for the February 2017 front end development cohort. <br/><br/> Can a code school help you prepare for a career in tech? Can you really train for jobs in software development, web design or computer programming in a matter of weeks? If these are the questions you’re pondering, we’re here to help guide you. Developers and designers are in demand in Las Vegas, and we want to prepare you with the skills you need to land one of those jobs - and a career you love. At The Iron Yard, our full-time and part-time courses are designed with input from Las Vegas tech employers so we make sure our graduates are ready for those jobs.</p>
                 </section>
             </div>
         )

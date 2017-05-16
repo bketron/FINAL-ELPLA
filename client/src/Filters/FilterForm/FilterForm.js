@@ -6,10 +6,6 @@ import ActivityCategories from './ActivityCategories'
 
 import TextField from 'material-ui/TextField'
 
-const styles = {
-
-}
-
 class FilterForm extends Component {
   constructor(props){
     super()
