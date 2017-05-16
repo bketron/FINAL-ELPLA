@@ -24,6 +24,15 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+app.post('/review', function(req, res){
+    var query = 'INSERT INTO reviews (review,name) VALUES (?,?)'
+    connection.query(query, [req.body.review, req.body.name], function(err, results){
+        res.json({
+            'message': 'Thank you for your review'
+        })
+    })
+})
+
 // ==============================Login Stuff====================================================
 // app.post('/login', function(req, res){
 //     var query = 'SELECT * FROM users WHERE username=? AND password=?'
@@ -48,8 +57,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //         }
 //     })
 // })
-
-
 
 // app.post('/register', function(req, res){
 //     var query 'INSERT INTO users (username, password) VALUES (?, ?)'

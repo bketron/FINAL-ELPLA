@@ -1,6 +1,6 @@
 import store from '../store'
 // import axios from 'axios'
-// import api from '../lib/api'
+import axios from 'axios'
 
 // api.new('http://localhost:3000')
 // api.setTokenPath('/login')
@@ -15,7 +15,7 @@ import store from '../store'
 // }
 
 // export function addUser(username, password){
-// 	axios.post('http://localhost:3000/register').then(function(response){
+// 	api.post('/register').then(function(response){
 // 		store.dispatch({
 // 			type: 'REGISTER',
 // 			username,
@@ -28,5 +28,23 @@ export function saveName(username) {
 	store.dispatch({
 		type: 'SAVE_USERNAME',
 		username: username
+	})
+}
+
+// export function saveReview(review) {
+// 	store.dispatch({
+// 		type: 'SAVE_REVIEW',
+// 		review
+// 	})
+// }
+
+export function saveReview(review, name){
+	axios.post('/review', {review:review, name:name}).then(function(response){
+		console.log(response)
+		store.dispatch({
+			type: 'SAVE_REVIEW',
+				review,
+				name
+		})
 	})
 }
