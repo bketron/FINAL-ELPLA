@@ -1,21 +1,101 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
+import { Link } from 'react-router-dom'
+import TopBar from '../HomePage/TopBar'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
-	main: {
-		width: '100vw',
-		height: '100vh',
-		backgroundColor: 'rgb(221,221,221)',
-		overflow: 'hidden',
-		overflowX: 'hidden'
+	image: {
+		width:400,
+		height:300
 	},
-	resImage: {
-
-	}
+	container: {
+		display:'flex',
+		backgroundColor:'rgb(8,43,63)',
+		height:600
+	},
+	left: {
+		paddingRight:150,
+    	paddingLeft:150
+	},
+	title: {
+		color:'white',
+		fontSize:20,
+		borderBottom:'3px solid #ff6E00',
+		textAlign:'center'
+	},
+	list: {
+		listStyle:'none',
+		color:'rgb(104,121,131)',
+	},
+	phone: {
+		marginLeft:20
+	},
+	phone1: {
+		marginLeft:20
+	},
+	box: {
+		backgroundColor:'white',
+    	borderRadius:11,
+    	listStyle:'none',
+    	height:120,
+    	marginTop:30
+	},
+	flex1: {
+		display:'flex',
+		margin:-20
+	},
+	flex2: {
+		display:'flex'
+	},
+	flex3: {
+		display:'flex'
+	},
+	website: {
+		marginTop:0,
+    	marginRight:10,
+    	textDecoration:'none',
+    	color:'black'
+	},
+	directionsButton: {
+		border: 'none',
+		outline: 'none',
+		height: '40px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		padding: '0px 20px',
+		fontSize: '18px',
+		fontWeight: 'bold',
+		marginBottom:-10,
+		marginRight:40
+	},
+	faveButton: {
+		border: 'none',
+		outline: 'none',
+		height: '40px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		padding: '0px 20px',
+		fontSize: '18px',
+		fontWeight: 'bold',
+		marginBottom:-10
+	},
+	price: {
+		marginRight:5
+	},
+	regen: {
+		border: 'none',
+		outline: 'none',
+		height: '25px',
+		backgroundColor: '#FF6E00',
+		color: '#0B3954',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		borderRadius:5
+  }
 }
 
 class Results extends Component {
@@ -102,72 +182,79 @@ class Results extends Component {
 		console.log(this.state.act)
 		console.log(this.state.res)
 		return (
-			<div style={styles.main}>
-				<TopBar />
-					<RefreshIndicator
-							size={70}
-							left={70}
-							top={0}
-							loadingColor="#FF6E00"
-							status={this.state.status}
-							style={{
-								display: this.state.loadDisp,
-								margin: '300px auto',
-								position: 'initial',
-								transform: 'none'
-							}}
-						/>
+		<div style={styles.main}>
+		<TopBar />
+		<div style={styles.container}>
+			<div style={styles.container}>
+				<div style={styles.left}>
+					<div style={styles.topBar}>
+						<p style={styles.title}>{this.state.act.name}</p>
+						<button style={styles.regen} type="button" onClick={this.newAct}>Re-Generate</button>
+					</div>
+					<div style={styles.lowerSection}>
+						<img style={styles.image} src={this.state.act.image_url} />
 
-				<div style={{display: this.state.loaded}}>
-					<div style={styles.activityContainer}>
-						<div style={styles.topBar}>
-							<p style={styles.title}>{this.state.act.name}</p>
-							<button style={styles.newButton} type="button" onClick={this.newAct}>New Activity</button>
-						</div>
-						<div style={styles.lowerSection}>
-							<img style={styles.image} src={this.state.act.image_url} alt="activity cover"/>
-
-							<div style={styles.lowerInfo}>
-								<ul style={styles.list}>
-									<li style={styles.listItem}>
-										<p style={styles.phone}>{this.state.act.display_phone}</p>
-									</li>
-									<li style={styles.listItem}>
-										<p style={styles.price}>{this.state.act.price}</p>
-									</li>
-									<li style={styles.listItem}>
-										<a style={styles.website} href={this.state.act.url}>Website</a>
-									</li>
-								</ul>
-							</div>
+						<div style={styles.lowerInfo}>
+							<ul style={styles.box}>
+								<li style={styles.listItem}>
+								  <div style={styles.flex1}>
+									<p style={styles.phone}>Phone number: </p>
+									<p style={styles.phone1}>{this.state.act.display_phone}</p>
+								  </div>
+								</li>
+								<li style={styles.flex3}>
+									<p style={styles.price}>Price Range (per person):</p>
+									<p>{this.state.act.price}</p>
+								</li>
+								<li style={styles.listItem}>
+									<div style={styles.flex2}>
+										<p style={styles.website}>Website: </p>
+										<a style={styles.website} href={this.state.act.url}>{this.state.act.name}</a>
+									</div>
+								</li>
+							</ul>
+							<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>	
+							<Link to={'/favorites/'}>
+            					<button style={styles.faveButton}>Add to Favorites</button>
+            				</Link>
 						</div>
 					</div>
 
-					<div style={styles.activityContainer}>
-						<div style={styles.topBar}>
-							<p style={styles.title}>{this.state.res.name}</p>
-							<button style={styles.newButton} type="button" onClick={this.newRes}>New Activity</button>
-						</div>
-						<div style={styles.lowerSection}>
-							<img style={styles.image} src={this.state.res.image_url} alt="restaurant cover"/>
+				<div style={styles.activityContainer}>
+					<div style={styles.topBar}>
+						<p style={styles.title}>{this.state.res.name}</p>
+						<button style={styles.regen} type="button" onClick={this.newRes}>Re-Generate</button>
+					</div>
+					<div style={styles.lowerSection}>
+						<img style={styles.image} src={this.state.res.image_url} />
 
-							<div style={styles.lowerInfo}>
+						<div style={styles.lowerInfo}>
 
-								<ul style={styles.list}>
-									<li style={styles.listItem}>
-										<p style={styles.phone}>{this.state.res.display_phone}</p>
-									</li>
-									<li style={styles.listItem}>
-										<p style={styles.price}>{this.state.res.price}</p>
-									</li>
-									<li style={styles.listItem}>
-										<a style={styles.website} href={this.state.res.url}>Website</a>
-									</li>
-								</ul>
-							</div>
+							<ul style={styles.box}>
+								<li style={styles.listItem}>
+								  <div style={styles.flex1}>
+									<p style={styles.phone}>Phone number: </p>
+									<p style={styles.phone1}>{this.state.res.display_phone}</p>
+								  </div>
+								</li>
+								<li style={styles.flex3}>
+									<p style={styles.price}>Price Range (per person):</p>
+									<p>{this.state.res.price}</p>
+								</li>
+								<li style={styles.listItem}>
+									<div style={styles.flex2}>
+										<p style={styles.website}>Website: </p>
+										<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
+									</div>
+								</li>
+							</ul>
+							<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>	
+							<Link to={'/favorites/'}>
+            					<button style={styles.faveButton}>Add to Favorites</button>
+            				</Link>
 						</div>
 					</div>
-
+    
 					<div style={{
 						margin: '30px 0px 0px'
 					}}>
@@ -175,6 +262,8 @@ class Results extends Component {
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
 		)
 	}
 }
