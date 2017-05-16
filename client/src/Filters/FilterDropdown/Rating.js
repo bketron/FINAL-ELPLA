@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {updateRating} from '../../api/yelpapi.js'
+
 var stars = {
     star1solid: 'none',
     star1half: 'none',
@@ -36,67 +38,6 @@ class Rating extends Component {
         }
     }
 
-    setSearchRating = (event, value) => {
-        console.log(value)
-        console.log(event.target.name)
-
-        if(value === 1){
-            stars.star1empty = 'none'
-            stars.star1solid = 'block'
-
-            stars.star2empty = 'block'
-            stars.star2solid = 'none'
-
-            stars.star3empty = 'block'
-            stars.star3solid = 'none'
-
-            stars.star4empty = 'block'
-            stars.star4solid = 'none'
-        }
-
-        if(value === 2){
-            stars.star1empty = 'none'
-            stars.star1solid = 'block'
-
-            stars.star2empty = 'none'
-            stars.star2solid = 'block'
-
-            stars.star3empty = 'block'
-            stars.star3solid = 'none'
-
-            stars.star4empty = 'block'
-            stars.star4solid = 'none'
-        }
-
-        if(value === 3){
-            stars.star1empty = 'none'
-            stars.star1solid = 'block'
-
-            stars.star2empty = 'none'
-            stars.star2solid = 'block'
-
-            stars.star3empty = 'none'
-            stars.star3solid = 'block'
-
-            stars.star4empty = 'block'
-            stars.star4solid = 'none'
-        }
-
-        if(value === 4){
-            stars.star1empty = 'none'
-            stars.star1solid = 'block'
-
-            stars.star2empty = 'none'
-            stars.star2solid = 'block'
-
-            stars.star3empty = 'none'
-            stars.star3solid = 'block'
-
-            stars.star4empty = 'none'
-            stars.star4solid = 'block'
-        }
-    }
-
     toggleOneStar = (e) => {
             this.setState({
                 searchRating: 1,
@@ -112,7 +53,7 @@ class Rating extends Component {
                 star5empty: 'block'
             })
 
-            console.log('1 star', this.state.searchRating)
+            updateRating(1)
     }
 
     toggleTwoStar = (e) => {
@@ -130,7 +71,7 @@ class Rating extends Component {
                 star5empty: 'block'
             })
 
-            console.log('2 stars', this.state.searchRating)
+            updateRating(2)
     }
 
     toggleThreeStar = (e) => {
@@ -148,7 +89,7 @@ class Rating extends Component {
                 star5empty: 'block'
             })
 
-            console.log('3 stars', this.state.searchRating)
+            updateRating(3)
     }
 
     toggleFourStar = (e) => {
@@ -166,7 +107,7 @@ class Rating extends Component {
                 star5empty: 'block'
             })
 
-            console.log('4 stars', this.state.searchRating)
+            updateRating(4)
     }
 
     toggleFiveStar = (e) => {
@@ -184,7 +125,7 @@ class Rating extends Component {
                 star5empty: 'none'
             })
 
-            console.log('5 stars', this.state.searchRating)
+            updateRating(5)
     }
 
     render() {

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
+import {updateActTypes} from '../../api/yelpapi.js'
+
 const types = [
     'Movie',
     'Shooting Range',
@@ -19,6 +21,8 @@ class ActivityTypes extends Component {
         this.setState({
             types: values
         })
+
+        updateActTypes(values)
     }
 
     menuItems(values) {

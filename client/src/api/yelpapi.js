@@ -10,7 +10,6 @@ export function getRestaurants(searchObj) {
 	console.log(searchObj.price)
 	if(searchObj.price !== ''){
 		axios.get('http://localhost:3001/yelpstuff?term=tasty&location=89105&price=' + searchObj.price).then(function(resp){
-			console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
 				restaurants: resp.data.businesses
@@ -18,7 +17,6 @@ export function getRestaurants(searchObj) {
 		})
 	} else {
 		axios.get(`http://localhost:3001/yelpstuff?term=tasty&location=89105&price=1,2,3,4`).then(function(resp){	
-			console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
 				restaurants: resp.data.businesses
@@ -41,7 +39,6 @@ export function getActivities(searchObj) {
 	console.log(searchObj.price)
 	if(searchObj.price !== ''){
 		axios.get('http://localhost:3001/yelpstuff?term=fun&location=89105&price=' + searchObj.price).then(function(resp){
-			console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',
 				activities: resp.data.businesses
@@ -49,7 +46,6 @@ export function getActivities(searchObj) {
 		})
 	} else {
 		axios.get(`/yelpstuff?term=fun&location=89105&price=1,2,3,4`).then(function(resp){	
-			console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',
 				activities: resp.data.businesses
@@ -62,5 +58,41 @@ export function addLocations(stops) {
 	store.dispatch({
 		type: 'ADD_LOCATIONS',
 		stops
+	})
+}
+
+
+export function updateRadius(radius) {
+	store.dispatch({
+		type: 'UPDATE_RADIUS',
+		radius
+	})
+}
+
+export function updateRating(rating) {
+	store.dispatch({
+		type: 'UPDATE_RATING',
+		rating
+	})
+}
+
+export function updateFoodTypes(types) {
+	store.dispatch({
+		type: 'UPDATE_FOODTYPES',
+		types
+	})
+}
+
+export function updateActTypes(types) {
+	store.dispatch({
+		type: 'UPDATE_ACTTYPES',
+		types
+	})
+}
+
+export function updateDelivery(delivery) {
+	store.dispatch({
+		type: 'UPDATE_DELIVERY',
+		delivery
 	})
 }

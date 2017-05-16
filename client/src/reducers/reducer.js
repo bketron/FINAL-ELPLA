@@ -4,7 +4,12 @@ const initialState = {
     activities: [],
     filters: {},
     directions: {},
-    username:''
+    username:'',
+    delivery: false,
+    searchRadius: '',
+    searchRating: '',
+    foodTypes: {},
+    actTypes: {}
 }
 
 export default function yelpReducer(state=initialState, action) {
@@ -21,6 +26,17 @@ export default function yelpReducer(state=initialState, action) {
             return {...state, directions: action.stops}
         case 'SAVE_USERNAME':
             return {...state, username: action.username}
+        case 'UPDATE_RADIUS':
+            console.log(action)
+            return {...state, searchRadius: action.radius}
+        case 'UPDATE_RATING':
+            return {...state, searchRating: action.rating}
+        case 'UPDATE_FOODTYPES':
+            return {...state, foodTypes: action.types}
+        case 'UPDATE_ACTTYPES':
+            return {...state, actTypes: action.types}
+        case 'UPDATE_DELIVERY':
+            return {...state, delivery: action.delivery}
       default:
           return state
     }

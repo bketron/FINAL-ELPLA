@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Slider from 'material-ui/Slider'
 
+import {updateRadius} from '../../api/yelpapi.js'
+
 
 class RadiusSlider extends Component {
     state = {
@@ -8,8 +10,11 @@ class RadiusSlider extends Component {
     }
 
     handleSlider = (event, value) => {
-        this.setState({sliderVal: value});
-        console.log(this.state.sliderVal, 'state')
+        this.setState({sliderVal: value})
+    }
+
+    updateRadius = (e) => {
+        updateRadius(this.state.sliderVal)
     }
 
     render() {
@@ -35,6 +40,7 @@ class RadiusSlider extends Component {
                     step={0.1}
                     value={this.state.sliderVal}
                     onChange={this.handleSlider}
+                    onDragStop={this.updateRadius}
                     sliderStyle={{
                         fill: 'orange',
                         width: '200px'
