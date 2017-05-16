@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
-
 import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider'
 
 class Social extends Component {
     constructor(props){

@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField'
 // import SelectField from 'material-ui/SelectField'
 // import MenuItem from 'material-ui/MenuItem'
-import {addFilters} from '../api/filter.js'
-import FilterPanel from '../Filters/FilterPanel.js'
-import {generateDate} from '../api/yelpapi'
+import FilterDrop from '../Filters/FilterDropdown/FilterDrop.js'
 import {getRestaurants, getActivities} from '../api/yelpapi'
 
 const styles = {
@@ -189,7 +186,7 @@ class DateForm extends Component {
                         menuItemStyle={{
                             width: '100%'
                         }}
-                        iconStyle = {{
+                        iconStyle={{
                             border: '10px',
                             boxSizing: 'border-box',
                             display: 'inline-block',
@@ -242,7 +239,7 @@ class DateForm extends Component {
                                 left: '15px',
                                 color: 'black'
                             }}
-                            inputStyle = {{
+                            inputStyle={{
                                 lineHeight: '40px',
                                 fontSize: '17px',
                                 padding: '0px 15px'
@@ -270,7 +267,7 @@ class DateForm extends Component {
                                 left: '15px',
                                 color: 'black'
                             }}
-                            inputStyle = {{
+                            inputStyle={{
                                 lineHeight: '40px',
                                 fontSize: '17px',
                                 padding: '0px 15px'
@@ -282,7 +279,8 @@ class DateForm extends Component {
                         />
                     </div>
 
-                    <FilterPanel />
+                    <FilterDrop />
+                    {/*<FilterPanel />*/}
                     
                     <button style={styles.generateButton} type="submit">Generate</button>
                 </form>

@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import Username from '../CharlesComponents/Username'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import FlatButton from 'material-ui/FlatButton'
-
 import SocialMenu from './SocialMenu'
 
 const styles = {
@@ -52,6 +53,9 @@ const styles = {
 }
 
 class TopBar extends Component {
+    
+   
+
     render(){
         return (
             <div style={styles.container}>
@@ -127,11 +131,44 @@ class TopBar extends Component {
                                 </div>
                             </FlatButton>   
                         </li>
+                        <li style={styles.listItem}><div style={styles.divLine}></div></li>
+                        <li style={styles.listItem}>
+                           <FlatButton
+                                style={{
+                                    height: '23px'
+                                }}
+                            >
+                                <div>
+                                    <div style={{
+                                        textDecoration: 'none',
+                                        fontSize: '13px',
+                                        fontFamily: 'Pontano Sans, sans-serif',
+                                        textTransform: 'normal',
+                                        lineHeight: '23px',
+                                        color: 'rgba(125,125,125,0.6)',
+                                        position: 'relative',
+                                        top: '0px',
+                                        width: '100px',
+                                        display: 'inlineBlock'
+                                    }}>
+
+                                    {this.props.username ? this.props.username : <Username />}
+                                    </div>
+                                </div>
+                            </FlatButton>
+                        </li>
                     </ul>
+                    
                 </div>
             </div>
         )
     }
 }
 
-export default TopBar
+
+function mapStateToProps(appState) {
+  return {
+    username: appState.username
+  }
+}
+export default connect(mapStateToProps)(TopBar)

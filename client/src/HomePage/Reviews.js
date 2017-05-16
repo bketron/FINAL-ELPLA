@@ -65,38 +65,38 @@ class Reviews extends Component {
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
                             <div>
-                                <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                                <p style={styles.reviewText}>This is a review of a random meal generator I found on the internet. I was mad hungry and clicking around and found elPla. The thing looked alright and gave me a couple cool suggestions so I guess I could us it next time the munchies hit. <span style={styles.reviewerName}>- StonedDude420</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                             </div>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>I can’t believe I’ve never heard of this app before! I used to have to decide things and that made me SO angry. Not any more. Thanks elPla! <span style={styles.reviewerName}>- Anonymous</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>This app is like a gift from god. It tells me where to go in a seemingly arbitrary manner,  I can pick and choose the parts I like, and pretend the rest don't exist. Bless you elPla. <span style={styles.reviewerName}>- GodsServant25</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>Does this thing keep track of my whereabouts!? Does the foil protect me!? Where are your contrails now, huh? I’m on to you elPla. <span style={styles.reviewerName}>- Anonymous</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>I would never have found that bouncy castle spot without this app. Much appreciated elPla.<span style={styles.reviewerName}>- CombatComic</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>When I was in a pinch and could not find a place I hadn't eaten at, elPla was there. When my husband devorced me for never eatting at the same place twice, elPla was there. When I needed to find a thing to do when I excaped from the institute, elpla was there. <span style={styles.reviewerName}>- IUseMyName</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
 
                         <div style={styles.reviewContainer}>
                             <div style={styles.userPic}></div>
-                            <p style={styles.reviewText}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <span style={styles.reviewerName}>- User Name</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+                            <p style={styles.reviewText}>Grand Tata, she is elPla app. So many for the finding of the food times, but there is wild pig time in the blocking of the farm. She is make big fight for the foods with pork eatting. Then she die. Thanking you elPla peoples. <span style={styles.reviewerName}>- IamRaduHello</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
                         </div>
                     </Slider>
                 </div>

@@ -4,6 +4,9 @@ import { addLocations } from '../api/yelpapi'
 import { Link } from 'react-router-dom'
 import TopBar from '../HomePage/TopBar'
 
+import TopBar from '../HomePage/TopBar'
+import RefreshIndicator from 'material-ui/RefreshIndicator'
+
 const styles = {
 	image: {
 		width:400,
@@ -92,11 +95,8 @@ const styles = {
 		fontSize: '14px',
 		fontWeight: 'bold',
 		borderRadius:5
-	}
+  }
 }
-
-var resId = 1
-var actId = 1
 
 class Results extends Component {
 	constructor(props) {
@@ -109,7 +109,10 @@ class Results extends Component {
 			activities: [],
 			act: {},
 			actAddress: '',
-			actLocation: {}
+			actLocation: {},
+			status: 'loading',
+			loaded: 'none',
+			loadDisp: 'block'
 		}
 	}
 
@@ -123,8 +126,14 @@ class Results extends Component {
 			resLocation: props.restaurants[resId].coordinates,
 			activities: props.activities,
 			act: props.activities[actId],
-			actLocation: props.activities[actId].coordinates
+			actLocation: props.activities[actId].coordinates,
+			status: 'hide',
+			loaded: 'block',
+			loadDisp: 'none'
 		})
+
+		styles.main.height = 'auto'
+		styles.main.overflow = 'initial'
 
 		console.log((Math.random() * props.restaurants.length).toFixed(0))
 	}
@@ -173,7 +182,7 @@ class Results extends Component {
 		console.log(this.state.act)
 		console.log(this.state.res)
 		return (
-		<div>
+		<div style={styles.main}>
 		<TopBar />
 		<div style={styles.container}>
 			<div style={styles.container}>
@@ -210,7 +219,6 @@ class Results extends Component {
             				</Link>
 						</div>
 					</div>
-				</div>
 
 				<div style={styles.activityContainer}>
 					<div style={styles.topBar}>
@@ -246,11 +254,12 @@ class Results extends Component {
             				</Link>
 						</div>
 					</div>
-				</div>
-
-				<div style={{
-					margin: '30px 0px'
-				}}>
+    
+					<div style={{
+						margin: '30px 0px 0px'
+					}}>
+						<button type="button" onClick={this.getDirections}>Get Directions</button>
+					</div>
 				</div>
 			</div>
 		</div>
