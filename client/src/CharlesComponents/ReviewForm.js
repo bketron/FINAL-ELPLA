@@ -2,6 +2,8 @@ import React from 'react'
 import {saveReview} from '../api/UserAPI'
 import {connect} from 'react-redux'
 
+import TextField from 'material-ui/TextField'
+
 class ReviewForm extends React.Component {
   constructor() {
     super()
@@ -24,11 +26,53 @@ class ReviewForm extends React.Component {
   }
   render() {
     return (
-      <div>
-        Review Form
-        <form onSubmit={this.handleSubmit}>
+      <div style={{
+        padding: '40px'
+      }}>
+        <p style={{
+          color: 'white',
+          textAlign: 'center',
+          fontSize: '30px'
+        }}>Tell us how we're doing!</p>
+
+        <form 
+          style={{
+            margin: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+          onSubmit={this.handleSubmit}>
           
-        	<input onChange={this.handleChange} type='textarea' placeholder='Write a review' name='review' value={this.state.review} />
+          <TextField
+              hintText="Max. Price (per person)"
+              onChange={this.handleChange}
+              name="review"
+              underlineFocusStyle={{borderColor: '#FF6E00'}}
+              value={this.state.review}
+              type="text"
+              style={{
+                  backgroundColor: 'white',
+                  height: '40px',
+                  width: '500px'
+              }}
+              hintStyle={{
+                  position: 'absolute',
+                  top: '8px',
+                  left: '15px',
+                  color: 'black'
+              }}
+              inputStyle={{
+                  lineHeight: '40px',
+                  fontSize: '17px',
+                  padding: '0px 15px'
+              }}
+              underlineStyle={{
+                  position: 'relative',
+                  top: '0px'
+              }}
+          />
+          
         	<button type='submit' onClick={this.handleSubmit}>Submit</button>
       	</form>
       </div>
