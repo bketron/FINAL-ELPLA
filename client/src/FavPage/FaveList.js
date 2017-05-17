@@ -60,21 +60,20 @@ const styles={
 }
 
 
-
-
 class FaveList extends React.Component {
   render() {
+    console.log(this.props, 'list bit')
     return (
       <div >
         <h1 style={styles.h1}>Saved List</h1>
         <div style={styles.container}>
-        {this.props.items.map((item, i) => {
+        {this.props.favorites.map((item, i) => {
           return (
             <div style={styles.box}> 
              <button style={styles.directionsButton} onClick={this.props.removeItem}>X</button>
-              <p style={styles.nop}>{item.text} </p>
-              <p style={styles.rates}>{item.rate}/10 </p>
-              <p style={styles.notes}>{item.note} </p>
+              <p style={styles.nop}>{item.actName} </p>
+              <p style={styles.rates}>{item.actAddress} </p>
+              <p style={styles.notes}>{item.actPhone} </p>
               
             </div>
           )

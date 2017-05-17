@@ -82,5 +82,8 @@ export function getFavorites() {
 
 socket.on('get favorites', function(favorites){
 	console.log(favorites, 'api')
-	return favorites
+	store.dispatch({
+		type: 'GET_FAVORITES',
+		favorites
+	})
 })

@@ -27,7 +27,10 @@ export default function yelpReducer(state=initialState, action) {
         case 'SAVE_REVIEW':
             return {...state, name: action.name, review: action.review}
         case 'UPDATE_FAVORITES':
+            console.log(state.favorites, 'reducer')
             return {...state, favorites: action.favorites}
+        case 'GET_FAVORITES':
+            return {state, favorites: action.favorites}
       default:
           return state
     }
