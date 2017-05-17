@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
 import FlatButton from 'material-ui/FlatButton'
+import { addToFavorites } from '../api/yelpapi'
 
 const styles = {
 	main: {
@@ -193,6 +194,21 @@ class Activity extends Component {
 
 		this.props.history.push('/directions/single')
 	}
+
+   addFavorite = (event) => {
+        var act = this.state.act
+
+        var favObj = {
+            actName: act.name,
+            actPhone: act.display_phone,
+            actAddress: this.state.actAddress,
+            actRating: this.state.actRating
+        }
+
+        console.log(favObj)
+
+        addToFavorites(favObj)
+    }
 
 	render() {
 		console.log(this.state)
