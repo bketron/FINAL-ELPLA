@@ -66,8 +66,21 @@ export function addLocations(stops) {
 }
 
 export function addToFavorites(date) {
-	store.dispatch({
-		type: 'ADD_TO_FAVORITES',
-		date
-	})
+	socket.emit('add favorite', date)
 }
+
+socket.on('new fav', function(favorites){
+	store.dispatch({
+		type: 'UPDATE_FAVORITES',
+		favorites
+	})
+})
+
+export function getFavorites() {
+	socket.emit('get favorites')
+}
+
+socket.on('get favorites', function(favorites){
+	console.log(favorites)
+	return favorites
+})

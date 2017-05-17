@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
-import Rating from './ResultRating'
 
 import { addToFavorites } from '../api/yelpapi'
 
@@ -300,7 +299,7 @@ class MealActResultsNew extends Component {
                             <img style={styles.image} src={this.state.res.image_url} alt={ this.state.res.name + 'Cover Image'} />
 
                             <p style={styles.dispName}>{this.state.res.name} - <span style={{color: '#282828'}}>{this.state.res.price}</span></p>
-                            <p style={styles.dispRating}>{this.state.resRating}</p>
+                            <div style={styles.dispRating}>{this.state.resRating}</div>
                             <p style={styles.dispPhone}>{this.state.res.display_phone}</p>
                             <p style={styles.dispAddress}>{this.state.resAddress}</p>
                             <a style={styles.dispLink} href={this.state.res.url}>Yelp Page</a>
@@ -328,7 +327,7 @@ class MealActResultsNew extends Component {
                             <img style={styles.image} src={this.state.act.image_url} alt={ this.state.act.name + 'Cover Image'} />
 
                             <p style={styles.dispName}>{this.state.act.name} - <span style={{color: '#282828'}}>{this.state.act.price}</span></p>
-                            <p style={styles.dispRating}>{this.state.actRating}</p>
+                            <div style={styles.dispRating}>{this.state.actRating}</div>
                             <p style={styles.dispPhone}>{this.state.act.display_phone}</p>
                             <p style={styles.dispAddress}>{this.state.actAddress}</p>
                             <a style={styles.dispLink} href={this.state.act.url}>Yelp Page</a>
