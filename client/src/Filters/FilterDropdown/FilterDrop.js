@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import Popover from 'material-ui/Popover'
-import IconButton from 'material-ui/IconButton'
-import FlatButton from 'material-ui/FlatButton'
 
 import RadiusSlider from './RadiusSlider'
 import FoodTypes from './FoodTypes'

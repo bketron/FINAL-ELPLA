@@ -19,6 +19,8 @@ const mysql = require('mysql');
 
 // connection.connect()
 
+const favorites = []
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
@@ -132,8 +134,17 @@ app.get('/yelpstuff', function(req, res){
 	})
 }),
 
-io.on('connection', function(socket){
 
+io.on('connection', function(socket){
+	socket.on('add favorite', function(date){
+		favorites.push(date)
+		io.emit('new fav', favorites)
+	})
+
+	socket.on('get favorites', function(){
+		io.emit('get favorites', favorites)
+	})
+	
 })
 
 
