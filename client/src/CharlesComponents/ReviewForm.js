@@ -3,6 +3,7 @@ import {saveReview} from '../api/UserAPI'
 import {connect} from 'react-redux'
 
 import TextField from 'material-ui/TextField'
+import FlatButton from 'material-ui/FlatButton'
 
 class ReviewForm extends React.Component {
   constructor() {
@@ -72,8 +73,25 @@ class ReviewForm extends React.Component {
                   top: '0px'
               }}
           />
+
+          <FlatButton
+            style={{
+              backgroundColor: '#FF6E00',
+              cursor: 'pointer'
+            }}
+          >
+            <button
+              type="submit"
+              style={{
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                cursor: 'pointer'
+              }}>
+                Submit Review!
+              </button>
+          </FlatButton>
           
-        	<button type='submit' onClick={this.handleSubmit}>Submit</button>
       	</form>
       </div>
     )
