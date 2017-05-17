@@ -239,7 +239,18 @@ class Reviews extends Component {
                                 backgroundPosition: '-120px 0px',
                                 boxShadow: '0px 3px 0px #FF6E00'
                             }}></div>
-                            <p style={styles.reviewText}>Grand Tata, she is elPla app. So many for the finding of the food times, but there is wild pig time in the blocking of the farm. She is make big fight for the foods with pork eatting. Then she die. Thanking you elPla peoples. <span style={styles.reviewerName}>- IamRaduHello</span> <span style={styles.reviewTime}>(Time Stamp)</span></p>
+
+                            <p style={styles.reviewText}>
+                                <span style={{
+                                        color: 'rgba(0,0,0,0.5)',
+                                        fontStyle: 'italic'
+                                    }}>"Grand Tata, she is elPla app. So many for the finding of the food times, but there is wild pig time in the blocking of the farm. She is make big fight for the foods with pork eatting. Then she die. Thanking you elPla peoples."</span>
+                                <span style={{
+                                        color: 'rgba(0,0,0,0.5)',
+                                        marginLeft: '5px',
+                                        fontWeight: 'bold'
+                                    }}>- IamRaduHello</span>
+                            </p>
                         </div>
                     </Slider>
                 </div>
