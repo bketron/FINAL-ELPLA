@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
+import {updateFoodTypes} from '../../api/yelpapi.js'
+
 const types = [
     'American',
+    'Bars',
     'Chinese',
     'French',
     'Italian',
@@ -22,6 +25,9 @@ class FoodTypes extends Component {
         this.setState({
             types: values
         })
+
+        updateFoodTypes(values)
+        this.props.callback(values)
     }
 
     menuItems(values) {
@@ -31,6 +37,7 @@ class FoodTypes extends Component {
                 insetChildren={true}
                 checked={values && values.includes(type)}
                 value={type.toLowerCase()}
+                name={type.toLowerCase()}
                 primaryText={type}
             />
         ))

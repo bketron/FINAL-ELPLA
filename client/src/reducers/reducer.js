@@ -6,6 +6,11 @@ const initialState = {
     filters: {},
     directions: {},
     username:'',
+    delivery: false,
+    searchRadius: '',
+    searchRating: '',
+    foodTypes: {},
+    actTypes: {},
     review: '',
     name: ''
 }

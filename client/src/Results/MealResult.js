@@ -147,7 +147,11 @@ class Meal extends Component {
 			location: {},
 			status: 'loading',
 			loaded: 'none',
-			loadDisp: 'block'
+			loadDisp: 'block',
+			searchRadius: '',
+			searchRating: '',
+			foodTypes: {},
+			delivery: false
 		}
 	}
 
@@ -158,10 +162,15 @@ class Meal extends Component {
 			restaurants: props.restaurants,
 			res: props.restaurants[id],
 			location: props.restaurants[id].coordinates,
+			searchRadius: props.searchRadius,
+			searchRating: props.searchRating,
+			foodTypes: props.foodTypes,
+			delivery: props.delivery,
 			status: 'hide',
 			loaded: 'block',
 			loadDisp: 'none'
 		})
+
 	}
 
 	newRes = (e) => {
@@ -191,8 +200,6 @@ class Meal extends Component {
 	}
 
 	render() {
-		console.log(this.state)
-		console.log(this.state.location)
 		return (
 			<div style={styles.main}>
 				<section>
@@ -300,7 +307,11 @@ class Meal extends Component {
 
 const mapStateToProps = function(appState) {
 	return {
-		restaurants: appState.restaurants
+		restaurants: appState.restaurants,
+		searchRadius: appState.searchRadius,
+		searchRating: appState.searchRating,
+		foodTypes: appState.foodTypes,
+		delivery: appState.delivery
 	}
 }
 
