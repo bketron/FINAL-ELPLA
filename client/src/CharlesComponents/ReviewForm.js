@@ -28,8 +28,9 @@ class ReviewForm extends React.Component {
   render() {
     return (
       <div style={{
-        padding: '100px 40px'
+            background: 'url(https://upload.wikimedia.org/wikipedia/commons/3/3d/Jumbo_Floating_Restaurant_-_Outside.jpg)',
       }}>
+        <section style={{background: 'rgba(43,26,0,0.8)', padding: '100px 40px'}}>
         <p style={{
           color: 'white',
           textAlign: 'center',
@@ -84,11 +85,12 @@ class ReviewForm extends React.Component {
           />
 
           <FlatButton
+            rippleColor="rgba(255,255,255,0.5)"
             style={{
               backgroundColor: '#FF6E00',
               cursor: 'pointer',
               padding: '0px 10px',
-              marginTop: '20px'
+              marginTop: '20px',
             }}
           >
             <button
@@ -100,13 +102,15 @@ class ReviewForm extends React.Component {
                 cursor: 'pointer',
                 fontFamily: 'Roboto, sans-serif',
                 fontSize: '14px',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                color: '#0B3954',
               }}>
                 Submit Review!
               </button>
           </FlatButton>
 
       	</form>
+        </section>
       </div>
     )
   }
