@@ -28,12 +28,19 @@ class ReviewForm extends React.Component {
   render() {
     return (
       <div style={{
-        padding: '40px'
+        padding: '100px 40px'
       }}>
         <p style={{
           color: 'white',
           textAlign: 'center',
-          fontSize: '30px'
+          fontSize: '14px',
+          margin: '0px'
+        }}>We really appreciate constructive criticism.</p>
+        <p style={{
+          color: 'white',
+          textAlign: 'center',
+          fontSize: '35px',
+          margin: '0px 0px 50px 0px'
         }}>Tell us how we're doing!</p>
 
         <form 
@@ -46,20 +53,22 @@ class ReviewForm extends React.Component {
           onSubmit={this.handleSubmit}>
           
           <TextField
-              hintText="Max. Price (per person)"
+              hintText="Write your review here..."
               onChange={this.handleChange}
               name="review"
               underlineFocusStyle={{borderColor: '#FF6E00'}}
               value={this.state.review}
               type="text"
+              multiLine={true}
+              rowsMax = {6}
               style={{
                   backgroundColor: 'white',
                   height: '40px',
-                  width: '500px'
+                  width: '600px'
               }}
               hintStyle={{
                   position: 'absolute',
-                  top: '8px',
+                  top: '22px',
                   left: '15px',
                   color: 'black'
               }}
@@ -77,7 +86,9 @@ class ReviewForm extends React.Component {
           <FlatButton
             style={{
               backgroundColor: '#FF6E00',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              padding: '0px 10px',
+              marginTop: '20px'
             }}
           >
             <button
@@ -86,12 +97,15 @@ class ReviewForm extends React.Component {
                 background: 'none',
                 border: 'none',
                 outline: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontFamily: 'Roboto, sans-serif',
+                fontSize: '14px',
+                textTransform: 'uppercase'
               }}>
                 Submit Review!
               </button>
           </FlatButton>
-          
+
       	</form>
       </div>
     )
