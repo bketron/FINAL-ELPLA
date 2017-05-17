@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
+import FlatButton from 'material-ui/FlatButton'
 
 const styles = {
 	main: {
@@ -212,6 +213,24 @@ class Meal extends Component {
 						/>
 
 					<div style={{display: this.state.loaded}}>
+						<FlatButton
+                        backgroundColor="rgba(100,100,100,0.1)"
+                        style={{
+                            color: '#0B3954',
+                            padding: '0px 12px'
+                        }}
+                        hoverColor="#FF6E00"
+                    >
+                        <button style={{
+                            background: 'none',
+                            border: 'none',
+                            outline: 'none',
+                            fontFamily: 'Roboto, sans-serif',
+                            fontSize: '14px',
+                            textTransform: 'uppercase'
+                        }}
+                        type="button" onClick={this.addFavorite}>Add this to your favorites!</button>
+                    </FlatButton>
 						<div style={styles.resContainer}>
 							<div style={styles.topBar}>
 								<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
