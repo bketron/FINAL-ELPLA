@@ -90,7 +90,7 @@ class Social extends Component {
 
                     <MenuItem>
                         <div>
-                            <a href="http://www.facebook.com" style={{textDecoration: 'none', color: '#3b5998'}}>
+                            <a href="https://www.facebook.com/El-Pla-1967050763529199/" style={{textDecoration: 'none', color: '#3b5998'}}>
                                 <div>
                                     <i style={{
                                         color: '#3b5998',
@@ -104,7 +104,7 @@ class Social extends Component {
 
                     <MenuItem>
                         <div>
-                            <a href="http://www.instagram.com" style={{textDecoration: 'none', color: '#e95950'}}>
+                            <a href="http://www.instagram.com/elplaapp" style={{textDecoration: 'none', color: '#e95950'}}>
                                 <div>
                                     <i style={{
                                         color: '#e95950',

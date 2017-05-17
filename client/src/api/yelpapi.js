@@ -7,10 +7,10 @@ const socket = io.connect('http://localhost:3001')
 
 
 export function getRestaurants(searchObj) {
-	console.log(searchObj.price)
+	// console.log(searchObj.price)
 	if(searchObj.price !== ''){
 		axios.get('http://localhost:3001/yelpstuff?term=tasty&location=89105&price=' + searchObj.price).then(function(resp){
-			console.log(resp.data.businesses)
+			// console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
 				restaurants: resp.data.businesses
@@ -18,7 +18,7 @@ export function getRestaurants(searchObj) {
 		})
 	} else {
 		axios.get(`http://localhost:3001/yelpstuff?term=tasty&location=89105&price=1,2,3,4`).then(function(resp){	
-			console.log(resp.data.businessses)
+			// console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_RESTAURANTS',
 				restaurants: resp.data.businesses
@@ -28,7 +28,7 @@ export function getRestaurants(searchObj) {
 }
 
 export function getRestaurant(id) {
-	console.log(id)
+	// console.log(id)
 	axios.get(`http://localhost:3001/yelprest?bussinessId=${id.restId}`).then(function(response){
 		store.dispatch({
 			type: 'SINGLE_RESTAURANT',
@@ -38,10 +38,10 @@ export function getRestaurant(id) {
 }
 
 export function getActivities(searchObj) {
-	console.log(searchObj.price)
+	// console.log(searchObj.price)
 	if(searchObj.price !== ''){
 		axios.get('http://localhost:3001/yelpstuff?term=fun&location=89105&price=' + searchObj.price).then(function(resp){
-			console.log(resp.data.businesses)
+			// console.log(resp.data.businesses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',
 				activities: resp.data.businesses
@@ -49,7 +49,7 @@ export function getActivities(searchObj) {
 		})
 	} else {
 		axios.get(`/yelpstuff?term=fun&location=89105&price=1,2,3,4`).then(function(resp){	
-			console.log(resp.data.businessses)
+			// console.log(resp.data.businessses)
 			store.dispatch({
 				type: 'ADD_ACTIVITIES',
 				activities: resp.data.businesses
@@ -81,6 +81,6 @@ export function getFavorites() {
 }
 
 socket.on('get favorites', function(favorites){
-	console.log(favorites)
+	console.log(favorites, 'api')
 	return favorites
 })

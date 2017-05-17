@@ -60,12 +60,12 @@ class Footer extends Component {
                             </a>
                         </li>
                         <li style={styles.listItem}>
-                            <a href="https://www.facebook.com/">
+                            <a href="https://www.facebook.com/El-Pla-1967050763529199/">
                                 <i style={styles.socialIcon} className="fa fa-facebook" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li style={styles.listItem}>
-                            <a href="https://www.instagram.com/">
+                            <a href="http://www.instagram.com/elplaapp">
                                 <i style={styles.socialIcon} className="fa fa-instagram" aria-hidden="true"></i>
                             </a>
                         </li>

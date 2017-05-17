@@ -1,4 +1,6 @@
 import React from 'react'
+import Favorites from './Favorites'
+import {connect} from 'react-redux'
 
 
 const styles={
@@ -59,7 +61,8 @@ const styles={
 
 
 
-export default class FaveList extends React.Component {
+
+class FaveList extends React.Component {
   render() {
     return (
       <div >
@@ -81,3 +84,11 @@ export default class FaveList extends React.Component {
     )     
   }
 }
+const mapStateToProps = function(appState) {
+    console.log(appState.favorites, 'bot')
+    return {
+        favorites: appState.favorites
+    }
+}
+
+export default connect(mapStateToProps)(FaveList)
