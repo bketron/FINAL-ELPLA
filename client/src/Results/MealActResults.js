@@ -164,7 +164,7 @@ class Results extends Component {
 
 	getDirections = (e) => {
 		e.preventDefault()
-		
+		console.log('getDirections')
 		addLocations({
 			lat1: this.state.resLocation.latitude,
 			long1: this.state.resLocation.longitude,
