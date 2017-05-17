@@ -292,9 +292,6 @@ class Activity extends Component {
 					}}>
 						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
 					</div>
-					<Link to={'/favorites/'}>
-            			<button style={styles.faveButton}>Add to Favorites</button>
-            		</Link>
 				</div>
 			</section>
 			</div>
