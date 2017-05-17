@@ -6,6 +6,7 @@ import {updateFoodTypes} from '../../api/yelpapi.js'
 
 const types = [
     'American',
+    'Bars',
     'Chinese',
     'French',
     'Italian',
@@ -26,6 +27,7 @@ class FoodTypes extends Component {
         })
 
         updateFoodTypes(values)
+        this.props.callback(values)
     }
 
     menuItems(values) {

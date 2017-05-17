@@ -17,6 +17,7 @@ class Delivery extends Component {
             })
 
             updateDelivery(true)
+            this.props.parentCallback(true)
         } else {
             this.setState({
                 delivery: false,
@@ -24,6 +25,7 @@ class Delivery extends Component {
             })
 
             updateDelivery(false)
+            this.props.parentCallback(false)
         }
 
 

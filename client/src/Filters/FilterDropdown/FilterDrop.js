@@ -15,8 +15,42 @@ class FilterDrop extends Component {
         this.state = {
             open: false,
             searchRadius: 12.5,
-            delivery: false
+            delivery: false,
+            foodTypes: [],
+            actTypes: []
         }
+    }
+
+    deliveryCallback = (data) => {
+        console.log(data)
+
+        this.setState({
+            delivery: data
+        })
+    }
+
+    radiusCallback = (radius) => {
+        console.log(radius)
+
+        this.setState({
+            searchRadius: radius
+        })
+    }
+
+    foodCallback = (types) => {
+        console.log(types)
+
+        this.setState({
+            foodTypes: types
+        })
+    }
+
+    actCallback = (types) => {
+        console.log(types)
+
+        this.setState({
+            actTypes: types
+        })
     }
 
     handleTouchTap = (e) => {
@@ -32,6 +66,8 @@ class FilterDrop extends Component {
         this.setState({
             open: false,
         })
+
+        this.props.callback(this.state)
     }
 
     render() {
@@ -87,11 +123,11 @@ class FilterDrop extends Component {
                             <div style={{
                                 display: 'flex'
                             }}>
-                                <Delivery />
+                                <Delivery parentCallback={this.deliveryCallback} />
                                 <Rating />
                             </div>
 
-                            <RadiusSlider />
+                            <RadiusSlider callback={this.radiusCallback} />
                             
 
 
@@ -102,8 +138,8 @@ class FilterDrop extends Component {
                                 flexDirection: 'column',
                                 alignItems: 'center'
                             }}>
-                            <FoodTypes />
-                            <ActivityTypes />
+                            <FoodTypes callback={this.foodCallback} />
+                            <ActivityTypes callback={this.actCallback} />
                         </div>
                         
                     </div>

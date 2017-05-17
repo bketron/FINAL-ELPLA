@@ -15,6 +15,7 @@ class RadiusSlider extends Component {
 
     updateRadius = (e) => {
         updateRadius(this.state.sliderVal)
+        this.props.callback(this.state.sliderVal)
     }
 
     render() {

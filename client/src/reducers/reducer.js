@@ -33,17 +33,6 @@ export default function yelpReducer(state=initialState, action) {
             return {...state, name: action.name, review: action.review}
         case 'UPDATE_FAVORITES':
             return {...state, favorites: action.favorites}
-        case 'UPDATE_RADIUS':
-            console.log(action)
-            return {...state, searchRadius: action.radius}
-        case 'UPDATE_RATING':
-            return {...state, searchRating: action.rating}
-        case 'UPDATE_FOODTYPES':
-            return {...state, foodTypes: action.types}
-        case 'UPDATE_ACTTYPES':
-            return {...state, actTypes: action.types}
-        case 'UPDATE_DELIVERY':
-            return {...state, delivery: action.delivery}
       default:
           return state
     }

@@ -23,6 +23,7 @@ class ActivityTypes extends Component {
         })
 
         updateActTypes(values)
+        this.props.callback(values)
     }
 
     menuItems(values) {
