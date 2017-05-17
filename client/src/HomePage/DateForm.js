@@ -168,23 +168,44 @@ class DateForm extends Component {
 
         if(this.state.delivery === true) {delivery = 'delivery'}
 
-        getRestaurants({
-            price: priceRange,
-            delivery: delivery,
-            searchRadius: this.state.searchRadius * 1000,
-            foodTypes: foodTypes
-        })
+        if(this.state.dateType === 'meal'){
+            getRestaurants({
+                price: priceRange,
+                delivery: delivery,
+                searchRadius: this.state.searchRadius * 1000,
+                foodTypes: foodTypes
+            })
+        }
 
-        getActivities({
-            price: priceRange,
-            searchRadius: this.state.searchRadius * 1000,
-            actTypes: this.state.actTypes
-        })
+        if(this.state.dateType === 'entertainment') {
+            getActivities({
+                price: priceRange,
+                searchRadius: this.state.searchRadius * 1000,
+                actTypes: this.state.actTypes
+            })     
+        }
 
-        // if(this.state.dateType === ''){this.props.history.push('/results/meal+act')}
-        // if(this.state.dateType === 'meal'){this.props.history.push('/results/meal')}
-        // if(this.state.dateType === 'entertainment'){this.props.history.push('/results/activity')}
-        // if(this.state.dateType === 'both'){this.props.history.push('/results/meal+act')}
+        if(this.state.dateType === 'both' || this.state.dateType === '') {
+            getRestaurants({
+                price: priceRange,
+                delivery: delivery,
+                searchRadius: this.state.searchRadius * 1000,
+                foodTypes: foodTypes
+            })
+
+            getActivities({
+                price: priceRange,
+                searchRadius: this.state.searchRadius * 1000,
+                actTypes: this.state.actTypes
+            }) 
+        }
+
+        
+
+        if(this.state.dateType === ''){this.props.history.push('/results/meal+act')}
+        if(this.state.dateType === 'meal'){this.props.history.push('/results/meal')}
+        if(this.state.dateType === 'entertainment'){this.props.history.push('/results/activity')}
+        if(this.state.dateType === 'both'){this.props.history.push('/results/meal+act')}
     }
 
     render() {

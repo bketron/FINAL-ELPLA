@@ -42,7 +42,7 @@ export function getRestaurant(id) {
 
 export function getActivities(searchObj) {
 	console.log(searchObj)
-	var url = `http://localhost:3001/yelpstuff?term=fun&location=89105&radius=${searchObj.searchRadius}`
+	var url = `http://localhost:3001/yelpstuff?term=fun&location=89105&radius_filter=${searchObj.searchRadius}&price=1,2,3,4`
 
 	if(searchObj.price !== '') {
 		url = url + '&price=' + searchObj.price

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addLocations } from '../api/yelpapi'
 import { Link } from 'react-router-dom'
+import FlatButton from 'material-ui/FlatButton'
+import { addToFavorites }from '../api/yelpapi'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
@@ -185,6 +187,21 @@ class Meal extends Component {
 		console.log(this.state)
 	}
 
+    addFavorite = (event) => {
+        var res = this.state.res
+
+        var favObj = {
+            resName: res.name,
+            resPhone: res.display_phone,
+            resAddress: this.state.resAddress,
+            resRating: this.state.resRating
+        }
+
+        console.log(favObj)
+
+        addToFavorites(favObj)
+    }
+
 	getDirections = (e) => {
 		e.preventDefault()
 
@@ -219,6 +236,25 @@ class Meal extends Component {
 						/>
 
 					<div style={{display: this.state.loaded}}>
+						<FlatButton
+                        	backgroundColor="rgba(100,100,100,0.1)"
+                        	style={{
+                            	color: '#0B3954',
+                            	padding: '0px 12px'
+                        	}}
+                        	hoverColor="#FF6E00"
+                    	>
+                        	<button style={{
+                            	background: 'none',
+                            	border: 'none',
+                            	outline: 'none',
+                            	fontFamily: 'Roboto, sans-serif',
+                            	fontSize: '14px',
+                            	textTransform: 'uppercase'
+                        	}}
+                        	type="button" onClick={this.addFavorite}>Add this to your favorites!</button>
+                    	</FlatButton>
+
 						<div style={styles.resContainer}>
 							<div style={styles.topBar}>
 								<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
