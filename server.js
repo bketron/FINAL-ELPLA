@@ -19,10 +19,21 @@ const mysql = require('mysql');
 
 // connection.connect()
 
+const favorites = []
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+app.post('/review', function(req, res){
+    var query = 'INSERT INTO reviews (review,name) VALUES (?,?)'
+    connection.query(query, [req.body.review, req.body.name], function(err, results){
+        res.json({
+            'message': 'Thank you for your review'
+        })
+    })
+})
 
 // ==============================Login Stuff====================================================
 // app.post('/login', function(req, res){
@@ -48,8 +59,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //         }
 //     })
 // })
-
-
 
 // app.post('/register', function(req, res){
 //     var query 'INSERT INTO users (username, password) VALUES (?, ?)'
@@ -125,8 +134,17 @@ app.get('/yelpstuff', function(req, res){
 	})
 }),
 
-io.on('connection', function(socket){
 
+io.on('connection', function(socket){
+	socket.on('add favorite', function(date){
+		favorites.push(date)
+		io.emit('new fav', favorites)
+	})
+
+	socket.on('get favorites', function(){
+		io.emit('get favorites', favorites)
+	})
+	
 })
 
 

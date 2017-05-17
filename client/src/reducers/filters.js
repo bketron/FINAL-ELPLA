@@ -1,4 +1,5 @@
 const initialState = {
+    favorites: [],
     filters:{},
     data:{},
     username:'',
@@ -36,6 +37,8 @@ export default function filterReducer(state=initialState, action) {
         return {...state, actTypes: action.types}
       case 'UPDATE_DELIVERY':
         return {...state, delivery: action.delivery}
+      case 'UPDATE_FAVORITES':
+        return {...state, favorites: action.favorites}
       default:
           return state
     }

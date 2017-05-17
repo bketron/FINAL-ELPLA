@@ -38,8 +38,8 @@ class Delivery extends Component {
                         width: '30px',
                         background: 'none'
                     }}
-                    hoverColor = "none"
-                    disableTouchRipple = {true}
+                    hoverColor="none"
+                    disableTouchRipple={true}
                     onClick={this.toggleDelivery}
                 >
                     <i style={{

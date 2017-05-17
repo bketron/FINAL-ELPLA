@@ -61,7 +61,6 @@ export function addLocations(stops) {
 	})
 }
 
-
 export function updateRadius(radius) {
 	store.dispatch({
 		type: 'UPDATE_RADIUS',
@@ -96,3 +95,23 @@ export function updateDelivery(delivery) {
 		delivery
 	})
 }
+
+export function addToFavorites(date) {
+	socket.emit('add favorite', date)
+}
+
+socket.on('new fav', function(favorites){
+	store.dispatch({
+		type: 'UPDATE_FAVORITES',
+		favorites
+	})
+})
+
+export function getFavorites() {
+	socket.emit('get favorites')
+}
+
+socket.on('get favorites', function(favorites){
+	console.log(favorites)
+	return favorites
+})
