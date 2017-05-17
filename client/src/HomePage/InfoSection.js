@@ -65,8 +65,7 @@ class InfoSection extends Component {
                             width: '500px',
                             height: '100%',
                             background: 'url(https://tiy-site-herokuapp-com.global.ssl.fastly.net/assets/aesthetic/photos/tiy-classroom-33c04997bbb47abfc89ab8a772d9b68190ecfcb589923dd1bf550ee7eef6fa61.jpg) no-repeat',
-                            backgroundSize: '500px 300px',
-
+                            backgroundSize: '500px 300px'
                         }}></div>
                 </section>
             </div>
