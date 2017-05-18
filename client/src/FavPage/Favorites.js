@@ -6,9 +6,7 @@ import FaveList from '../FavPage/FaveList'
 
 class Favorites extends Component {
     componentWillMount() {
-        var favs = getFavorites()
-
-        console.log('Favs:', favs)
+        getFavorites()
     }
 
     render() {
@@ -22,7 +20,6 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = function(appState) {
-    // console.log(appState.favorites, 'bot')
     return {
         favorites: appState.favorites
     }
