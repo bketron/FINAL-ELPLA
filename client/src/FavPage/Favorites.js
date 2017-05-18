@@ -6,9 +6,7 @@ import FaveList from '../FavPage/FaveList'
 
 class Favorites extends Component {
     componentWillMount() {
-        var favs = getFavorites()
-
-        console.log('Favs:', favs)
+        getFavorites()
     }
 
     render() {
