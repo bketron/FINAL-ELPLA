@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import FlatButton from 'material-ui/FlatButton'
+import { addLocations } from '../api/yelpapi'
 
 import TopBar from '../HomePage/TopBar'
 import RefreshIndicator from 'material-ui/RefreshIndicator'
@@ -100,10 +101,12 @@ class MealActResultsNew extends Component {
         this.setState({
             restaurants: props.restaurants,
             res: props.restaurants[resIndex],
+            resLocation: props.restaurants[resIndex].coordinates,
             resRating: this.getRating(props.restaurants[resIndex].rating),
             resAddress: props.restaurants[resIndex].location.address1 + ', ' + props.restaurants[resIndex].location.city + ', ' + props.restaurants[resIndex].location.state + ', ' + props.restaurants[resIndex].location.zip_code,
             activities: props.activities,
             act: props.activities[actIndex],
+            actLocation: props.activities[actIndex].coordinates,
             actRating: this.getRating(props.activities[actIndex].rating),
             actAddress: props.activities[actIndex].location.address1 + ', ' + props.activities[actIndex].location.city + ', ' + props.activities[actIndex].location.state + ', ' + props.activities[actIndex].location.zip_code,
             status: 'hide',
@@ -234,6 +237,22 @@ class MealActResultsNew extends Component {
         }
     }
 
+    getDirections = (e) => {
+		e.preventDefault()
+		console.log('getDirections')
+		addLocations({
+			lat1: this.state.resLocation.latitude,
+			long1: this.state.resLocation.longitude,
+			lat2: this.state.actLocation.latitude,
+			long2: this.state.actLocation.longitude
+		})
+
+		console.log(this.state.resLocation.latitude)
+		console.log(this.state.resLocation.longitude)
+
+		this.props.history.push('/directions/multi')
+	}
+
     render() {
         console.log('Restaurant:')
         console.log(this.state.res)
@@ -337,6 +356,7 @@ class MealActResultsNew extends Component {
                         <section style={styles.directionsContainer}>
                             <FlatButton
                                 label="Get Directions!"
+                                onTouchTap={this.getDirections}
                                 style={{
                                     height: '40px',
                                     lineHeight: '40px',

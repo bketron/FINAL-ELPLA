@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import FlatButton from 'material-ui/FlatButton'
 
+import {updateDelivery} from '../../api/yelpapi.js'
+
 class Delivery extends Component {
     state = {
         delivery: false,
@@ -14,13 +16,19 @@ class Delivery extends Component {
                 delColor: '#4CAF50'
             })
 
-            console.log(this.state)
+            updateDelivery(true)
+            this.props.parentCallback(true)
         } else {
             this.setState({
                 delivery: false,
                 delColor: '#CCCCCC'
             })
+
+            updateDelivery(false)
+            this.props.parentCallback(false)
         }
+
+
     }
 
     render() {

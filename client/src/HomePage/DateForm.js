@@ -109,7 +109,11 @@ class DateForm extends Component {
         this.state = {
             dateType: '',
             partySize: '',
-            maxPrice: ''
+            maxPrice: '',
+            searchRadius: 12.5,
+            delivery: false,
+            foodTypes: [],
+            actTypes: []
         }
     }
 
@@ -125,9 +129,19 @@ class DateForm extends Component {
         })
     }
 
+    dropDataCallback = (data) => {
+        if(data.searchRadius !== this.state.searchRadius) {this.setState({searchRadius: data.searchRadius})}
+        if(data.delivery !== this.state.delivery) {this.setState({delivery: data.delivery})}
+        if(data.foodTypes !== this.state.foodTypes) {this.setState({foodTypes: data.foodTypes})}
+        if(data.actTypes !== this.state.foodTypes) {this.setState({actTypes: data.actTypes})}
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
+        console.log(this.props)
         var priceRange = ''
+        var foodTypes = ''
+        var delivery = 'tasty'
         // addFilters(this.state)
         if(this.state.maxPrice !== ''){
             if(this.state.maxPrice <= 10){
@@ -144,13 +158,49 @@ class DateForm extends Component {
             }
         }
 
-        getRestaurants({
-            price: priceRange
-        })
+        for(var i=0; i<this.state.foodTypes.length; i++) {
+            var foodTypes = foodTypes + this.state.foodTypes[i] + ','
+        }
 
-        getActivities({
-            price: priceRange
-        })
+        foodTypes = foodTypes.substring(0, foodTypes.length-1)
+
+        console.log(foodTypes)
+
+        if(this.state.delivery === true) {delivery = 'delivery'}
+
+        if(this.state.dateType === 'meal'){
+            getRestaurants({
+                price: priceRange,
+                delivery: delivery,
+                searchRadius: this.state.searchRadius * 1000,
+                foodTypes: foodTypes
+            })
+        }
+
+        if(this.state.dateType === 'entertainment') {
+            getActivities({
+                price: priceRange,
+                searchRadius: this.state.searchRadius * 1000,
+                actTypes: this.state.actTypes
+            })     
+        }
+
+        if(this.state.dateType === 'both' || this.state.dateType === '') {
+            getRestaurants({
+                price: priceRange,
+                delivery: delivery,
+                searchRadius: this.state.searchRadius * 1000,
+                foodTypes: foodTypes
+            })
+
+            getActivities({
+                price: priceRange,
+                searchRadius: this.state.searchRadius * 1000,
+                actTypes: this.state.actTypes
+            }) 
+        }
+
+        
 
         if(this.state.dateType === ''){this.props.history.push('/results/meal+act')}
         if(this.state.dateType === 'meal'){this.props.history.push('/results/meal')}
@@ -279,13 +329,22 @@ class DateForm extends Component {
                         />
                     </div>
 
-                    <FilterDrop />
+                    <FilterDrop callback={this.dropDataCallback}/>
                     {/*<FilterPanel />*/}
                     
                     <button style={styles.generateButton} type="submit">Generate</button>
                 </form>
             </div>
         )
+    }
+}
+
+const mapStateToProps = function(appState) {
+    return {
+        delivery: appState.delivery,
+        searchRadius: appState.searchRadius,
+        foodTypes: appState.foodTypes,
+        actTypes: appState.actTypes
     }
 }
 
