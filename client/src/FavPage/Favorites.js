@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {getFavorites} from '../api/yelpapi'
 import TopBar from '../HomePage/TopBar'
+import FaveList from '../FavPage/FaveList'
 
 class Favorites extends Component {
     componentWillMount() {
@@ -14,12 +15,14 @@ class Favorites extends Component {
         return (
             <div>
                 <TopBar />
+                <FaveList />
             </div>
         )
     }
 }
 
 const mapStateToProps = function(appState) {
+    // console.log(appState.favorites, 'bot')
     return {
         favorites: appState.favorites
     }
