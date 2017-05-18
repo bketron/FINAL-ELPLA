@@ -47,6 +47,7 @@ class FoodTypes extends Component {
         const {types} = this.state
         return (
             <SelectField
+                disabled={true}
                 multiple={true}
                 hintText="Food Categories"
                 value={types}

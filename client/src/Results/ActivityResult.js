@@ -81,7 +81,6 @@ class Activity extends Component {
 	}
 
 	componentWillReceiveProps(props) {
-		console.log(props)
 		var id = (Math.random() * props.activities.length).toFixed(0)
 		this.setState({
 			activities: props.activities,
@@ -102,7 +101,6 @@ class Activity extends Component {
 			location: this.state.activities[newId].coordinates,
 		})
 
-		console.log(this.state)
 	}
 
     addFavorite = (event) => {
@@ -115,9 +113,9 @@ class Activity extends Component {
             actRating: this.state.actRating
         }
 
-        console.log(favObj)
-
         addToFavorites(favObj)
+
+		alert("Item has been added to your favorites list!")
     }
 
 	getDirections = (e) => {
@@ -128,15 +126,10 @@ class Activity extends Component {
 			longitude: this.state.location.longitude
 		})
 
-		console.log(this.state.location.latitude)
-		console.log(this.state.location.longitude)
-
 		this.props.history.push('/directions/single')
 	}
 
 	render() {
-		console.log(this.state)
-		console.log(this.state.location)
 		return (
 			<div style={styles.main}>
 				<section>

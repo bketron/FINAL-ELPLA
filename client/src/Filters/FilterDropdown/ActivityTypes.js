@@ -42,6 +42,7 @@ class ActivityTypes extends Component {
         const {types} = this.state
         return (
             <SelectField
+                disabled={true}
                 multiple={true}
                 hintText="Activity Categories"
                 value={types}

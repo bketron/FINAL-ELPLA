@@ -69,8 +69,8 @@ const styles={
 
 
 class FaveList extends React.Component {
+
   render() {
-    console.log(this.props, 'list bit')
     return (
       <div>
         <h1 style={styles.h1}>Saved List</h1>
@@ -79,8 +79,6 @@ class FaveList extends React.Component {
         {this.props.favorites.map((item, i) => (
           <li style={styles.listItem}>
           <div style={styles.section}>
-            
-             <button style={styles.directionsButton} onClick={this.props.removeItem}>X</button>
 
             <div>  
               <div style={styles.box}> 

@@ -153,6 +153,8 @@ class MealActResultsNew extends Component {
         console.log(favObj)
 
         addToFavorites(favObj)
+
+        alert("Item has been added to your favorites list!")
     }
 
     getRating = (rating) => {
