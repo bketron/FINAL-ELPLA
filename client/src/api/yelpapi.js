@@ -31,7 +31,7 @@ export function getRestaurants(searchObj) {
 }
 
 export function getRestaurant(id) {
-	console.log(id)
+	// console.log(id)
 	axios.get(`http://localhost:3001/yelprest?bussinessId=${id.restId}`).then(function(response){
 		store.dispatch({
 			type: 'SINGLE_RESTAURANT',
@@ -81,6 +81,9 @@ export function getFavorites() {
 }
 
 socket.on('get favorites', function(favorites){
-	console.log(favorites)
-	return favorites
+	console.log(favorites, 'api')
+	store.dispatch({
+		type: 'GET_FAVORITES',
+		favorites
+	})
 })
