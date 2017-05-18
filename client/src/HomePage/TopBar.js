@@ -59,7 +59,14 @@ class TopBar extends Component {
     render(){
         return (
             <div style={styles.container}>
-                <Link style={styles.title} to="/">Date Gen</Link>
+                <div>
+                <Link style={styles.title} to="/">elPla</Link>
+                <span style={{
+                    color: 'rgba(11,57,84,0.5)',
+                    fontSize: '13px',
+                    marginLeft: '10px',
+                }}>A Date Generator</span>
+                </div>
                 <div>
                     <ul style={styles.list}>
                         <li style={styles.listItem}>
