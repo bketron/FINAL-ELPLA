@@ -11,138 +11,61 @@ import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
 	main: {
-		height: '100vh',
-		width: '100vw',
-		backgroundColor: 'rgb(221,221,221)'
-	},
-	container: {
-		padding: '100px',
-		backgroundColor: 'rgb(221,221,221)'
-	},
-	resContainer: {
-		
-	},
-	topBar: {
-		display: 'flex',
-		justifyContent: 'flex-start'
-	},
-	lowerSection: {
-		display: 'flex',
-		justifyContent: 'flex-start'
-	},
-	infoContainer: {
-		marginLeft: '100px'
-	},
-	newButton: {
-		outline: 'none',
-		border: 'none',
-		color: '#082B3F',
-		backgroundColor: '#FF6E00',
-		fontSize: '20px',
-		marginRight: '8px',
-		cursor: 'pointer',
-		width: '35px',
-		height: '35px',
-		lineHeight: '30px',
-		fontWeight: 'bold',
-		position: 'relative',
-		top: '35px'
-	},
-	title: {
-		color: '#F7F7F7',
-		fontSize: '25px',
-		fontWeight: 'bold',
-		margin: '0px 0px 5px 0px',
-		padding: '0px 10px'
-	},
-	titleLine: {
-		borderBottom: '2px solid #FF6E00'
-	},
-	imageContainer: {
-		maxHeight: '400px',
-		maxWidth: '40%',
-		overflow: 'hidden'
-	},
+        width: '100%',
+    },
+    favoriteButton: {
+        backgroundColor: 'rgba(100,100,100,0.1)',
+        color: 'rgba(0,0,0,0.1)',
+        border: 'none'
+    },
+    resultContainer: {
+        width: '80%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        margin: 'auto',
+        paddingTop: '50px'
+    },
+	actResult: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
 	image: {
-		maxWidth: '100%'
-	},
-	list: {
-		listStyleType: 'none',
-		padding: '0px',
-		margin: '0px'
-	},
-	listItem: {
-
-	},
-	infoProp: {
-		display: 'flex',
-		lineHeight: '40px'
-	},
-	infoLabel: {
-		color: 'rgba(200,200,200,0.5)',
-		fontSize: '13px',
-		lineHeight: '40px',
-		margin: '0px 10px 0px 0px'
-	},
-	stars: {
-		color: 'white',
-		margin: '0px'
-	},
-	phone: {
-		color: '#F7F7F7',
-		margin: '0px'
-	},
-	price: {
-		color: '#F7F7F7',
-		margin: '0px'
-	},
-	website: {
-		textDecoration: 'none',
-		color: '#F7F7F7',
-		lineHeight: '40px'
-	},
-	categories: {
-
-	},
-	catList: {
-		listStyleType: 'none',
-		margin: 'none',
-		padding: 'none',
-		display: 'flex'
-	},
-	catItem: {
-
-	},
-	catTitle: {
-		color: 'white'
-	},
-	bottomSection: {
-		marginTop: '40px'
-	},
-	directionsButton: {
-		border: 'none',
-		outline: 'none',
-		height: '40px',
-		backgroundColor: '#FF6E00',
-		color: '#0B3954',
-		padding: '0px 20px',
-		fontSize: '18px',
-		fontWeight: 'bold',
-		marginBottom:-10
-	},
-	faveButton: {
-		border: 'none',
-		outline: 'none',
-		height: '40px',
-		backgroundColor: '#FF6E00',
-		color: '#0B3954',
-		padding: '0px 20px',
-		fontSize: '14px',
-		fontWeight: 'bold',
-		width:168,
-		marginTop:-10
-	}
-}
+        width: '400px',
+        height: '300px',
+        backgroundColor: 'black',
+        overflow: 'hidden'
+    },
+    directionsContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+    },
+    dispName: {
+        fontSize: '20px',
+        color: '#FF6E00',
+        margin: '0px'
+    },
+    dispRating: {
+        margin: '0px',
+        color: '#FF6E00'
+    },
+    dispPhone: {
+        color: '#282828',
+        margin: '0px'
+    },
+    dispAddress: {
+        color: '#282828',
+        margin: '0px'
+    },
+    dispLink: {
+        color: '#282828',
+        textDecoration: 'none',
+        margin: '0px',
+        borderBottom: '2px solid #FF6E00',
+        width: '77px'
+    }
+}	
 
 class Activity extends Component {
 	constructor(props) {
@@ -215,25 +138,25 @@ class Activity extends Component {
 		console.log(this.state)
 		console.log(this.state.location)
 		return (
-			<div style={styles.main} >
-			<section>
-				<TopBar />
-				<RefreshIndicator
-						size={70}
-						left={70}
-						top={0}
-						loadingColor="#FF6E00"
-						status={this.state.status}
-						style={{
-							display: this.state.loadDisp,
-							margin: '300px auto',
-							position: 'initial',
-							transform: 'none'
-						}}
-    				/>
+			<div style={styles.main}>
+				<section>
+					<TopBar />
+					<RefreshIndicator
+							size={70}
+							left={70}
+							top={0}
+							loadingColor="#FF6E00"
+							status={this.state.status}
+							style={{
+								display: this.state.loadDisp,
+								margin: '300px auto',
+								position: 'initial',
+								transform: 'none'
+							}}
+						/>
 
-				<div style={{display: this.state.loaded}}>
-					<FlatButton
+					<div style={{display: this.state.loaded}}>
+						<FlatButton
                         	backgroundColor="rgba(100,100,100,0.1)"
                         	style={{
                             	color: '#0B3954',
@@ -251,86 +174,52 @@ class Activity extends Component {
                         	}}
                         	type="button" onClick={this.addFavorite}>Add this to your favorites!</button>
                     	</FlatButton>
-					<div >
-						<div style={styles.topBar}>
-							<button style={styles.newButton} type="button" onClick={this.newAct}>x</button>
+
+						<div style={styles.resultContainer}>						
+							<section style={styles.actResult}>
+                            <button style={{
+                                        border: 'none',
+                                        outline: 'none',
+                                        backgroundColor: 'rgba(125,125,125,0.7)',
+                                        width: '50px',
+                                        height: '23px',
+                                        position: 'relative',
+                                        top: '23px',
+                                        cursor: 'pointer'
+                                    }} 
+                                    type="button" 
+                                    onClick={this.newAct}
+                            >
+                                <span style={{color: 'rgba(255,255,255,0.8)', display: 'flex'}}>Next <i style={{fontSize: '14px', marginLeft: '3px'}} className="fa fa-angle-double-right" aria-hidden="true"></i></span>
+
+                            </button>
+
+                            <img style={styles.image} src={this.state.act.image_url} alt={ this.state.act.name + 'Cover Image'} />
+
+                            <p style={styles.dispName}>{this.state.act.name} - <span style={{color: '#282828'}}>{this.state.act.price}</span></p>
+                            <div style={styles.dispRating}>{this.state.actRating}</div>
+                            <p style={styles.dispPhone}>{this.state.act.display_phone}</p>
+                            <p style={styles.dispAddress}>{this.state.actAddress}</p>
+                            <a style={styles.dispLink} href={this.state.act.url}>Yelp Page</a>
+
+                        </section>
+
+							<section style={styles.directionsContainer}>
+								<FlatButton
+									label="Get Directions!"
+									onTouchTap={this.getDirections}
+									style={{
+										height: '40px',
+										lineHeight: '40px',
+										padding: '0px 3px',
+										backgroundColor: '#FF6E00',
+										color: '#0B3954',
+										position: 'relative',
+										top: '-40px',
+									}}
+								/>
+							</section>
 						</div>
-						<div style={styles.lowerSection}>
-							<div style={styles.imageContainer}>
-								<img style={styles.image} src={this.state.act.image_url} alt="cover"/>
-							</div>
-
-							<div style={styles.infoContainer}>
-								<ul style={styles.list}>
-									<li style={styles.listItem}>
-										<p style={styles.title}>{this.state.act.name}</p>
-									</li>
-
-									<li style={styles.listItem}><div style={styles.titleLine}></div></li>
-
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.stars}>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-												<i style={{
-													color: 'white'
-												}} className="fa fa-star-o" aria-hidden="true"></i>
-
-												<i style={{
-													color: 'rgba(200,200,200,0.4)',
-													fontSize: '11px',
-													marginLeft: '7px',
-													marginRight: '7px'
-												}} className="fa fa-circle" aria-hidden="true"></i>
-
-												<span>{this.state.act.review_count} </span>
-												 Reviews
-											</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Phone Number: </p>
-											<p style={styles.phone}>{this.state.act.display_phone}</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Price Range (per person): </p>
-											<p style={styles.price}>{this.state.act.price}</p>
-										</div>
-									</li>
-									<li style={styles.listItem}>
-										<div style={styles.infoProp}>
-											<p style={styles.infoLabel}>Website: </p>
-											<a style={styles.website} href={this.state.act.url}>{this.state.act.name}</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div style={{
-						margin: '30px 0px 0px',
-						display: this.state.loaded
-					}}>
-						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>
-					</div>
-					<Link to={'/favorites/'}>
-            			<button style={styles.faveButton}>Add to Favorites</button>
-            		</Link>
 				</div>
 			</section>
 			</div>

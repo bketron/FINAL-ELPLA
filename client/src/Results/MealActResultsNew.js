@@ -291,7 +291,8 @@ class MealActResultsNew extends Component {
                             outline: 'none',
                             fontFamily: 'Roboto, sans-serif',
                             fontSize: '14px',
-                            textTransform: 'uppercase'
+                            textTransform: 'uppercase',
+                            cursor: 'pointer'
                         }}
                         type="button" onClick={this.addFavorite}>Add this to your favorites!</button>
                     </FlatButton>
@@ -364,7 +365,7 @@ class MealActResultsNew extends Component {
                                     backgroundColor: '#FF6E00',
                                     color: '#0B3954',
                                     position: 'relative',
-                                    top: '-40px'
+                                    top: '-40px',
                                 }}
                             />
                         </section>

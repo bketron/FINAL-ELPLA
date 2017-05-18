@@ -10,134 +10,60 @@ import RefreshIndicator from 'material-ui/RefreshIndicator'
 
 const styles = {
 	main: {
-		height: '100vh',
-		width: '100vw',
-		backgroundColor: 'rgb(221,221,221)'
+        width: '100%',
+    },
+	resultContainer: {
+		width: '80%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        margin: 'auto',
+        paddingTop: '50px'
 	},
-	container: {
-		padding: '100px',
-		backgroundColor: '#082B3F'
-	},
-	resContainer: {
-		
-	},
-	topBar: {
-		display: 'flex',
-		justifyContent: 'flex-start'
-	},
-	lowerSection: {
-		display: 'flex',
-		justifyContent: 'flex-start'
-	},
-	infoContainer: {
-		marginLeft: '100px'
-	},
-	newButton: {
-		outline: 'none',
-		border: 'none',
-		color: '#082B3F',
-		backgroundColor: '#FF6E00',
-		fontSize: '20px',
-		marginRight: '8px',
-		cursor: 'pointer',
-		width: '35px',
-		height: '35px',
-		lineHeight: '30px',
-		fontWeight: 'bold',
-		position: 'relative',
-		top: '35px'
-	},
-	title: {
-		color: '#F7F7F7',
-		fontSize: '25px',
-		fontWeight: 'bold',
-		margin: '0px 0px 5px 0px',
-		padding: '0px 10px'
-	},
-	titleLine: {
-		borderBottom: '2px solid #FF6E00'
-	},
-	imageContainer: {
-		maxHeight: '400px',
-		maxWidth: '40%',
-		overflow: 'hidden'
-	},
+	favoriteButton: {
+        backgroundColor: 'rgba(100,100,100,0.1)',
+        color: 'rgba(0,0,0,0.1)',
+        border: 'none'
+    },
+	resResult: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
 	image: {
-		maxWidth: '100%'
-	},
-	list: {
-		listStyleType: 'none',
-		padding: '0px',
-		margin: '0px'
-	},
-	listItem: {
-
-	},
-	infoProp: {
-		display: 'flex',
-		lineHeight: '40px'
-	},
-	infoLabel: {
-		color: 'rgba(200,200,200,0.5)',
-		fontSize: '13px',
-		lineHeight: '40px',
-		margin: '0px 10px 0px 0px'
-	},
-	stars: {
-		color: 'white',
-		margin: '0px'
-	},
-	phone: {
-		color: '#F7F7F7',
-		margin: '0px'
-	},
-	price: {
-		color: '#F7F7F7',
-		margin: '0px'
-	},
-	website: {
-		textDecoration: 'none',
-		color: '#F7F7F7',
-		lineHeight: '40px'
-	},
-	categories: {
-
-	},
-	catList: {
-		listStyleType: 'none',
-		margin: 'none',
-		padding: 'none',
-		display: 'flex'
-	},
-	catItem: {
-
-	},
-	catTitle: {
-		color: 'white'
-	},
-	directionsButton: {
-		border: 'none',
-		outline: 'none',
-		height: '40px',
-		backgroundColor: '#FF6E00',
-		color: '#0B3954',
-		padding: '0px 20px',
-		fontSize: '18px',
-		fontWeight: 'bold',
-		marginBottom:-10
-	},
-	faveButton: {
-		border: 'none',
-		outline: 'none',
-		height: '40px',
-		backgroundColor: '#FF6E00',
-		color: '#0B3954',
-		padding: '0px 20px',
-		fontSize: '14px',
-		fontWeight: 'bold',
-		width:168,
-		marginTop:-10
-	}
+        width: '400px',
+        height: '300px',
+        backgroundColor: 'black',
+        overflow: 'hidden'
+    },
+	directionsContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+    },
+    dispName: {
+        fontSize: '20px',
+        color: '#FF6E00',
+        margin: '0px'
+    },
+    dispRating: {
+        margin: '0px',
+        color: '#FF6E00'
+    },
+    dispPhone: {
+        color: '#282828',
+        margin: '0px'
+    },
+    dispAddress: {
+        color: '#282828',
+        margin: '0px'
+    },
+    dispLink: {
+        color: '#282828',
+        textDecoration: 'none',
+        margin: '0px',
+        borderBottom: '2px solid #FF6E00',
+        width: '77px'
+    }
 }
 
 class Meal extends Component {
@@ -255,85 +181,51 @@ class Meal extends Component {
                         	type="button" onClick={this.addFavorite}>Add this to your favorites!</button>
                     	</FlatButton>
 
-						<div style={styles.resContainer}>
-							<div style={styles.topBar}>
-								<button style={styles.newButton} type="button" onClick={this.newRes}>x</button>
-							</div>
-							<div style={styles.lowerSection}>
-								<div style={styles.imageContainer}>
-									<img style={styles.image} src={this.state.res.image_url} alt="cover" />
-								</div>
+						<div style={styles.resultContainer}>						
+							<section style={styles.resResult}>
+								<button style={{
+											border: 'none',
+											outline: 'none',
+											backgroundColor: 'rgba(125,125,125,0.7)',
+											width: '50px',
+											height: '23px',
+											position: 'relative',
+											top: '23px',
+											cursor: 'pointer'
+										}} 
+										type="button" 
+										onClick={this.newRes}
+								>
+									<span style={{color: 'rgba(255,255,255,0.8)', display: 'flex'}}>Next <i style={{fontSize: '14px', marginLeft: '3px'}} className="fa fa-angle-double-right" aria-hidden="true"></i></span>
 
-								<div style={styles.infoContainer}>
-									<ul style={styles.list}>
-										<li style={styles.listItem}>
-											<p style={styles.title}>{this.state.res.name}</p>
-										</li>
+								</button>
 
-										<li style={styles.listItem}><div style={styles.titleLine}></div></li>
+								<img style={styles.image} src={this.state.res.image_url} alt={ this.state.res.name + 'Cover Image'} />
 
-										<li style={styles.listItem}>
-											<div style={styles.infoProp}>
-												<p style={styles.stars}>
-													<i style={{
-														color: 'white'
-													}} className="fa fa-star-o" aria-hidden="true"></i>
-													<i style={{
-														color: 'white'
-													}} className="fa fa-star-o" aria-hidden="true"></i>
-													<i style={{
-														color: 'white'
-													}} className="fa fa-star-o" aria-hidden="true"></i>
-													<i style={{
-														color: 'white'
-													}} className="fa fa-star-o" aria-hidden="true"></i>
-													<i style={{
-														color: 'white'
-													}} className="fa fa-star-o" aria-hidden="true"></i>
+								<p style={styles.dispName}>{this.state.res.name} - <span style={{color: '#282828'}}>{this.state.res.price}</span></p>
+								<div style={styles.dispRating}>{this.state.resRating}</div>
+								<p style={styles.dispPhone}>{this.state.res.display_phone}</p>
+								<p style={styles.dispAddress}>{this.state.resAddress}</p>
+								<a style={styles.dispLink} href={this.state.res.url}>Yelp Page</a>
 
-													<i style={{
-														color: 'rgba(200,200,200,0.4)',
-														fontSize: '11px',
-														marginLeft: '7px',
-														marginRight: '7px'
-													}} className="fa fa-circle" aria-hidden="true"></i>
+							</section>
 
-													<span>{this.state.res.review_count} </span>
-													Reviews
-												</p>
-											</div>
-										</li>
-										<li style={styles.listItem}>
-											<div style={styles.infoProp}>
-												<p style={styles.infoLabel}>Phone Number: </p>
-												<p style={styles.phone}>{this.state.res.display_phone}</p>
-											</div>
-										</li>
-										<li style={styles.listItem}>
-											<div style={styles.infoProp}>
-												<p style={styles.infoLabel}>Price Range (per person): </p>
-												<p style={styles.price}>{this.state.res.price}</p>
-											</div>
-										</li>
-										<li style={styles.listItem}>
-											<div style={styles.infoProp}>
-												<p style={styles.infoLabel}>Website: </p>
-												<a style={styles.website} href={this.state.res.url}>{this.state.res.name}</a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
+							<section style={styles.directionsContainer}>
+								<FlatButton
+									label="Get Directions!"
+									onTouchTap={this.getDirections}
+									style={{
+										height: '40px',
+										lineHeight: '40px',
+										padding: '0px 3px',
+										backgroundColor: '#FF6E00',
+										color: '#0B3954',
+										position: 'relative',
+										top: '-40px',
+									}}
+								/>
+							</section>
 						</div>
-
-					<div style={{
-						margin: '30px 0px'
-					}}>
-						<button style={styles.directionsButton} type="button" onClick={this.getDirections}>Get Directions</button>	
-					</div>
-					<Link to={'/favorites/'}>
-            			<button style={styles.faveButton}>Add to Favorites</button>
-            		</Link>
 				</div>
 			</section>
 			</div>
